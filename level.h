@@ -13,3 +13,5 @@ public:
 	void virtual rotateBlockClock(Grid *);
 	void virtual rotateBlockCounterClock(Grid *);
 };
+
+#endif
