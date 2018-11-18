@@ -2,7 +2,7 @@
 
 Grid::Grid(){
 
-	for (int x = 0; x < 11;++x){ // columns
+for (int x = 0; x < 11;++x){ // columns
 		std::vector<Cell> vec;
 		for (int y = 0; y < 18;++y){ // row
 			Cell c = Cell();
@@ -10,9 +10,6 @@ Grid::Grid(){
 		}
 		theGrid.emplace_back(vec);
 	}
-
-	
-	
 }
 
 void Grid::printRow(int r){
@@ -22,6 +19,5 @@ void Grid::printRow(int r){
 }
 
 Grid::addToCurrent(){
-	blocksInGrid.emplace_back(*currentBlock)
-
+	blocksInGrid.emplace_back(*currentBlock);
 }
