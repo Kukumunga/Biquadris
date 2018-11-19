@@ -7,12 +7,28 @@ class Cell {
 
 private:
 	// std::string colour;
+	int signal;
 	char block = 'L';
 	Coord c;
-	bool isActive = false; // if nothing in cell then inactive
+	bool Filled = false; // false means inactive
+	Cell * leftNeighbour = nullptr;
+	Cell * rightNeighbour = nullptr;
+	// methods
+	void rightNeighbourFilled();
+	void leftNeighbourFilled();
+	void rightSideFilled();
+	void leftSideFilled();
 public:
 	char getBlockChar();
+	void setBlockChar(char);
 	Cell(int,int);
+	void addLeftNeighbour(Cell *);
+	void addRightNeighbour(Cell *);
+	void alertNeighbours();
+	bool clanClearRow();
+	void setStatus(bool);
+	bool getStatus();
+
 };
 
 
