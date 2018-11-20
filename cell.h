@@ -7,7 +7,7 @@ class Cell {
 
 private:
 	// std::string colour;
-	int signal;
+	int signal = 0;
 	char block = 'L';
 	Coord c;
 	bool Filled = false; // false means inactive

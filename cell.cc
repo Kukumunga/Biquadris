@@ -57,7 +57,7 @@ void Cell::rightSideFilled(){
 
 void Cell::leftSideFilled(){
 	if (c.getX()  == 5){
-		++Signal;
+		++signal;
 	}else{
 		right->leftSideFilled();
 	}
@@ -70,10 +70,10 @@ bool canClearRow(){
 	}
 }
 
-void Cell::setStatus(bool stat){
+void Cell::setFilledStatus(bool stat){
 	Filled = stat;
 }
 
-bool Cell::getStatus(){
+bool Cell::getFilledStatus(){
 	return Filled;
 }
