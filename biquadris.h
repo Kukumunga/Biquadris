@@ -9,14 +9,14 @@
 
 class Interpreter;
 
-class biquadris {
+class Biquadris {
 	Interpreter *inter;
 	Board gameBoard;
 	int player;
 
 public:
-	biquadris();
-	~biquadris();
+	Biquadris();
+	~Biquadris();
 	void start();
 	
 };
