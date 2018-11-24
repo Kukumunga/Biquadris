@@ -1,4 +1,4 @@
-#include "board.h"
+#include :"board.h"
 
 Board::Board(): p1{Player()},p2{Player()} {}
 
@@ -15,9 +15,9 @@ void Board::printBoards(){
 void Move(int playerNum,std::string command){
 	if (command == "left"){
 		if (playerNum == 1){
-			player1.moveBlockLeft();
+		//	player1.moveBlockLeft();
 		}else{
-			player2.moveBlockLeft();
+		//	player2.moveBlockLeft();
 		}
 	}else if (command == "right"){
 		if (playerNum == 1){

@@ -8,7 +8,7 @@
 
 class Player{
 	Grid g; 
-	Level l = Level0();
+	Level0 l = Level0{"hello"};
 	int score = 0;
 	// Block *nextBlock;
 public:
