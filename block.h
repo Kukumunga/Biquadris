@@ -1,6 +1,7 @@
 #ifndef __BLOCK__
 #define __BLOCK__
 #include <vector>
+#include <string>
 
 class Cell;
 class Coord;
