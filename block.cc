@@ -9,7 +9,7 @@ void Block::setLevel(int l){level = l;}
 
 void Block::addCell(Cell *cell){components.emplace_back(cell);}
 
-
+/*
 vector<Coord *> Block::calcLeft(){
 	vector<Coord *> oldCoords;
 	vector<Coord> newCoords;
@@ -40,7 +40,7 @@ vector<Coord *> Block::calcRight(){
 	return newCoords;
 }
 
-
+*/
 //vector<Coord *> Block::rotateClock(){
 //	beforeCoord = 
 //}
