@@ -5,6 +5,7 @@
 #include <vector>
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 #include "board.h"
 
 class Interpreter;
