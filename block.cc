@@ -2,6 +2,7 @@
 using namespace std;
 #include "cell.h"
 #include "coord.h"
+#include <vector>
 
 Block::Block():orientation{"up"}{}
 
