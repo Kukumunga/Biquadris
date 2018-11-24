@@ -5,9 +5,9 @@ using namespace std;
 
 Block::Block():orientation{"up"}{}
 
-Block::setLevel(int l){level = l;}
+void Block::setLevel(int l){level = l;}
 
-Block::addCell(Cell *cell){components.emplace_back(cell);}
+void Block::addCell(Cell *cell){components.emplace_back(cell);}
 
 vector<Coord *> Block::calcLeft(){
 	vector<Coord *> newCoords;
