@@ -7,4 +7,4 @@ string BlockI::getType(){
 	return Block::agetType();
 }
 
-string BlockI::getType(){return type;}
+
