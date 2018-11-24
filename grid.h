@@ -3,7 +3,7 @@
 
 #include <vector>
 #include "cell.h"
-
+#include "block.h"
 const int MID = 5;
 
 class Grid{
@@ -24,7 +24,7 @@ public:
 	void clearFullRows();
 	bool isFilled();
 	void createBlock(std::string blockType,int level);
-	void Grid::UpdateGrid();
+	void UpdateGrid();
 	
 };
 

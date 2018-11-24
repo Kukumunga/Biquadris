@@ -3,10 +3,12 @@
 #define __PLAYER__H
 
 #include "grid.h"
+#include "level.h"
+#include "level0.h"
 
 class Player{
 	Grid g; 
-	Level l;
+	Level l = Level0();
 	int score = 0;
 	// Block *nextBlock;
 public:

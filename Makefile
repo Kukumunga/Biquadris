@@ -1,7 +1,7 @@
 CXX = g++-5
 CXXFLAGS = -std=c++14 -Werror=vla -Wall -MMD
 EXEC = biquad
-OBJECTS = main.o biquadris.o interpreter.o basecommand.o board.o
+OBJECTS = level0.o sample.o board.o level.o block.o blocki.o blockj.o blocks.o blockz.o blockt.o blockl.o blocko.o coord.o
 DEPENDS = ${OBJECTS:.o=.d}
 
 ${EXEC}: ${OBJECTS}

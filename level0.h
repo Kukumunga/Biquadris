@@ -1,7 +1,7 @@
 #ifndef __LEVEL0__
 #define __LEVEL0__
 #include "level.h"
-
+#include <string>
 class Grid;
 class Level0 : public Level {
 	std::string filename;

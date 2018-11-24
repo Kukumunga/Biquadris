@@ -2,7 +2,7 @@
 #define __CELL__H
 
 #include <iostream>
-
+#include "coord.h"
 class Cell {
 
 private:
