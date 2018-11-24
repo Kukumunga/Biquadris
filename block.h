@@ -1,5 +1,6 @@
 #ifndef __BLOCK__
 #define __BLOCK__
+#include <vector>
 
 class Cell;
 class Coord;
