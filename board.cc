@@ -1,4 +1,4 @@
-#include :"board.h"
+#include "board.h"
 
 Board::Board(): p1{Player()},p2{Player()} {}
 

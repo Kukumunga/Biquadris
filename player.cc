@@ -9,7 +9,7 @@ int Player::getLevel(){
 }
 
 Player::Player(): g{Grid()},l{Level()}{
-	g.createBlock(level.createBlock(&g),level.getLevel());
+	g.createBlock(l.createBlock(&g),l.getLevel());
 }
 
 
