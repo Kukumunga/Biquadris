@@ -3,7 +3,7 @@ using namespace std;
 #include "cell.h"
 #include "coord.h"
 
-Block::Block():orientation{"up"}{}
+Block::Block(string type, string colour):type{type}, colour{colour},orientation{"up"}{}
 
 Block::setLevel(int l){level = l;}
 

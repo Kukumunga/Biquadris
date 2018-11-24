@@ -1,6 +1,6 @@
 #include "blocks.h"
 using namespace std;
 
-BlockS::BlockS:Block(),type{"s"},colour{"yellow"}{}
+BlockS::BlockS:Block("s", "yellow"){}
 
 string BlockS::getType(){return type;}

@@ -1,6 +1,6 @@
 #include "blockz.h"
 using namespace std;
 
-BlockZ::BlockZ:Block(),type{"z"},colour{"black"}{}
+BlockZ::BlockZ:Block("z", "black"){}
 
 string BlockZ::getType(){return type;}
