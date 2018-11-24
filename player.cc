@@ -2,16 +2,17 @@
 
 int Player::getScore(){
 	//return score;
+	return 1;
 }
 
 int Player::getLevel(){
-	//return l.getLevel();
+	//return l.getLevel()
+	return 1;
 }
 
-Player::Player(): g{Grid()},l{Level()}{
-	g.createBlock(l.createBlock(&g),l.getLevel());
+Player::Player(): g{Grid()},l{Level0("hello")}{
+	 l.createBlock(&g);
 }
-
 
 void Player::printRow(int r){
 	g.printRow(r);

@@ -3,7 +3,8 @@
 Board::Board(): p1{Player()},p2{Player()} {}
 
 
-void Board::printBoards(){
+void Board::printBoards(){	
+
 	for (int i = 0; i < 18; ++i){
 		p1.printRow(i);
 		std::cout << std::setw(9) << std::setfill(' ');
