@@ -9,7 +9,7 @@ void Block::setLevel(int l){level = l;}
 
 void Block::addCell(Cell *cell){components.emplace_back(cell);}
 
-string Block::getType(){return type;}
+string Block::agetType(){return type;}
 
 /*
 vector<Coord *> Block::calcLeft(){
