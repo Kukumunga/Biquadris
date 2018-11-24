@@ -4,14 +4,14 @@
 class Grid;
 class Level {
 public:
-	int virtual getLevel()=0;
-	void virtual createBlock(Grid *)=0;
-	void virtual moveRight(Grid *);
-	void virtual moveLeft(Grid *);
-	void virtual moveDown(Grid *);
-	void virtual dropBlock(Grid *);
-	void virtual rotateBlockClock(Grid *);
-	void virtual rotateBlockCounterClock(Grid *);
+	virtual int getLevel()=0;
+	virtual void createBlock(Grid *)=0;
+	virtual void moveRight(Grid *);
+	virtual void moveLeft(Grid *);
+	virtual void moveDown(Grid *);
+	virtual void dropBlock(Grid *);
+	virtual void rotateBlockClock(Grid *);
+	virtual void rotateBlockCounterClock(Grid *);
 };
 
 #endif
