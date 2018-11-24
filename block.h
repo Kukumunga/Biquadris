@@ -13,7 +13,7 @@ protected:
 	int level; //level the block was created
 	std::string orientation; //the block's orientation
 public:
-	Block();
+	Block(std::string type, std::string colour);
 	virtual std::string getType();
 	void addCell(Cell*);
 	void setLevel(int l);
