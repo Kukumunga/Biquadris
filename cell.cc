@@ -77,3 +77,11 @@ void Cell::setFilledStatus(bool stat){
 bool Cell::getFilledStatus(){
 	return Filled;
 }
+
+int Cell::getX(){
+	return c.getX();
+}
+
+int Cell::getY(){
+	return c.getY();
+}

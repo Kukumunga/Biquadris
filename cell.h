@@ -2,7 +2,7 @@
 #define __CELL__H
 
 #include <iostream>
-
+#include "coord.h"
 class Cell {
 
 private:
@@ -20,7 +20,7 @@ private:
 	void leftSideFilled();
 public:
 	char getBlockChar();
-	void setBlockChar(char);
+	void setBlockChar(std::string);
 	Cell(int,int);
 	void addLeftNeighbour(Cell *);
 	void addRightNeighbour(Cell *);
