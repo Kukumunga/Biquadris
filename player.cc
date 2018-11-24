@@ -14,7 +14,7 @@ Player::Player(): g{Grid()},l{Level()}{
 
 
 void Player::printRow(int r){
-	//g.printRow(r);
+	g.printRow(r);
 }
 
 void Player::moveBlockLeft(){
