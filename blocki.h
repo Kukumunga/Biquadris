@@ -1,5 +1,6 @@
 #ifndef __BLOCK__I
 #define __BLOCK__I
+#include "block.h"
 #include <vector>
 #include <string>
 
