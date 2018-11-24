@@ -25,10 +25,11 @@ public:
 	void addLeftNeighbour(Cell *);
 	void addRightNeighbour(Cell *);
 	void alertNeighbours();
-	bool clanClearRow();
+	bool canClearRow();
 	void setStatus(bool);
 	bool getStatus();
-
+	int getX();
+	int getY();
 };
 
 

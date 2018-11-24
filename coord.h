@@ -10,6 +10,7 @@ private:
 public:
 	int getX();
 	int getY();
+	Coord(int,int);
 };
 
 

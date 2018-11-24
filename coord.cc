@@ -8,3 +8,4 @@ int Coord::getY(){
 	return y;
 }
 
+Coord::Coord(int x,int y):x{x},y{y}{}

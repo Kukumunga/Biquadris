@@ -10,7 +10,7 @@ char Cell::getBlockChar(){
 	return block;
 }
 
-Cell::Cell(int x,int y): c{Cell{x,y}} {}
+Cell::Cell(int x,int y): c{Coord{x,y}} {}
 
 void Cell::addLeftNeighbour(Cell * left){
 	leftNeighbour = left;
@@ -22,27 +22,27 @@ void Cell::addRightNeighbour(Cell * right){
 
 void Cell::alertNeighbours(){
 	if (Filled){
-		left->rightNeighbourFilled();
-		right->LeftNeighbourFilled();
+		leftNeighbour->rightNeighbourFilled();
+		rightNeighbour->leftNeighbourFilled();
 	}
 }
 
 void Cell::rightNeighbourFilled(){
 	if (Filled){
-		if (left != nullptr){
-			left->rightNeighbourFilled();
+		if (leftNeighbour != nullptr){
+			leftNeighbour->rightNeighbourFilled();
 		}else{
-			right->LeftSideFilled();
+			rightNeighbour->leftSideFilled();
 		}
 	}
 }
 
 void Cell::leftNeighbourFilled(){
 	if (Filled){
-		if (right != nullptr){
-			right->leftNeighbourFilled();
+		if (rightNeighbour != nullptr){
+			rightNeighbour->leftNeighbourFilled();
 		}else{
-			left->rightSideFilled();
+			leftNeighbour->rightSideFilled();
 		}
 	}
 }
@@ -51,7 +51,7 @@ void Cell::rightSideFilled(){
 	if (c.getX()  == 5){
 		++signal;
 	}else{
-		left->rightSideFilled();
+		leftNeighbour->rightSideFilled();
 	}
 }
 
@@ -59,22 +59,23 @@ void Cell::leftSideFilled(){
 	if (c.getX()  == 5){
 		++signal;
 	}else{
-		right->leftSideFilled();
+		rightNeighbour->leftSideFilled();
 	}
 }
 
-bool canClearRow(){
+bool Cell::canClearRow(){
 	if (signal == 2){
 		signal = 0;
 		return true;
 	}
+	return false;
 }
 
-void Cell::setFilledStatus(bool stat){
+void Cell::setStatus(bool stat){
 	Filled = stat;
 }
 
-bool Cell::getFilledStatus(){
+bool Cell::getStatus(){
 	return Filled;
 }
 
