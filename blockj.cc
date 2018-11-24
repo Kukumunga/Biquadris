@@ -2,4 +2,5 @@
 using namespace std;
 
 BlockJ::BlockJ():Block("j", "red"){}
-string BlockJ::getType(){return type;}
+
+string BlockJ::getType(){return Block::agetType();}

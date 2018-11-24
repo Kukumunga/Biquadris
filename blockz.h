@@ -2,6 +2,7 @@
 #define __BLOCK__Z
 #include <vector>
 #include <string>
+#include "block.h"
 
 class Coord;
 class BlockZ : public Block {
