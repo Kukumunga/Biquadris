@@ -21,21 +21,21 @@ void Move(int playerNum,std::string command){
 		}
 	}else if (command == "right"){
 		if (playerNum == 1){
-			player1.moveBlockRight();
+			//player1.moveBlockRight();
 		}else{
-			player2.moveblockRight();
+			//player2.moveblockRight();
 		}		
 	}else if (command == "down"){
 		if (playerNum == 1){
-			player1.moveBlockRight();
+			//player1.moveBlockRight();
 		}else{
-			player2.moveblockRight();
+			//player2.moveblockRight();
 		}		
 	}else if (command == "drop"){
 		if (playerNum == 1){
-			player1.dropBlock();
+			//player1.dropBlock();
 		}else{
-			player2.dropBlock();
+			//player2.dropBlock();
 		}		
 	}
 }

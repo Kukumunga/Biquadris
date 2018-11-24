@@ -22,6 +22,10 @@ public:
 	void setNextBlock(Block *);
 	void addToCurrent();
 	void clearFullRows();
+	bool isFilled();
+	void createBlock(std::string blockType,int level);
+	void Grid::UpdateGrid();
+	
 };
 
 
