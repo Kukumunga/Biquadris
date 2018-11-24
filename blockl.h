@@ -1,5 +1,8 @@
 #ifndef __BLOCK__L
 #define __BLOCK__L
+#include <vector>
+#include <string>
+
 
 class Coord;
 class BlockL : public Block {
