@@ -40,7 +40,7 @@ void Grid::printRow(int r){
 }
 
 void Grid::addToCurrent(){
-	blocksInGrid.emplace_back(*currentBlock)
+	blocksInGrid.emplace_back(*currentBlock);
 }
 
 
@@ -58,27 +58,27 @@ void Grid::clearFullRows(){
 
 
 void Grid::clearRow(int row){
-	for (int i = row; i > 3; --i){
-		for (int x = 0; x < 11; ++x){
-			theGrid[x][i].setFilledStatus(theGrid[x][i-1].getFilledStatus());
-			theGrid[x][i].setBlockChar(theGrid[x][i-1].getBlockChar());
-		}
-	}
+	//for (int i = row; i > 3; --i){
+	//	for (int x = 0; x < 11; ++x){
+	//		theGrid[x][i].setFilledStatus(theGrid[x][i-1].getFilledStatus());
+	//		theGrid[x][i].setBlockChar(theGrid[x][i-1].getBlockChar());
+	//	}
+	//}
 
 	// clear row 3
-	for (int x = 0; x < 11; ++ x){
-		theGrid[x][3].setFilledStatus(false);
-	}
+	//for (int x = 0; x < 11; ++ x){
+	//	theGrid[x][3].setFilledStatus(false);
+//	}
 }
 
 bool Grid::isFilled(int x,int y){
-	return (theGrid.at(x).at(y)).getFilledStatus();
+	return (theGrid.at(x).at(y)).getStatus();
 }
 
-void Grid::nextBlock(){
+//void Grid::nextBlock(){
 	//currentBlock = nextBlock;
 	// nextBlock = l->createBlock();
-}
+//}
 
 
 void Grid::UpdateGrid(){
@@ -86,12 +86,12 @@ void Grid::UpdateGrid(){
 	int x = 0;
 	int y = 0;
 
-	for (int i = 0; i < size; ++ i){
-		x = blocksInGrid.at(i).getX();
-		y = blocksInGrid.at(i).getY();
-		(theGrid.at(x).at(y)).setBlockChar(blocksInGrid.at(i).getType());
-		(theGrid.at(x).at(y)).setStatus(true);
-	}
+	//for (int i = 0; i < size; ++ i){
+		//x = blocksInGrid.at(i).getX();
+		//y = blocksInGrid.at(i).getY();
+	//	(theGrid.at(x).at(y)).setBlockChar(blocksInGrid.at(i).getType());
+	//	(theGrid.at(x).at(y)).setStatus(true);
+	//}
 }
 
 void Grid::createBlock(std::string blockType,int level){
@@ -104,7 +104,11 @@ void Grid::createBlock(std::string blockType,int level){
 		i.addCell(&(theGrid.at(3).at(3)));
 		blocksInGrid.emplace_back(i);
 		currentBlock = &blocksInGrid.back();
-		UpdateGrid();
+		theGrid[0][3].setBlockChar("i");
+		theGrid[1][3].setBlockChar("i");
+		theGrid[2][3].setBlockChar("i");
+		theGrid[3][3].setBlockChar("i");
+		//UpdateGrid();
 	}else if (blockType == "j"){
 		BlockJ j;
 		j.setLevel(level);

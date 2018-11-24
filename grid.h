@@ -22,7 +22,7 @@ public:
 	void setNextBlock(Block *);
 	void addToCurrent();
 	void clearFullRows();
-	bool isFilled();
+	bool isFilled(int x, int y);
 	void createBlock(std::string blockType,int level);
 	void UpdateGrid();
 	
