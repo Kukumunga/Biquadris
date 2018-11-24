@@ -6,6 +6,7 @@
 class Cell;
 class Coord;
 class Block {
+protected:
 	std::vector<Cell *> components; 
 	std::string type;
 	std::string colour;

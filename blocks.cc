@@ -2,5 +2,4 @@
 using namespace std;
 
 BlockS::BlockS:Block("s", "yellow"){}
-
 string BlockS::getType(){return type;}

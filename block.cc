@@ -5,10 +5,11 @@ using namespace std;
 
 Block::Block(string type, string colour):type{type}, colour{colour},orientation{"up"}{}
 
-Block::setLevel(int l){level = l;}
+void Block::setLevel(int l){level = l;}
 
-Block::addCell(Cell *cell){components.emplace_back(cell);}
+void Block::addCell(Cell *cell){components.emplace_back(cell);}
 
+/*
 vector<Coord *> Block::calcLeft(){
 	vector<Coord *> newCoords;
 	for (int comp = 0; comp < 4; comp++){
@@ -16,7 +17,7 @@ vector<Coord *> Block::calcLeft(){
 	}
 	
 }	
-
+*/
 //vector<Coord *> Block::rotateClock(){
 //	beforeCoord = 
 //}
