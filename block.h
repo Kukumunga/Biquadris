@@ -14,7 +14,7 @@ protected:
 	std::string orientation; //the block's orientation
 public:
 	Block(std::string type, std::string colour);
-	std::string getType();
+	std::string agetType();
 	void addCell(Cell*);
 	void setLevel(int l);
 	//virtual std::vector<Coord*> rotateClock();
