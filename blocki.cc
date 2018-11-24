@@ -4,7 +4,7 @@ using namespace std;
 BlockI::BlockI():Block("i", "green"){}
 
 string BlockI::getType(){
-	return Block::getType();
+	return Block::agetType();
 }
 
 string BlockI::getType(){return type;}
