@@ -19,9 +19,9 @@ public:
 	void setLevel(int l);
 	//virtual std::vector<Coord*> rotateClock();
 	//virtual std::vector<Coord*> rotateCounterClock();
-	//std::vector<Coord*> calcLeft();
-	//std::vector<Coord*> calcRight();
-	//std::vector<Coord*> calcDown();
+	std::vector<Coord*> calcLeft();
+	std::vector<Coord*> calcRight();
+	std::vector<Coord*> calcDown();
 	//void executeLeft();
 	//void executeRight();
 	//void executeDown();

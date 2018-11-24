@@ -9,15 +9,38 @@ void Block::setLevel(int l){level = l;}
 
 void Block::addCell(Cell *cell){components.emplace_back(cell);}
 
-/*
+
 vector<Coord *> Block::calcLeft(){
-	vector<Coord *> newCoords;
+	vector<Coord *> oldCoords;
+	vector<Coord> newCoords;
 	for (int comp = 0; comp < 4; comp++){
-		beforeCoords.emplace_back(component[comp].getCoord()); //get old Coords
+		oldCoords.emplace_back(component[comp].getCoord()); //get old Coords
+		newCoords.emplace_back(Coord(oldCoords[comp]->getX - 1, oldCoords[comp]->getY));
 	}
-	
+	return newCoords;
 }	
-*/
+
+vector<Coord *> Block::calcRight(){
+	vector<Coord *> oldCoords;
+	vector<Coord> newCoords;
+	for (int comp = 0; comp < 4; comp++){
+		oldCoords.emplace_back(component[comp].getCoord()); //get old Coords
+		newCoords.emplace_back(Coord(oldCoords[comp]->getX + 1, oldCoords[comp]->getY));
+	}
+	return newCoords;
+}
+
+vector<Coord *> Block::calcRight(){
+	vector<Coord *> oldCoords;
+	vector<Coord> newCoords;
+	for (int comp = 0; comp < 4; comp++){
+		newCoords.emplace_back(component[comp].getCoord()); //get old Coords
+		newCoords.emplace_back(Coord(oldCoords[comp]->getX, oldCoords[comp]->getY - 1));
+	}
+	return newCoords;
+}
+
+
 //vector<Coord *> Block::rotateClock(){
 //	beforeCoord = 
 //}
