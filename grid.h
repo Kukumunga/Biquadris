@@ -27,7 +27,7 @@ public:
 	void turnOff(int,int);
 	void UpdateGrid();
 	void setCurrentBlock(Block *);
-	
+	void turnOff();
 };
 
 

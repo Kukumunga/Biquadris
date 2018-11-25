@@ -17,15 +17,15 @@ void Board::printBoards(){
 void Board::Move(int playerNum,std::string command){
 	if (command == "left"){
 		if (playerNum == 1){
-		//	player1.moveBlockLeft();
+			//p1.moveBlockLeft();
 		}else{
-		//	player2.moveBlockLeft();
+			//p2.moveBlockLeft();
 		}
 	}else if (command == "right"){
 		if (playerNum == 1){
-			//player1.moveBlockRight();
+			p1.moveBlockRight();
 		}else{
-			//player2.moveblockRight();
+			p2.moveBlockRight();
 		}		
 	}else if (command == "down"){
 		if (playerNum == 1){
@@ -40,8 +40,6 @@ void Board::Move(int playerNum,std::string command){
 			//player2.dropBlock();
 		}		
 	}
-	//std::cout << "here" << std::endl;
-	std::cout << *this << std::endl;
 }
 
 

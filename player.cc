@@ -20,10 +20,12 @@ void Player::printRow(int r){
 
 void Player::moveBlockLeft(){
 	//l->moveLeft(&g);
+	// g.UpdateGrid()
 }
 
 void Player::moveBlockRight(){
-	//l->moveRight(&g);
+	l->moveRight(&g);
+	g.UpdateGrid();
 }
 
 void Player::moveBlockDown(){

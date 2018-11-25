@@ -6,6 +6,7 @@
 #include "blockl.h"
 #include "blockt.h"
 #include "blockz.h"
+#include <vector>
 
 Grid::Grid(){
 
@@ -84,16 +85,11 @@ Block* Grid::getCurrentBlock(){
 }
 
 void Grid::UpdateGrid(){
-	int size = blocksInGrid.size();
-	int x = 0;
-	int y = 0;
-
-	//for (int i = 0; i < size; ++ i){
-		//x = blocksInGrid.at(i).getX();
-		//y = blocksInGrid.at(i).getY();
-	//	(theGrid.at(x).at(y)).setBlockChar(blocksInGrid.at(i).getType());
-	//	(theGrid.at(x).at(y)).setStatus(true);
-	//}
+	std::vector<Coord> vec = currentBlock->getComp();
+	for (int i = 0;i < 4;++i){
+		Coord c = vec[i];
+		theGrid[c.getX()][c.getY()].setBlockChar(currentBlock->agetType());
+	}
 }
 
 void Grid::createBlock(std::string blockType,int level){
@@ -187,4 +183,12 @@ void Grid::createBlock(std::string blockType,int level){
 
 void Grid::turnOff(int x,int y){
 	theGrid[x][y].turnOff();
+}
+
+void Grid::turnOff(){
+	std::vector<Coord> vec = currentBlock->getComp();
+	for (int i = 0;i < 4;++i){
+		Coord c = vec[i];
+		theGrid[c.getX()][c.getY()].turnOff();
+	}
 }
