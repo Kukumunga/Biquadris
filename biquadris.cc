@@ -19,7 +19,7 @@ void Biquadris::start(){
 			for(auto p:v){				
 				gameBoard.Move(player,p);
 			}
-			
+			std::cout << gameBoard << std::endl;
 			if(action == "drop"){
 				break;
 			}
