@@ -34,9 +34,9 @@ void Player::moveBlockDown(){
 }
 
 void Player::dropBlock(){
-	//l->dropBlock(&g);
+	l.dropBlock(&g);
 	//g.addToCurrent(); //  add the current block in grid to the list of vectors
-	//g.updateGrid();  update then check for removal?
+	g.UpdateGrid();  //update then check for removal?
 	//g.nextBlock(); // sets currentBlock = NextBlock
 }
 

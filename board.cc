@@ -35,9 +35,9 @@ void Board::Move(int playerNum,std::string command){
 		}		
 	}else if (command == "drop"){
 		if (playerNum == 1){
-			//player1.dropBlock();
+			p1.dropBlock();
 		}else{
-			//player2.dropBlock();
+			p2.dropBlock();
 		}		
 	}
 }

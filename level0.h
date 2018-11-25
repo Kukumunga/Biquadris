@@ -13,7 +13,7 @@ public:
 
 	void moveRight(Grid *) override;
 	void moveLeft(Grid *) override;
-	void moveDown(Grid *) override;
+	bool moveDown(Grid *) override;
 	void dropBlock(Grid *) override;			     
 	void rotateBlockClock(Grid *) override;
 	void rotateBlockCounterClock(Grid *) override;
