@@ -32,6 +32,7 @@ public:
 	bool getStatus();
 	int getX();
 	int getY();
+	Coord * getCoord();
 };
 
 

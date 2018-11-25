@@ -93,6 +93,10 @@ bool Cell::getStatus(){
 	return Filled;
 }
 
+Coord * Cell::getCoord(){
+	return &c;
+}
+
 int Cell::getX(){
 	return c.getX();
 }
