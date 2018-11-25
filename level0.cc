@@ -9,19 +9,21 @@
 using namespace std;
 
 Level0::Level0(const string &filename){
-	ifstream f{filename};
+	/*ifstream f{filename};
 	string s;
 	while (f >> s){
 		blocks.emplace_back(s);
 	}
 	it = blocks.begin();
+	*/
 }
 
 int Level0::getLevel(){return 0;}
 
 void Level0::createBlock(Grid *g){
-	string block = *it;
-
+	g->createBlock("i",0);
+	/*string block = *it;
+	
 	if (block == "I"){g->createBlock("i", 0);}
 	else if (block == "L"){g->createBlock("l", 0);}
 	else if (block == "J"){g->createBlock("j", 0);}
@@ -32,7 +34,9 @@ void Level0::createBlock(Grid *g){
 
 	++it;
 	if (it == blocks.end()){ it = blocks.begin();}//if the iterator finishes the blocks, restart
+	*/
 }
+
 
 void Level0::moveRight(Grid *g){
 	//call Block's calcRight function which returns coordinates

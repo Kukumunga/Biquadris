@@ -70,7 +70,3 @@ vector<Coord> Block::calcDown(){
 	return newCoords;
 }
 
-
-//vector<Coord *> Block::rotateClock(){
-//	beforeCoord = 
-//}

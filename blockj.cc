@@ -1,6 +1,6 @@
 #include "blockj.h"
 using namespace std;
 
-BlockJ::BlockJ():Block("j", "red"){}
+BlockJ::BlockJ():Block("J", "red"){}
 
 string BlockJ::getType(){return Block::agetType();}
