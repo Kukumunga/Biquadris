@@ -20,6 +20,7 @@ public:
 	void moveBlockRight();
 	void moveBlockDown();
 	void dropBlock();
+	void printCurrentBlock(int);
 };
 
 
