@@ -103,83 +103,68 @@ void Grid::createBlock(std::string blockType,int level){
 		blocksInGrid.emplace_back(i);
 		nextBlock = &blocksInGrid.back();
 		currentBlock = nextBlock;
-		//theGrid[0][3].setBlockChar("I");
-		//theGrid[1][3].setBlockChar("I");
-		//theGrid[2][3].setBlockChar("I");
-		//theGrid[3][3].setBlockChar("I");
-	}/* else if (blockType == "j"){
+	} else if (blockType == "j"){
 		BlockJ j;
 		j.setLevel(level);
-		j.addCell(&theGrid[0][2]);
-		j.addCell(&theGrid[0][3]);
-		j.addCell(&theGrid[1][3]);
-		j.addCell(&theGrid[2][3]);
+		j.addCoord(Coord{0,2});
+		j.addCoord(Coord{0,3});
+		j.addCoord(Coord{1,3});
+		j.addCoord(Coord{2,3});
 		blocksInGrid.emplace_back(j);
-		theGrid[0][2].setBlockChar("J");
-		theGrid[0][3].setBlockChar("J");
-		theGrid[1][3].setBlockChar("J");
-		theGrid[2][3].setBlockChar("J");
+		nextBlock = &blocksInGrid.back();
+		currentBlock = nextBlock;
 	}else if (blockType == "l"){
 		BlockL l;
 		l.setLevel(level);
-		l.addCell(&theGrid[2][2]);
-		l.addCell(&theGrid[2][3]);
-		l.addCell(&theGrid[1][3]);
-		l.addCell(&theGrid[0][3]);
+		l.addCoord(Coord{2,2});
+		l.addCoord(Coord{2,3});
+		l.addCoord(Coord{1,3});
+		l.addCoord(Coord{0,3});
 		blocksInGrid.emplace_back(l);
-		theGrid[2][2].setBlockChar("L");
-		theGrid[2][3].setBlockChar("L");
-		theGrid[1][3].setBlockChar("L");
-		theGrid[0][3].setBlockChar("L");
+		nextBlock = &blocksInGrid.back();
+		currentBlock = nextBlock;
 	}else if (blockType == "o"){
 		BlockO o;
 		o.setLevel(level);
-		o.addCell(&theGrid[0][2]);
-		o.addCell(&theGrid[1][2]);
-		o.addCell(&theGrid[0][3]);
-		o.addCell(&theGrid[1][3]);
+		o.addCoord(Coord{0,2});
+		o.addCoord(Coord{1,2});
+		o.addCoord(Coord{0,3});
+		o.addCoord(Coord{1,3});
 		blocksInGrid.emplace_back(o);
-		theGrid[0][2].setBlockChar("O");
-		theGrid[1][2].setBlockChar("O");
-		theGrid[0][3].setBlockChar("O");
-		theGrid[1][3].setBlockChar("O");
+		nextBlock = &blocksInGrid.back();
+		currentBlock = nextBlock;
 	}else if (blockType == "s"){
 		BlockS s;
 		s.setLevel(level);
-		s.addCell(&theGrid[1][2]);
-		s.addCell(&theGrid[2][2]);
-		s.addCell(&theGrid[0][3]);
-		s.addCell(&theGrid[1][3]);
+		s.addCoord(Coord{1,2});
+		s.addCoord(Coord{2,2});
+		s.addCoord(Coord{0,3});
+		s.addCoord(Coord{1,3});
 		blocksInGrid.emplace_back(s);
-		theGrid[1][2].setBlockChar("S");
-		theGrid[2][2].setBlockChar("S");
-		theGrid[0][3].setBlockChar("S");
-		theGrid[1][3].setBlockChar("S");
+		nextBlock = &blocksInGrid.back();
+		currentBlock = nextBlock;
 	}else if (blockType == "z"){
 		BlockZ z;
 		z.setLevel(level);
-		z.addCell(&theGrid[0][2]);
-		z.addCell(&theGrid[1][2]);
-		z.addCell(&theGrid[1][3]);
-		z.addCell(&theGrid[2][3]);	
+		z.addCoord(Coord{0,2});
+		z.addCoord(Coord{1,2});
+		z.addCoord(Coord{1,3});
+		z.addCoord(Coord{2,3});
 		blocksInGrid.emplace_back(z);
-		theGrid[0][2].setBlockChar("Z");
-		theGrid[1][2].setBlockChar("Z");
-		theGrid[1][3].setBlockChar("Z");
-		theGrid[2][3].setBlockChar("Z");
+		nextBlock = &blocksInGrid.back();
+		currentBlock = nextBlock;
 	}else{
 		BlockT t;
 		t.setLevel(level);
-		t.addCell(&theGrid[0][2]);
-		t.addCell(&theGrid[1][2]);
-		t.addCell(&theGrid[2][2]);
-		t.addCell(&theGrid[1][3]);	
+		t.addCoord(Coord{0,2});
+		t.addCoord(Coord{1,2});
+		t.addCoord(Coord{2,2});
+		t.addCoord(Coord{1,3});
 		blocksInGrid.emplace_back(t);
-		theGrid[0][2].setBlockChar("T");
-		theGrid[1][2].setBlockChar("T");
-		theGrid[2][2].setBlockChar("T");
-		theGrid[1][3].setBlockChar("T");
-	}*/
+		nextBlock = &blocksInGrid.back();
+		currentBlock = nextBlock;
+	}
+	UpdateGrid();
 } 
 
 void Grid::turnOff(int x,int y){
