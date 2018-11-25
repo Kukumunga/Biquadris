@@ -7,7 +7,7 @@ class Cell;
 class Coord;
 class Block {
 protected:
-	std::vector<Cell *> components; 
+	std::vector<Cell &> components; 
 	std::string type;
 	std::string colour;
 	int level; //level the block was created
@@ -16,7 +16,7 @@ public:
 	~Block();
 	Block(std::string type, std::string colour);
 	std::string agetType();
-	void addCell(Cell*);
+	void addCell(Cell &);
 	void setLevel(int l);
 	//virtual std::vector<Coord*> rotateClock();
 	//virtual std::vector<Coord*> rotateCounterClock();

@@ -11,7 +11,7 @@ Block::Block(string type, string colour):type{type}, colour{colour},orientation{
 
 void Block::setLevel(int l){level = l;}
 
-void Block::addCell(Cell *cell){components.emplace_back(cell);}
+void Block::addCell(Cell &cell){components.emplace_back(cell);}
 
 string Block::agetType(){return type;}
 
