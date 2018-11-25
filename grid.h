@@ -18,13 +18,14 @@ public:
 	Grid();
 	void printRow(int);
 	bool getHeavy();
-	void setCurrentBlock(Block *);
-	void setNextBlock(Block *);
 	void addToCurrent();
 	void clearFullRows();
 	bool isFilled(int x, int y);
 	void createBlock(std::string blockType,int level);
+	void turnOff(int,int);
 	void UpdateGrid();
+	void setCurrentBlock(Block *);
+	void setNextBlock(Block *);
 	
 };
 

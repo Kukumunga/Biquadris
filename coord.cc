@@ -15,4 +15,6 @@ void Coord::setCoord(int newX, int newY){
 	y = newY;
 }
 
+
+
 Coord::Coord(){}

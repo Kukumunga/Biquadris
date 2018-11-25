@@ -96,17 +96,17 @@ void Grid::createBlock(std::string blockType,int level){
 	if (blockType == "i"){
 		BlockI i;
 		i.setLevel(level);
-		i.addCell(&theGrid[0][3]);
-		i.addCell(&theGrid[1][3]);
-		i.addCell(&theGrid[2][3]);
-		i.addCell(&theGrid[3][3]);
+		i.addCoord(&Coord{0,3});
+		i.addCoord(&Coord{1,3});
+		i.addCoord(&Coord{2,3});
+		i.addCoord(&Coord{3,3});
 		blocksInGrid.emplace_back(i);
-		//currentBlock = &blocksInGrid.back();
+		currentBlock = &blocksInGrid.back();
 		theGrid[0][3].setBlockChar("I");
 		theGrid[1][3].setBlockChar("I");
 		theGrid[2][3].setBlockChar("I");
 		theGrid[3][3].setBlockChar("I");
-	}else if (blockType == "j"){
+	}/* else if (blockType == "j"){
 		BlockJ j;
 		j.setLevel(level);
 		j.addCell(&theGrid[0][2]);
@@ -178,5 +178,9 @@ void Grid::createBlock(std::string blockType,int level){
 		theGrid[1][2].setBlockChar("T");
 		theGrid[2][2].setBlockChar("T");
 		theGrid[1][3].setBlockChar("T");
-	}
+	}*/
+} 
+
+void Grid::turnOff(int x,int y){
+	theGrid[x][y].turnOff();
 }
