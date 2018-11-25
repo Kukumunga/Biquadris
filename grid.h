@@ -28,6 +28,7 @@ public:
 	void UpdateGrid();
 	void setCurrentBlock(Block *);
 	void turnOff();
+	void printNextBlock(int line);
 };
 
 

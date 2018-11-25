@@ -102,6 +102,7 @@ void Grid::createBlock(std::string blockType,int level){
 		i.addCoord(Coord{3,3});
 		blocksInGrid.emplace_back(i);
 		currentBlock = &blocksInGrid.back();
+		nextBlock = currentBlock;
 		theGrid[0][3].setBlockChar("I");
 		theGrid[1][3].setBlockChar("I");
 		theGrid[2][3].setBlockChar("I");
@@ -190,5 +191,42 @@ void Grid::turnOff(){
 	for (int i = 0;i < 4;++i){
 		Coord c = vec[i];
 		theGrid[c.getX()][c.getY()].turnOff();
+	}
+}
+
+void Grid::printNextBlock(int line){
+	std::string type = nextBlock->agetType();
+	if (line == 1){
+		if (type == "I"){
+			std::cout << "     ";
+		}else if (type == "J"){
+			std::cout << "J    ";
+		}else if (type == "L"){
+			std::cout <<"   L  ";
+		}else if (type == "O"){
+			std::cout <<"OO   ";
+		}else if (type == "S"){
+			std::cout << " SS  ";
+		}else if (type == "Z"){
+			std::cout << "ZZ   ";
+		}else if (type == "T"){
+			std::cout << "TTT  ";
+		}
+	}else{
+		if (type == "I"){
+			std::cout << "IIII ";
+		}else if (type == "J"){
+			std::cout << "JJJ  ";
+		}else if (type == "L"){
+			std::cout <<"LLL  ";
+		}else if (type == "O"){
+			std::cout <<"OO   ";
+		}else if (type == "S"){
+			std::cout << "SS   ";
+		}else if (type == "Z"){
+			std::cout << " ZZ  ";
+		}else if (type == "T"){
+			std::cout << " T   ";
+		}
 	}
 }
