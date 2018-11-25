@@ -19,8 +19,8 @@ void Player::printRow(int r){
 }
 
 void Player::moveBlockLeft(){
-	//l->moveLeft(&g);
-	// g.UpdateGrid()
+	//l.moveLeft(&g);
+	//g.UpdateGrid()
 }
 
 void Player::moveBlockRight(){
