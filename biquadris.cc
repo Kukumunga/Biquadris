@@ -4,7 +4,7 @@
 #include "board.h"
 #include <string>
 
-Biquadris::Biquadris():player{0}{}
+Biquadris::Biquadris():player{1}{}
 Biquadris::~Biquadris(){inter = nullptr;}
 void Biquadris::start(){
 	std::string action;

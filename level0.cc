@@ -18,12 +18,10 @@ void Level0::moveRight(Grid *g){
 	//call Block's calcRight function which returns coordinates
 	vector<Coord> potentialLocation = g->getCurrentBlock()->calcRight();
 	for (int comp = 0; comp < 4; comp++){
-		cout << comp << endl;
 		if (g->isFilled(potentialLocation[comp].getX(),potentialLocation[comp].getY()) && !g->getCurrentBlock()->isComponent(potentialLocation[comp])){
 			break; //do not move right because the block is... blocked
 		}
-		if (comp == 3){ //if all the components of the block can move right
-			cout << "here" << endl;
+		if (comp == 3){ //if all the components of the block can move right			
 			g->turnOff(); 
 			g->getCurrentBlock()->executeRight();
 		}
