@@ -8,9 +8,10 @@ private:
 	int x;
 	int y;	
 public:
-//	int getX();
-//	int getY();
+	int getX();
+	int getY();
 	Coord(int,int);
+	void setCoord(int,int);
 };
 
 

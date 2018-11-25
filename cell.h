@@ -9,8 +9,8 @@ class Cell {
 private:
 	// std::string colour;
 	int signal = 0;
-	std::string block = " ";
-//	Coord c;
+	std::string block = "";
+	Coord c;
 	bool Filled = false; // false means inactive
 	Cell * leftNeighbour = nullptr;
 	Cell * rightNeighbour = nullptr;
@@ -22,13 +22,13 @@ private:
 public:
 	std::string getBlockChar();
 	void setBlockChar(std::string);
-//	Cell(int,int);
-	Cell();
+	Cell(int,int);
 	void addLeftNeighbour(Cell *);
 	void addRightNeighbour(Cell *);
 	void alertNeighbours();
 	bool canClearRow();
-	void setStatus(bool);
+	void turnOff(); // sets filled to false
+	void turnOn(); // sets filled to true
 	bool getStatus();
 	int getX();
 	int getY();

@@ -9,22 +9,18 @@
 
 Grid::Grid()
 {
-	
-	theGrid.resize(11);
-	for (int x = 0; x< 1;++ x){
-		theGrid[x].resize(18);
-	} 
-	
+
 	for (int x = 0; x < 11;++x){ // columns
+		std::vector<Cell> vec;
 		for (int y = 0; y < 18;++y){ // row
-			//Cell c = Cell();
-			theGrid[x].emplace_back(Cell());
+			Cell c = Cell(x,y);
+			vec.emplace_back(c);
 		}
+		theGrid.emplace_back(vec);
 	}
-	
+
 	// add left right neighbours
 	// row 0,1,2 is reserved
-	
 	for (int y = 3; y < 15 ; ++y){
 		for (int x = 0; x < 11; ++x){
 			try{
@@ -35,7 +31,6 @@ Grid::Grid()
             }catch (std::out_of_range){}
 		}
 	}
-	
 }
 
 void Grid::printRow(int r){
@@ -108,12 +103,12 @@ void Grid::createBlock(std::string blockType,int level){
 		i.addCell(&(theGrid.at(2).at(3)));
 		i.addCell(&(theGrid.at(3).at(3)));
 		blocksInGrid.emplace_back(i);
-	//	currentBlock = &blocksInGrid.back(); 
-		theGrid.at(0).at(3).setBlockChar("i");
-		theGrid[1][3].setBlockChar("i");
-		theGrid[2][3].setBlockChar("i");
-		theGrid[3][3].setBlockChar("i");
-		//UpdateGrid();
+		//currentBlock = &blocksInGrid.back();
+		theGrid[0][3].setBlockChar("I");
+		theGrid[1][3].setBlockChar("I");
+		theGrid[2][3].setBlockChar("I");
+		theGrid[3][3].setBlockChar("I");
+		
 	}else if (blockType == "j"){
 		BlockJ j;
 		j.setLevel(level);
@@ -121,6 +116,11 @@ void Grid::createBlock(std::string blockType,int level){
 		j.addCell(&(theGrid.at(0).at(3)));
 		j.addCell(&(theGrid.at(1).at(3)));
 		j.addCell(&(theGrid.at(2).at(3)));
+		blocksInGrid.emplace_back(j);
+		theGrid[0][2].setBlockChar("J");
+		theGrid[0][3].setBlockChar("J");
+		theGrid[1][3].setBlockChar("J");
+		theGrid[2][3].setBlockChar("J");
 	}else if (blockType == "l"){
 		BlockL l;
 		l.setLevel(level);
@@ -128,6 +128,11 @@ void Grid::createBlock(std::string blockType,int level){
 		l.addCell(&(theGrid.at(2).at(3)));
 		l.addCell(&(theGrid.at(1).at(3)));
 		l.addCell(&(theGrid.at(0).at(3)));
+		blocksInGrid.emplace_back(l);
+		theGrid[2][2].setBlockChar("L");
+		theGrid[2][3].setBlockChar("L");
+		theGrid[1][3].setBlockChar("L");
+		theGrid[0][3].setBlockChar("L");
 	}else if (blockType == "o"){
 		BlockO o;
 		o.setLevel(level);
@@ -135,6 +140,11 @@ void Grid::createBlock(std::string blockType,int level){
 		o.addCell(&(theGrid.at(1).at(2)));
 		o.addCell(&(theGrid.at(0).at(3)));
 		o.addCell(&(theGrid.at(1).at(3)));
+		blocksInGrid.emplace_back(o);
+		theGrid[0][2].setBlockChar("O");
+		theGrid[1][2].setBlockChar("O");
+		theGrid[0][3].setBlockChar("O");
+		theGrid[1][3].setBlockChar("O");
 	}else if (blockType == "s"){
 		BlockS s;
 		s.setLevel(level);
@@ -142,6 +152,11 @@ void Grid::createBlock(std::string blockType,int level){
 		s.addCell(&(theGrid.at(2).at(2)));
 		s.addCell(&(theGrid.at(0).at(3)));
 		s.addCell(&(theGrid.at(1).at(3)));
+		blocksInGrid.emplace_back(s);
+		theGrid[1][2].setBlockChar("S");
+		theGrid[2][2].setBlockChar("S");
+		theGrid[0][3].setBlockChar("S");
+		theGrid[1][3].setBlockChar("S");
 	}else if (blockType == "z"){
 		BlockZ z;
 		z.setLevel(level);
@@ -149,13 +164,24 @@ void Grid::createBlock(std::string blockType,int level){
 		z.addCell(&(theGrid.at(1).at(2)));
 		z.addCell(&(theGrid.at(1).at(3)));
 		z.addCell(&(theGrid.at(2).at(3)));	
+		blocksInGrid.emplace_back(z);
+		theGrid[0][2].setBlockChar("Z");
+		theGrid[1][2].setBlockChar("Z");
+		theGrid[1][3].setBlockChar("Z");
+		theGrid[2][3].setBlockChar("Z");
 	}else{
 		BlockT t;
 		t.setLevel(level);
 		t.addCell(&(theGrid.at(0).at(2)));
 		t.addCell(&(theGrid.at(1).at(2)));
-		t.addCell(&(theGrid.at(1).at(3)));
-		t.addCell(&(theGrid.at(2).at(3)));	
+		t.addCell(&(theGrid.at(2).at(2)));
+		t.addCell(&(theGrid.at(3).at(1)));	
+		blocksInGrid.emplace_back(t);
+		theGrid[0][2].setBlockChar("T");
+		theGrid[1][2].setBlockChar("T");
+		theGrid[2][2].setBlockChar("T");
+		theGrid[1][3].setBlockChar("T");
 	}
+
 
 }

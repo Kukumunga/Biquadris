@@ -4,7 +4,11 @@
 
 
 std::ostream& operator<<(std::ostream &out, Cell &c){
-	out << c.getBlockChar();
+	if (c.getStatus()){
+		out << c.getBlockChar();
+	}else{
+		out << " ";
+	}
 	return out;
 }
 
@@ -14,10 +18,11 @@ std::string Cell::getBlockChar(){
 
 void Cell::setBlockChar(std::string c){
 	block = c;
+	turnOn();
 }
 
-//Cell::Cell(int x,int y): c{Coord{x,y}} {}
-Cell::Cell(){}
+Cell::Cell(int x,int y): c{Coord{x,y}} {}
+
 
 void Cell::addLeftNeighbour(Cell * left){
 	leftNeighbour = left;
@@ -78,8 +83,12 @@ bool Cell::canClearRow(){
 	return false;
 }
 
-void Cell::setStatus(bool stat){
-	Filled = stat;
+void Cell::turnOff(){
+	Filled = false;
+}
+
+void Cell::turnOn(){
+	Filled = true;
 }
 
 bool Cell::getStatus(){
@@ -87,11 +96,9 @@ bool Cell::getStatus(){
 }
 
 int Cell::getX(){
-//	return c.getX();
-return 1;
+	return c.getX();
 }
 
 int Cell::getY(){
-	//return c.getY();
-return 1;
+	return c.getY();
 }
