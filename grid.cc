@@ -9,18 +9,22 @@
 
 Grid::Grid()
 {
-
+	
+	theGrid.resize(11);
+	for (int x = 0; x< 1;++ x){
+		theGrid[x].resize(18);
+	} 
+	
 	for (int x = 0; x < 11;++x){ // columns
-		std::vector<Cell> vec;
 		for (int y = 0; y < 18;++y){ // row
-			Cell c = Cell(x,y);
-			vec.emplace_back(c);
+			//Cell c = Cell();
+			theGrid[x].emplace_back(Cell());
 		}
-		theGrid.emplace_back(vec);
 	}
-
+	
 	// add left right neighbours
 	// row 0,1,2 is reserved
+	
 	for (int y = 3; y < 15 ; ++y){
 		for (int x = 0; x < 11; ++x){
 			try{
@@ -31,6 +35,7 @@ Grid::Grid()
             }catch (std::out_of_range){}
 		}
 	}
+	
 }
 
 void Grid::printRow(int r){
@@ -103,8 +108,8 @@ void Grid::createBlock(std::string blockType,int level){
 		i.addCell(&(theGrid.at(2).at(3)));
 		i.addCell(&(theGrid.at(3).at(3)));
 		blocksInGrid.emplace_back(i);
-		//currentBlock = &blocksInGrid.back();
-		theGrid[0][3].setBlockChar("i");
+	//	currentBlock = &blocksInGrid.back(); 
+		theGrid.at(0).at(3).setBlockChar("i");
 		theGrid[1][3].setBlockChar("i");
 		theGrid[2][3].setBlockChar("i");
 		theGrid[3][3].setBlockChar("i");
@@ -152,6 +157,5 @@ void Grid::createBlock(std::string blockType,int level){
 		t.addCell(&(theGrid.at(1).at(3)));
 		t.addCell(&(theGrid.at(2).at(3)));	
 	}
-
 
 }
