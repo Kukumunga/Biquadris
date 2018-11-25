@@ -3,12 +3,13 @@
 
 #include <iostream>
 #include "coord.h"
+#include <string>
 class Cell {
 
 private:
 	// std::string colour;
 	int signal = 0;
-	char block = 'L';
+	std::string block = "L";
 	Coord c;
 	bool Filled = false; // false means inactive
 	Cell * leftNeighbour = nullptr;
@@ -19,8 +20,8 @@ private:
 	void rightSideFilled();
 	void leftSideFilled();
 public:
-	char getBlockChar();
-	void setBlockChar(std::string);
+	std::string getBlockChar();
+	std::string setBlockChar(std::string);
 	Cell(int,int);
 	void addLeftNeighbour(Cell *);
 	void addRightNeighbour(Cell *);
