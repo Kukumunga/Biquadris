@@ -30,7 +30,6 @@ void Block::executeLeft(){
 	for (int comp = 0; comp < 4; comp++){
 		components[comp].setCoord(components[comp].getX()-1, components[comp].getY());
 	}
-	std::cout << "executeLeft" << std::endl;
 }
 
 
@@ -43,7 +42,7 @@ void Block::executeRight(){
 
 void Block::executeDown(){
 	for (int comp = 0; comp < 4; comp++){
-		components[comp].setCoord(components[comp].getX(), components[comp].getY()-1);
+		components[comp].setCoord(components[comp].getX(), components[comp].getY()+1);
 	}
 }
 
@@ -66,7 +65,7 @@ vector<Coord> Block::calcRight(){
 vector<Coord> Block::calcDown(){
 	vector<Coord> newCoords;
 	for (int comp = 0; comp < 4; comp++){
-		newCoords.emplace_back(Coord(components[comp].getX(), components[comp].getY() - 1));
+		newCoords.emplace_back(Coord(components[comp].getX(), components[comp].getY() + 1));
 	}
 	return newCoords;
 }
