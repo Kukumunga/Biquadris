@@ -2,16 +2,36 @@
 #include "grid.h"
 #include "coord.h"
 #include "blocki.h"
+#include <fstream>
+#include <iostream>
 
 //include all the other block files
 using namespace std;
 
-Level0::Level0(string filename):filename{filename}{}
+Level0::Level0(const string &filename){
+	ifstream f{filename};
+	string s;
+	while (f >> s){
+		blocks.emplace_back(s);
+	}
+	it = blocks.begin();
+}
 
 int Level0::getLevel(){return 0;}
 
 void Level0::createBlock(Grid *g){
-	g->createBlock("i", 0);
+	string block = *it;
+
+	if (block == "I"){g->createBlock("i", 0);}
+	else if (block == "L"){g->createBlock("l", 0);}
+	else if (block == "J"){g->createBlock("j", 0);}
+	else if (block == "S"){g->createBlock("s", 0);}
+	else if (block == "Z"){g->createBlock("z", 0);}
+	else if (block == "O"){g->createBlock("o", 0);}
+	else if (block == "T"){g->createBlock("t", 0);}	
+
+	++it;
+	if (it == blocks.end()){ it = blocks.begin();}//if the iterator finishes the blocks, restart
 }
 
 void Level0::moveRight(Grid *g){

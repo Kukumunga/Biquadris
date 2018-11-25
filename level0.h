@@ -2,12 +2,14 @@
 #define __LEVEL0__
 #include "level.h"
 #include <string>
+#include <vector>
 
 class Grid;
 class Level0 : public Level {
-	std::string filename;
+	std::vector<std::string> blocks;
+	std::vector<std::string>::iterator it;
 public:
-	Level0(std::string filename);
+	Level0(const std::string &filename);
 	void createBlock(Grid *);
 	int getLevel();
 
