@@ -18,14 +18,20 @@ public:
 	Grid();
 	void printRow(int);
 	bool getHeavy();
+<<<<<<< HEAD
 	Block* getCurrentBlock();
 	void setCurrentBlock(Block *);
 	void setNextBlock(Block *);
+=======
+>>>>>>> 803872cf0b1982313f0f7989a8200f2946644e98
 	void addToCurrent();
 	void clearFullRows();
 	bool isFilled(int x, int y);
 	void createBlock(std::string blockType,int level);
+	void turnOff(int,int);
 	void UpdateGrid();
+	void setCurrentBlock(Block *);
+	void setNextBlock(Block *);
 	
 };
 
