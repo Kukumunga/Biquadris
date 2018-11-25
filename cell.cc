@@ -2,6 +2,7 @@
 #include "coord.h"
 #include <string>
 
+Cell::Cell(int x,int y): c{Coord{x,y}} {}
 
 std::ostream& operator<<(std::ostream &out, Cell &c){
 	if (c.getStatus()){
@@ -20,9 +21,6 @@ void Cell::setBlockChar(std::string c){
 	block = c;
 	turnOn();
 }
-
-Cell::Cell(int x,int y): c{Coord{x,y}} {}
-
 
 void Cell::addLeftNeighbour(Cell * left){
 	leftNeighbour = left;
