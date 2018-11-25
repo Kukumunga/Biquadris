@@ -74,10 +74,10 @@ bool Grid::isFilled(int x,int y){
 	return (theGrid.at(x).at(y)).getStatus();
 }
 
-//void Grid::nextBlock(){
-	//currentBlock = nextBlock;
-	// nextBlock = l->createBlock();
-//}
+void Grid::next(){
+	currentBlock = nextBlock;
+	nextBlock = nullptr;
+}
 
 
 Block* Grid::getCurrentBlock(){
@@ -101,12 +101,12 @@ void Grid::createBlock(std::string blockType,int level){
 		i.addCoord(Coord{2,3});
 		i.addCoord(Coord{3,3});
 		blocksInGrid.emplace_back(i);
-		currentBlock = &blocksInGrid.back();
-		nextBlock = currentBlock;
-		theGrid[0][3].setBlockChar("I");
-		theGrid[1][3].setBlockChar("I");
-		theGrid[2][3].setBlockChar("I");
-		theGrid[3][3].setBlockChar("I");
+		nextBlock = &blocksInGrid.back();
+		currentBlock = nextBlock;
+		//theGrid[0][3].setBlockChar("I");
+		//theGrid[1][3].setBlockChar("I");
+		//theGrid[2][3].setBlockChar("I");
+		//theGrid[3][3].setBlockChar("I");
 	}/* else if (blockType == "j"){
 		BlockJ j;
 		j.setLevel(level);

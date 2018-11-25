@@ -11,7 +11,6 @@ class Player{
 	Level0 l = Level0{"hello"};
 	int score = 0;
 	bool turn = false;
-	// Block *nextBlock;
 public:
 	int getScore();
 	int getLevel();

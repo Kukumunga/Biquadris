@@ -29,6 +29,7 @@ public:
 	void setCurrentBlock(Block *);
 	void turnOff();
 	void printNextBlock(int line);
+	void next();
 };
 
 

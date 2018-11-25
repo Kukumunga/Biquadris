@@ -10,8 +10,11 @@ int Player::getLevel(){
 	return 1;
 }
 
-Player::Player(): g{Grid()},l{Level0("hello")}{
+Player::Player(): g{Grid()},l{Level0("sequence1.txt")}{
 	l.createBlock(&g);
+	//g.next();
+	g.UpdateGrid();
+	//l.createBlock(&g);
 }
 
 void Player::printRow(int r){
@@ -35,9 +38,9 @@ void Player::moveBlockDown(){
 
 void Player::dropBlock(){
 	l.dropBlock(&g);
-	//g.addToCurrent(); //  add the current block in grid to the list of vectors
 	g.UpdateGrid();  //update then check for removal?
-	//g.nextBlock(); // sets currentBlock = NextBlock
+	l.createBlock(&g);
+	g.UpdateGrid();
 }
 
 void Player::printNextBlock(int line){
