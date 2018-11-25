@@ -5,7 +5,7 @@ class Grid;
 class Level {
 public:
 	virtual int getLevel()=0;
-	virtual void createBlock(Grid *)=0;
+	virtual void createBlock(Grid &)=0;
 	virtual void moveRight(Grid *)=0;
 	virtual void moveLeft(Grid *)=0;
 	virtual void moveDown(Grid *)=0;

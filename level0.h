@@ -8,7 +8,7 @@ class Level0 : public Level {
 	std::string filename;
 public:
 	Level0(std::string filename);
-	void createBlock(Grid *);
+	void createBlock(Grid &);
 	int getLevel();
 
 	void moveRight(Grid *) override;

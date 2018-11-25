@@ -98,10 +98,10 @@ void Grid::createBlock(std::string blockType,int level){
 	if (blockType == "i"){
 		BlockI i;
 		i.setLevel(level);
-		i.addCell(&(theGrid.at(0).at(3)));
-		i.addCell(&(theGrid.at(1).at(3)));
-		i.addCell(&(theGrid.at(2).at(3)));
-		i.addCell(&(theGrid.at(3).at(3)));
+		i.addCell((theGrid.at(0).at(3)));
+		i.addCell((theGrid.at(1).at(3)));
+		i.addCell((theGrid.at(2).at(3)));
+		i.addCell((theGrid.at(3).at(3)));
 		blocksInGrid.emplace_back(i);
 		currentBlock = &blocksInGrid.back();
 		theGrid[0][3].setBlockChar("i");
