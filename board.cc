@@ -1,7 +1,9 @@
 #include "board.h"
 #include <iostream>
 
-Board::Board(): p1{Player()},p2{Player()} {}
+Board::Board(): p1{Player()},p2{Player()} {
+	p1.myTurn();
+}
 
 
 void Board::printBoards(){	
@@ -36,8 +38,12 @@ void Board::Move(int playerNum,std::string command){
 	}else if (command == "drop"){
 		if (playerNum == 1){
 			p1.dropBlock();
+			p1.notMyTurn();
+			p2.myTurn();
 		}else{
 			p2.dropBlock();
+			p1.notMyTurn();
+			p2.myTurn();
 		}		
 	}
 }
