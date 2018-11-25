@@ -38,3 +38,7 @@ void Player::dropBlock(){
 	//g.updateGrid();  update then check for removal?
 	//g.nextBlock(); // sets currentBlock = NextBlock
 }
+
+void Player::printCurrentBlock(int line){
+	g.printCurrentBlock(line);
+}
