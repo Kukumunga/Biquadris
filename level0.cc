@@ -2,6 +2,7 @@
 #include "grid.h"
 #include "coord.h"
 #include "blocki.h"
+
 //include all the other block files
 using namespace std;
 
@@ -15,6 +16,15 @@ void Level0::createBlock(Grid *g){
 
 void Level0::moveRight(Grid *g){
 	//call Block's calcRight function which returns coordinates
+	vector<Coord> potentialLocation = g->getCurrentBlock()->calcRight();
+	for (int comp = 0; comp < 4; comp++){
+		if (g->isFilled(potentialLocation[comp].getX(),potentialLocation[comp].getY())){
+			break; //do not move right because the block is... blocked
+		}
+		if (comp == 3){ //if all the components of the block can move right
+			g->getCurrentBlock()->executeRight();
+		}
+	}
 }
 
 void Level0::moveLeft(Grid *g){

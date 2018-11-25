@@ -18,6 +18,7 @@ public:
 	Grid();
 	void printRow(int);
 	bool getHeavy();
+	Block* getCurrentBlock();
 	void setCurrentBlock(Block *);
 	void setNextBlock(Block *);
 	void addToCurrent();

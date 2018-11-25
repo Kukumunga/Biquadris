@@ -79,6 +79,10 @@ bool Grid::isFilled(int x,int y){
 //}
 
 
+Block* Grid::getCurrentBlock(){
+	return currentBlock;
+}
+
 void Grid::UpdateGrid(){
 	int size = blocksInGrid.size();
 	int x = 0;
