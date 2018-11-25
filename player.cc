@@ -6,12 +6,12 @@ int Player::getScore(){
 }
 
 int Player::getLevel(){
-	//return l.getLevel()
+	return l.getLevel()
 	return 1;
 }
 
 Player::Player(): g{Grid()},l{Level0("hello")}{
-	 l.createBlock(g);
+	l.createBlock(&g);
 }
 
 void Player::printRow(int r){
