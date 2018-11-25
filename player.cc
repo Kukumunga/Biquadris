@@ -24,7 +24,7 @@ void Player::moveBlockLeft(){
 }
 
 void Player::moveBlockRight(){
-	l->moveRight(&g);
+	l.moveRight(&g);
 	g.UpdateGrid();
 }
 
