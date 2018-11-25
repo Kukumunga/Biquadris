@@ -16,6 +16,7 @@ public:
 	~Block();
 	Block(std::string type, std::string colour);
 	std::string agetType();
+	std::vector<Coord> getComp();
 	void addCoord(Coord);
 	void setLevel(int l);
 	//virtual std::vector<Coord*> rotateClock();

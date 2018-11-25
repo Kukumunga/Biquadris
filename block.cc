@@ -15,11 +15,15 @@ void Block::addCoord(Coord coord){components.emplace_back(coord);}
 
 string Block::agetType(){return type;}
 
+vector<Coord> Block::getComp(){return components;}
+
 void Block::executeLeft(){
 	for (int comp = 0; comp < 4; comp++){
 		components[comp].setCoord(components[comp].getX()-1, components[comp].getY());
 	}
 }
+
+
 
 void Block::executeRight(){
 	for (int comp = 0; comp < 4; comp++){

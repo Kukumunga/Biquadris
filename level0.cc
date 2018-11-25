@@ -22,6 +22,7 @@ void Level0::moveRight(Grid *g){
 			break; //do not move right because the block is... blocked
 		}
 		if (comp == 3){ //if all the components of the block can move right
+			g->turnOff(); 
 			g->getCurrentBlock()->executeRight();
 		}
 	}
