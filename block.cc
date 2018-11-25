@@ -4,7 +4,7 @@ using namespace std;
 #include "coord.h"
 
 Block::~Block(){
-	components.clear()
+	components.clear();
 }
 
 Block::Block(string type, string colour):type{type}, colour{colour},orientation{"up"}{}
