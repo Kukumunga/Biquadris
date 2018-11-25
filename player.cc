@@ -40,6 +40,6 @@ void Player::dropBlock(){
 	//g.nextBlock(); // sets currentBlock = NextBlock
 }
 
-void Player::printCurrentBlock(int line){
-	//g.printCurrentBlock(line);
+void Player::printNextBlock(int line){
+	g.printNextBlock(line);
 }
