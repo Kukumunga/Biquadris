@@ -100,10 +100,10 @@ void Grid::createBlock(std::string blockType,int level){
 	if (blockType == "i"){
 		BlockI i;
 		i.setLevel(level);
-		i.addCoord(&Coord{0,3});
-		i.addCoord(&Coord{1,3});
-		i.addCoord(&Coord{2,3});
-		i.addCoord(&Coord{3,3});
+		i.addCoord(Coord{0,3});
+		i.addCoord(Coord{1,3});
+		i.addCoord(Coord{2,3});
+		i.addCoord(Coord{3,3});
 		blocksInGrid.emplace_back(i);
 		currentBlock = &blocksInGrid.back();
 		theGrid[0][3].setBlockChar("I");
