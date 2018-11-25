@@ -7,6 +7,6 @@ using namespace std;
 #include "biquadris.h"
 
 int main () {
-  Biquadris q;
+  Biquadris q = Biquadris();
   q.start();
 }

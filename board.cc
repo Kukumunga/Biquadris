@@ -1,4 +1,5 @@
 #include "board.h"
+#include <iostream>
 
 Board::Board(): p1{Player()},p2{Player()} {}
 
@@ -13,7 +14,7 @@ void Board::printBoards(){
 	}
 }
 
-void Move(int playerNum,std::string command){
+void Board::Move(int playerNum,std::string command){
 	if (command == "left"){
 		if (playerNum == 1){
 		//	player1.moveBlockLeft();
@@ -39,6 +40,8 @@ void Move(int playerNum,std::string command){
 			//player2.dropBlock();
 		}		
 	}
+	//std::cout << "here" << std::endl;
+	std::cout << *this << std::endl;
 }
 
 
