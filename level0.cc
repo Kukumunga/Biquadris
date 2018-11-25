@@ -9,8 +9,8 @@ Level0::Level0(string filename):filename{filename}{}
 
 int Level0::getLevel(){return 0;}
 
-void Level0::createBlock(Grid *g){
-	g->createBlock("i", 0);
+void Level0::createBlock(Grid &g){
+	g.createBlock("i", 0);
 }
 
 void Level0::moveRight(Grid *g){

@@ -11,7 +11,7 @@ int Player::getLevel(){
 }
 
 Player::Player(): g{Grid()},l{Level0("hello")}{
-	 l.createBlock(&g);
+	 l.createBlock(g);
 }
 
 void Player::printRow(int r){
