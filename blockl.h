@@ -8,6 +8,7 @@ class Coord;
 class BlockL : public Block {
 public:
 	BlockL();
+	std::string getType();
 	//std::vector<Coord*> rotateClock();
 	//std::vector<Coord*> rotateCounterClock();
 	//void executeClock();
