@@ -30,6 +30,7 @@ void Block::executeLeft(){
 	for (int comp = 0; comp < 4; comp++){
 		components[comp].setCoord(components[comp].getX()-1, components[comp].getY());
 	}
+	std::cout << "executeLeft" << std::endl;
 }
 
 

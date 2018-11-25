@@ -30,10 +30,30 @@ void Level0::moveRight(Grid *g){
 
 void Level0::moveLeft(Grid *g){
 	//call Block's calcLeft function which returns coordinates
+	vector<Coord> potentialLocation = g->getCurrentBlock()->calcLeft();
+	for (int comp = 0; comp < 4; comp++){
+		if (g->isFilled(potentialLocation[comp].getX(),potentialLocation[comp].getY()) && !g->getCurrentBlock()->isComponent(potentialLocation[comp])){
+			break; //do not move right because the block is... blocked
+		}
+		if (comp == 3){ //if all the components of the block can move right			
+			g->turnOff(); 
+			g->getCurrentBlock()->executeLeft();
+		}
+	}
 }
 
 void Level0::moveDown(Grid *g){
 	//call Block's calcDown function which returns coordinates
+	vector<Coord> potentialLocation = g->getCurrentBlock()->calcDown();
+	for (int comp = 0; comp < 4; comp++){
+		if (g->isFilled(potentialLocation[comp].getX(),potentialLocation[comp].getY()) && !g->getCurrentBlock()->isComponent(potentialLocation[comp])){
+			break; //do not move right because the block is... blocked
+		}
+		if (comp == 3){ //if all the components of the block can move right			
+			g->turnOff(); 
+			g->getCurrentBlock()->executeDown();
+		}
+	}
 }
 
 void Level0::dropBlock(Grid *g){

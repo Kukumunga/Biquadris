@@ -17,9 +17,9 @@ void Board::printBoards(){
 void Board::Move(int playerNum,std::string command){
 	if (command == "left"){
 		if (playerNum == 1){
-			//p1.moveBlockLeft();
+			p1.moveBlockLeft();
 		}else{
-			//p2.moveBlockLeft();
+			p2.moveBlockLeft();
 		}
 	}else if (command == "right"){
 		if (playerNum == 1){
@@ -29,9 +29,9 @@ void Board::Move(int playerNum,std::string command){
 		}		
 	}else if (command == "down"){
 		if (playerNum == 1){
-			//player1.moveBlockDown();
+			p1.moveBlockDown();
 		}else{
-			//player2.moveBlockDown();
+			p2.moveBlockDown();
 		}		
 	}else if (command == "drop"){
 		if (playerNum == 1){
