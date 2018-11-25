@@ -1,6 +1,8 @@
 #include "cell.h"
 #include "coord.h"
 #include <string>
+
+
 std::ostream& operator<<(std::ostream &out, Cell &c){
 	out << c.getBlockChar();
 	return out;
@@ -10,10 +12,12 @@ std::string Cell::getBlockChar(){
 	return block;
 }
 
-std::string Cell::setBlockChar(std::string c){
+void Cell::setBlockChar(std::string c){
 	block = c;
 }
-Cell::Cell(int x,int y): c{Coord{x,y}} {}
+
+//Cell::Cell(int x,int y): c{Coord{x,y}} {}
+Cell::Cell(){}
 
 void Cell::addLeftNeighbour(Cell * left){
 	leftNeighbour = left;

@@ -9,8 +9,8 @@ class Cell {
 private:
 	// std::string colour;
 	int signal = 0;
-	std::string block = "L";
-	Coord c;
+	std::string block = " ";
+//	Coord c;
 	bool Filled = false; // false means inactive
 	Cell * leftNeighbour = nullptr;
 	Cell * rightNeighbour = nullptr;
@@ -21,8 +21,9 @@ private:
 	void leftSideFilled();
 public:
 	std::string getBlockChar();
-	std::string setBlockChar(std::string);
-	Cell(int,int);
+	void setBlockChar(std::string);
+//	Cell(int,int);
+	Cell();
 	void addLeftNeighbour(Cell *);
 	void addRightNeighbour(Cell *);
 	void alertNeighbours();

@@ -6,7 +6,7 @@ int Player::getScore(){
 }
 
 int Player::getLevel(){
-	return l.getLevel()
+//	return l.getLevel()
 	return 1;
 }
 
