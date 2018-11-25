@@ -3,6 +3,10 @@ using namespace std;
 #include "cell.h"
 #include "coord.h"
 
+Block::~Block(){
+	components.clear()
+}
+
 Block::Block(string type, string colour):type{type}, colour{colour},orientation{"up"}{}
 
 void Block::setLevel(int l){level = l;}
