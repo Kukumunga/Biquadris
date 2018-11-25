@@ -11,6 +11,7 @@ public:
 	int getX();
 	int getY();
 	Coord(int,int);
+	Coord();
 	void setCoord(int,int);
 };
 
