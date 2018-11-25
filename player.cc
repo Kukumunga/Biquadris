@@ -41,5 +41,17 @@ void Player::dropBlock(){
 }
 
 void Player::printNextBlock(int line){
-	g.printNextBlock(line);
+	if (turn){
+		g.printNextBlock(line);
+	}else{
+		std::cout << "     ";
+	}
+}
+
+void Player::myTurn(){
+	turn = true;
+}
+
+void Player::notMyTurn(){
+	turn = false;
 }

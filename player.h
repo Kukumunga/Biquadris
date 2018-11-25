@@ -10,6 +10,7 @@ class Player{
 	Grid g; 
 	Level0 l = Level0{"hello"};
 	int score = 0;
+	bool turn = false;
 	// Block *nextBlock;
 public:
 	int getScore();
@@ -21,11 +22,8 @@ public:
 	void moveBlockDown();
 	void dropBlock();
 	void printNextBlock(int);
+	void myTurn();
+	void notMyTurn();
 };
-
-
-
-
-
 
 #endif
