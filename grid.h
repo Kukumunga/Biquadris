@@ -2,6 +2,7 @@
 #define __GRID__H
 
 #include <vector>
+#include <memory>
 #include "cell.h"
 #include "block.h"
 const int MID = 5;
@@ -10,12 +11,27 @@ class Grid{
 	std::vector<std::vector<Cell>> theGrid;
 	Block *currentBlock;
 	Block *nextBlock;
-	std::vector <Block> blocksInGrid;
+	std::vector <std::shared_ptr<Block>> blocksInGrid;
 	bool isHeavy;
 	void clearRow(int);
 
 public:
 	Grid();
+	//Grid(Grid &&g):blocksInGrid{std::move(g.blocksInGrid)}{}
+	/*
+	Grid(const Grid& g):blocksInGrid{std::move(g.blocksInGrid)}{
+		std::cout << "HERE" << std::endl;	
+	}
+	Grid* operator=(const Grid&g){
+		blocksInGrid = std::move(g.blocksInGrid);
+		
+		std::cout << "HERE2" << std::endl;
+		return this;
+	}
+	*/
+	~Grid(){
+		blocksInGrid.clear();	
+	};
 	void printRow(int);
 	bool getHeavy();
 	Block* getCurrentBlock();

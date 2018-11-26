@@ -9,7 +9,7 @@ class BlockT : public Block {
 public:
 	BlockT();
 	std::string getType();
-	//std::vector<Coord*> rotateClock();
+	std::vector<Coord> rotateClock();
 	//std::vector<Coord*> rotateCounterClock();
 	//void executeClock();
 	//void executeCounterClock();

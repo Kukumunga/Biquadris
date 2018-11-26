@@ -5,11 +5,11 @@
 #include <string>
 
 Biquadris::Biquadris():player{1}{}
-Biquadris::~Biquadris(){inter = nullptr;}
+Biquadris::~Biquadris(){delete inter;}
 void Biquadris::start(){
 	std::string action;
 	while(true){
-		inter = new BaseCommand();
+		inter = new BaseCommand();//heap allocated
 		//std::istringstream ss(action);
 		std::vector<std::string> v;
 		while(std::cin >> action){

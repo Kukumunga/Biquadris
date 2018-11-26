@@ -7,6 +7,8 @@
 #include "blockt.h"
 #include "blockz.h"
 #include <vector>
+#include <memory>
+using namespace std;
 
 Grid::Grid(){
 
@@ -40,7 +42,7 @@ void Grid::printRow(int r){
 }
 
 void Grid::addToCurrent(){
-	blocksInGrid.emplace_back(*currentBlock);
+	blocksInGrid.emplace_back(shared_ptr<Block>(currentBlock));
 }
 
 // check if rows and be clear if so clear the row
@@ -94,74 +96,74 @@ void Grid::UpdateGrid(){
 
 void Grid::createBlock(std::string blockType,int level){
 	if (blockType == "i"){
-		BlockI i;
-		i.setLevel(level);
-		i.addCoord(Coord{0,3});
-		i.addCoord(Coord{1,3});
-		i.addCoord(Coord{2,3});
-		i.addCoord(Coord{3,3});
-		blocksInGrid.emplace_back(i);
-		nextBlock = &blocksInGrid.back();
+		Block *i = new BlockI();
+		i->setLevel(level);
+		i->addCoord(Coord{0,3});
+		i->addCoord(Coord{1,3});
+		i->addCoord(Coord{2,3});
+		i->addCoord(Coord{3,3});
+		blocksInGrid.emplace_back(shared_ptr<Block>(i));
+		nextBlock = i;
 		currentBlock = nextBlock;
 	} else if (blockType == "j"){
-		BlockJ j;
-		j.setLevel(level);
-		j.addCoord(Coord{0,2});
-		j.addCoord(Coord{0,3});
-		j.addCoord(Coord{1,3});
-		j.addCoord(Coord{2,3});
-		blocksInGrid.emplace_back(j);
-		nextBlock = &blocksInGrid.back();
+		Block *j = new BlockJ();
+		j->setLevel(level);
+		j->addCoord(Coord{0,2});
+		j->addCoord(Coord{0,3});
+		j->addCoord(Coord{1,3});
+		j->addCoord(Coord{2,3});
+		blocksInGrid.emplace_back(shared_ptr<Block>(j));
+		nextBlock = j;
 		currentBlock = nextBlock;
 	}else if (blockType == "l"){
-		BlockL l;
-		l.setLevel(level);
-		l.addCoord(Coord{2,2});
-		l.addCoord(Coord{2,3});
-		l.addCoord(Coord{1,3});
-		l.addCoord(Coord{0,3});
-		blocksInGrid.emplace_back(l);
-		nextBlock = &blocksInGrid.back();
+		BlockL *l = new BlockL();
+		l->setLevel(level);
+		l->addCoord(Coord{2,2});
+		l->addCoord(Coord{2,3});
+		l->addCoord(Coord{1,3});
+		l->addCoord(Coord{0,3});
+		blocksInGrid.emplace_back(shared_ptr<Block>(l));
+		nextBlock = l;
 		currentBlock = nextBlock;
 	}else if (blockType == "o"){
-		BlockO o;
-		o.setLevel(level);
-		o.addCoord(Coord{0,2});
-		o.addCoord(Coord{1,2});
-		o.addCoord(Coord{0,3});
-		o.addCoord(Coord{1,3});
-		blocksInGrid.emplace_back(o);
-		nextBlock = &blocksInGrid.back();
+		BlockO *o = new BlockO();
+		o->setLevel(level);
+		o->addCoord(Coord{0,2});
+		o->addCoord(Coord{1,2});
+		o->addCoord(Coord{0,3});
+		o->addCoord(Coord{1,3});
+		blocksInGrid.emplace_back(shared_ptr<Block>(o));
+		nextBlock = o;
 		currentBlock = nextBlock;
 	}else if (blockType == "s"){
-		BlockS s;
-		s.setLevel(level);
-		s.addCoord(Coord{1,2});
-		s.addCoord(Coord{2,2});
-		s.addCoord(Coord{0,3});
-		s.addCoord(Coord{1,3});
-		blocksInGrid.emplace_back(s);
-		nextBlock = &blocksInGrid.back();
+		BlockS *s = new BlockS();
+		s->setLevel(level);
+		s->addCoord(Coord{1,2});
+		s->addCoord(Coord{2,2});
+		s->addCoord(Coord{0,3});
+		s->addCoord(Coord{1,3});
+		blocksInGrid.emplace_back(shared_ptr<Block>(s));
+		nextBlock = s;
 		currentBlock = nextBlock;
 	}else if (blockType == "z"){
-		BlockZ z;
-		z.setLevel(level);
-		z.addCoord(Coord{0,2});
-		z.addCoord(Coord{1,2});
-		z.addCoord(Coord{1,3});
-		z.addCoord(Coord{2,3});
-		blocksInGrid.emplace_back(z);
-		nextBlock = &blocksInGrid.back();
+		BlockZ *z = new BlockZ();
+		z->setLevel(level);
+		z->addCoord(Coord{0,2});
+		z->addCoord(Coord{1,2});
+		z->addCoord(Coord{1,3});
+		z->addCoord(Coord{2,3});
+		blocksInGrid.emplace_back(shared_ptr<Block>(z));
+		nextBlock = z;
 		currentBlock = nextBlock;
 	}else{
-		BlockT t;
-		t.setLevel(level);
-		t.addCoord(Coord{0,2});
-		t.addCoord(Coord{1,2});
-		t.addCoord(Coord{2,2});
-		t.addCoord(Coord{1,3});
-		blocksInGrid.emplace_back(t);
-		nextBlock = &blocksInGrid.back();
+		BlockT *t = new BlockT();
+		t->setLevel(level);
+		t->addCoord(Coord{0,2});
+		t->addCoord(Coord{1,2});
+		t->addCoord(Coord{2,2});
+		t->addCoord(Coord{1,3});
+		blocksInGrid.emplace_back(shared_ptr<Block>(t));
+		nextBlock = t;
 		currentBlock = nextBlock;
 	}
 	UpdateGrid();
