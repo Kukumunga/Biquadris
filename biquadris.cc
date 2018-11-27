@@ -7,6 +7,7 @@
 Biquadris::Biquadris():player{1}{}
 Biquadris::~Biquadris(){delete inter;}
 void Biquadris::start(){
+	std::cout << gameBoard << std::endl;
 	std::string action;
 	while(true){
 		inter = new BaseCommand();//heap allocated
@@ -18,6 +19,7 @@ void Biquadris::start(){
 			
 			for(auto p:v){				
 				gameBoard.Move(player,p);
+				action = p;
 			}
 			std::cout << gameBoard << std::endl;
 			if(action == "drop"){
