@@ -51,7 +51,6 @@ void Grid::clearFullRows(){
 	for (int y = 17;y < 18; ++y){
 		theGrid[MID][y].alertNeighbours();
 		if (theGrid[MID][y].canClearRow()){
-			std::cout << "inside this one";
 			clearRow(y);
 			++numClear;
 		}

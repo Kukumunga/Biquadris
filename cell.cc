@@ -34,9 +34,7 @@ void Cell::alertNeighbours(){
 	if (Filled){
 		if ((leftNeighbour != nullptr) && (rightNeighbour != nullptr)){
 			leftNeighbour->rightNeighbourFilled();
-			std::cout << "the signal" << signal;
 			rightNeighbour->leftNeighbourFilled();
-			std::cout << "the signal" << signal;
 		}
 	}
 }
