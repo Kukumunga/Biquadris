@@ -8,11 +8,19 @@ string BlockO::getType(){return Block::agetType();}
 
 vector<Coord> BlockO::rotateClock(){
         vector<Coord> newCoords;
-        int lowerLeftX, lowerLeftY;
+        newCoords.emplace_back(components[0]);
+	newCoords.emplace_back(components[1]);
+	newCoords.emplace_back(components[2]);
+	newCoords.emplace_back(components[3]);
         return newCoords;
 }
 vector<Coord> BlockO::rotateCounterClock(){
-        return rotateClock();
+	vector<Coord> newCoords;
+        newCoords.emplace_back(components[0]);
+	newCoords.emplace_back(components[1]);
+	newCoords.emplace_back(components[2]);
+	newCoords.emplace_back(components[3]);
+	return newCoords;
 }
 void BlockO::executeClock(){
 }
