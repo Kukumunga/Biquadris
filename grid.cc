@@ -51,7 +51,7 @@ void Grid::clearFullRows(){
 	for (int y = 3;y < 15; ++y){
 		theGrid[MID][y].alertNeighbours();
 		if (theGrid[MID][y].canClearRow()){
-			//std::cout << y;
+			std::cout << y;
 			clearRow(y);
 		}
 	}

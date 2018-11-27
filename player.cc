@@ -64,8 +64,10 @@ void Player::notMyTurn(){
 
 void Player::rotateBlockClockwise(){
 	l.rotateBlockClock(&g);
+	g.UpdateGrid();
 }
 
 void Player::rotateBlockCounterClockwise(){
 	l.rotateBlockCounterClock(&g);
+	g.UpdateGrid();
 }
