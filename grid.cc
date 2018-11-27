@@ -53,6 +53,7 @@ void Grid::clearFullRows(){
 		if (theGrid[MID][y].canClearRow()){
 			std::cout << "inside this one";
 			clearRow(y);
+			++numClear;
 		}
 	}
 }
@@ -212,4 +213,25 @@ void Grid::printNextBlock(int line){
 			std::cout << " T   ";
 		}
 	}
+}
+
+void Grid::turnAllOff(){
+	for (int y = 3; y < 18; ++ y){
+		for (int x = 0; x < 11; ++x){
+			turnOff(x,y);
+		}
+	}
+}
+
+void Grid::Blind(){
+	for (int y = 3; y< 14;++y){
+		for (int x = 2 ; x < 9; ++x){
+			turnOn(x,y);
+			theGrid[x][y].setBlockChar("?");
+		}
+	}
+}
+
+void Grid::turnOn(int x,int y){
+	theGrid[x][y].turnOn();
 }

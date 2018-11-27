@@ -14,6 +14,7 @@ class Grid{
 	std::vector <std::shared_ptr<Block>> blocksInGrid;
 	bool isHeavy;
 	void clearRow(int);
+	int numClear = 0;
 
 public:
 	Grid();
@@ -47,6 +48,9 @@ public:
 	void printNextBlock(int line);
 	void next();
 	void setFilledStatus(int,int);
+	void turnOn(int,int);
+	void turnAllOff();
+	void Blind();
 };
 
 
