@@ -104,3 +104,7 @@ int Cell::getX(){
 int Cell::getY(){
 	return c.getY();
 }
+
+void Cell::setFilledStatus(bool stat){
+	Filled = stat;
+}

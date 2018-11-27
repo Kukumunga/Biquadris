@@ -51,6 +51,7 @@ void Grid::clearFullRows(){
 	for (int y = 3;y < 15; ++y){
 		theGrid[MID][y].alertNeighbours();
 		if (theGrid[MID][y].canClearRow()){
+			//std::cout << y;
 			clearRow(y);
 		}
 	}
@@ -59,17 +60,18 @@ void Grid::clearFullRows(){
 
 
 void Grid::clearRow(int row){
-	//for (int i = row; i > 3; --i){
-	//	for (int x = 0; x < 11; ++x){
-	//		theGrid[x][i].setFilledStatus(theGrid[x][i-1].getFilledStatus());
-	//		theGrid[x][i].setBlockChar(theGrid[x][i-1].getBlockChar());
-	//	}
-	//}
 
-	// clear row 3
-	//for (int x = 0; x < 11; ++ x){
-	//	theGrid[x][3].setFilledStatus(false);
-//	}
+	for (int i = row; i > 3; --i){
+		for (int x = 0; x < 11; ++x){
+			theGrid[x][i].setFilledStatus(isFilled(x,i-1));
+			theGrid[x][i].setBlockChar(theGrid[x][i-1].getBlockChar());
+		}
+	}
+
+	//	 clear row 3
+	for (int x = 0; x < 11; ++x){
+		theGrid[x][3].turnOff();
+	}
 }
 
 bool Grid::isFilled(int x,int y){
@@ -158,7 +160,6 @@ void Grid::createBlock(std::string blockType,int level){
 		t->addCoord(Coord{1,3});
 		nextBlock = t;
 	}
-//	UpdateGrid();
 } 
 
 void Grid::turnOff(int x,int y){

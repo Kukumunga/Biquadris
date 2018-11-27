@@ -33,6 +33,7 @@ public:
 	int getX();
 	int getY();
 	Coord * getCoord();
+	void setFilledStatus(bool);
 };
 
 

@@ -46,6 +46,7 @@ public:
 	void turnOff();
 	void printNextBlock(int line);
 	void next();
+	void setFilledStatus(int,int);
 };
 
 

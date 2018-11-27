@@ -38,9 +38,12 @@ void Player::moveBlockDown(){
 
 void Player::dropBlock(){
 	l.dropBlock(&g);
+	g.UpdateGrid();
+	g.clearFullRows();
 	g.next();
 	g.UpdateGrid();
-	l.createBlock(&g);  
+	l.createBlock(&g);
+	  
 }
 
 void Player::printNextBlock(int line){
@@ -57,4 +60,12 @@ void Player::myTurn(){
 
 void Player::notMyTurn(){
 	turn = false;
+}
+
+void Player::rotateBlockClockwise(){
+	l.rotateBlockClock(&g);
+}
+
+void Player::rotateBlockCounterClockwise(){
+	l.rotateBlockCounterClock(&g);
 }
