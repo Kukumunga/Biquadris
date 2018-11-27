@@ -45,7 +45,20 @@ void Board::Move(int playerNum,std::string command){
 			p2.notMyTurn();
 			p1.myTurn();
 		}		
+	}else if (command == "clockwise"){
+		if (playerNum == 1){
+			p1.rotateBlockClockwise();
+		}else{
+			p2.rotateBlockClockwise();
+		}
+	}else if (command == "counterclockwise"){
+		if (playerNum == 1){
+			p1.rotateBlockCounterClockwise();
+		}else{
+			p2.rotateBlockCounterClockwise();
+		}
 	}
+
 }
 
 

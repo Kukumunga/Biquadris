@@ -8,7 +8,7 @@
 
 class Player{
 	Grid g; 
-	Level0 l = Level0{"hello"};
+	Level0 l = Level0{"sequence1"};
 	int score = 0;
 	bool turn = false;
 public:
@@ -19,6 +19,8 @@ public:
 	void moveBlockLeft();
 	void moveBlockRight();
 	void moveBlockDown();
+	void rotateBlockClockwise();
+	void rotateBlockCounterClockwise();
 	void dropBlock();
 	void printNextBlock(int);
 	void myTurn();

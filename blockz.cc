@@ -11,4 +11,11 @@ vector<Coord> BlockZ::rotateClock(){
         int lowerLeftX, lowerLeftY;
         return newCoords;
 }
+vector<Coord> BlockZ::rotateCounterClock(){
+	        return rotateClock();
+}
+void BlockZ::executeClock(){
+}
+void BlockZ::executeCounterClock(){
+}
 

@@ -62,7 +62,7 @@ void Level0::moveLeft(Grid *g){
 				(g->isFilled(potentialLocation[comp].getX(),potentialLocation[comp].getY()) //not filled already
 				&& !g->getCurrentBlock()->isComponent(potentialLocation[comp]))){ //not filled by block's own component
 
-			break; //do not move right because the block is... blocked
+			break; //do not move left because the block is... blocked
 		}
 		if (comp == 3){ //if all the components of the block can move right			
 			g->turnOff(); 
@@ -79,7 +79,7 @@ bool Level0::moveDown(Grid *g){
 				(g->isFilled(potentialLocation[comp].getX(),potentialLocation[comp].getY()) 
 				&& !g->getCurrentBlock()->isComponent(potentialLocation[comp]))){
 			
-			return false;; //do not move right because the block is... blocked
+			return false;; //do not move down because the block is... blocked
 		}
 		if (comp == 3){ //if all the components of the block can move right			
 			g->turnOff(); 
@@ -95,7 +95,33 @@ void Level0::dropBlock(Grid *g){
 
 void Level0::rotateBlockClock(Grid *g){
 	//call Block's rotateBlockClock which returns coordinates
+	vector<Coord> potentialLocation = g->getCurrentBlock()->rotateClock();
+	for (int comp = 0; comp < 4; comp++){
+		if (potentialLocation[comp].getY() > 17 ||
+				(g->isFilled(potentialLocation[comp].getX(),potentialLocation[comp].getY()) 
+				&& !g->getCurrentBlock()->isComponent(potentialLocation[comp]))){
+			
+			break;; //do not rotate clockwise because the block is... blocked
+		}
+		if (comp == 3){ //if all the components of the block can move right			
+			g->turnOff(); 
+			g->getCurrentBlock()->executeClock();
+		}
+	}
 }
 void Level0::rotateBlockCounterClock(Grid *g){
 	//call Block's rotateBlockCounterClock which returns coordinates
+	vector<Coord> potentialLocation = g->getCurrentBlock()->rotateCounterClock();
+	for (int comp = 0; comp < 4; comp++){
+		if (potentialLocation[comp].getY() > 17 ||
+				(g->isFilled(potentialLocation[comp].getX(),potentialLocation[comp].getY()) 
+				&& !g->getCurrentBlock()->isComponent(potentialLocation[comp]))){
+			
+			break;; //do not rotate counter clockwise because the block is... blocked
+		}
+		if (comp == 3){ //if all the components of the block can move right			
+			g->turnOff(); 
+			g->getCurrentBlock()->executeCounterClock();
+		}
+	}
 }

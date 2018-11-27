@@ -12,4 +12,11 @@ vector<Coord> BlockJ::rotateClock(){
         int lowerLeftX, lowerLeftY;
 	return newCoords;
 }
+vector<Coord> BlockJ::rotateCounterClock(){
+	        return rotateClock();
+}
+void BlockJ::executeClock(){
+}
+void BlockJ::executeCounterClock(){
+}
 

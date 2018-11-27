@@ -21,15 +21,15 @@ public:
 	void setLevel(int l);
 	bool isComponent(Coord component); //checks whether the component is in components
 	virtual std::vector<Coord> rotateClock()=0;
-	//virtual std::vector<Coord*> rotateCounterClock();
+	virtual std::vector<Coord> rotateCounterClock()=0;
 	std::vector<Coord> calcLeft();
 	std::vector<Coord> calcRight();
 	std::vector<Coord> calcDown();
 	void executeLeft();
 	void executeRight();
 	void executeDown();
-	//virtual void executeClock();
-	//virtual void executeCounterClock();
+	virtual void executeClock()=0;
+	virtual void executeCounterClock()=0;
 };
 
 #endif

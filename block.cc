@@ -3,9 +3,7 @@ using namespace std;
 #include "cell.h"
 #include "coord.h"
 
-Block::~Block(){
-	components.clear();
-}
+Block::~Block(){}
 
 Block::Block(string type, string colour):type{type}, colour{colour},orientation{"up"}{}
 
