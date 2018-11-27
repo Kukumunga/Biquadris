@@ -15,6 +15,15 @@ string Block::agetType(){return type;}
 
 vector<Coord> Block::getComp(){return components;}
 
+void Block::lowerY(int position){
+	components[position].setCoord(components[position].getX(), components[position].getY() + 1);
+}
+
+void Block::removeComp(int position){
+	auto it = components.begin()+position;
+	components.erase(it);
+}
+
 bool Block::isComponent(Coord component){
 	for (int comp = 0; comp < 4; comp++){
 		if ((component.getX() == components[comp].getX())&&(component.getY() == components[comp].getY())){
