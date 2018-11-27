@@ -23,7 +23,7 @@ Grid::Grid(){
 
 	// add left right neighbours
 	// row 0,1,2 is reserved
-	for (int y = 3; y < 15 ; ++y){
+	for (int y = 3; y < 18 ; ++y){
 		for (int x = 0; x < 11; ++x){
 			try{
                 theGrid[x][y].addLeftNeighbour(&theGrid.at(x-1).at(y));
@@ -48,29 +48,32 @@ void Grid::addToCurrent(){
 // check if rows and be clear if so clear the row
 
 void Grid::clearFullRows(){
-	for (int y = 3;y < 15; ++y){
+	for (int y = 17;y < 18; ++y){
 		theGrid[MID][y].alertNeighbours();
 		if (theGrid[MID][y].canClearRow()){
-			std::cout << y;
+			std::cout << "inside this one";
 			clearRow(y);
 		}
 	}
-
 }
 
 
 void Grid::clearRow(int row){
-
-	for (int i = row; i > 3; --i){
-		for (int x = 0; x < 11; ++x){
-			theGrid[x][i].setFilledStatus(isFilled(x,i-1));
-			theGrid[x][i].setBlockChar(theGrid[x][i-1].getBlockChar());
+	for (int x = 0; x < 11;++x){
+		int size = blocksInGrid.size();
+		for (int e = 0; e < size; ++ e){
+			std::vector<Coord> vec = blocksInGrid[e]->getComp();
+			int compsize = vec.size();
+			for (int n = compsize - 1; n >= 0; --n){
+				if ((vec[n].getX() == x) && (vec[n].getY() == row)){
+					blocksInGrid[e]->removeComp(n);
+					turnOff(x,row);
+				}else if (vec[n].getX() == x){
+					blocksInGrid[e]->lowerY(n);
+					turnOff(x,vec[n].getY());
+				}
+			}
 		}
-	}
-
-	//	 clear row 3
-	for (int x = 0; x < 11; ++x){
-		theGrid[x][3].turnOff();
 	}
 }
 

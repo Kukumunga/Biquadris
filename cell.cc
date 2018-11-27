@@ -27,13 +27,17 @@ void Cell::addLeftNeighbour(Cell * left){
 }
 
 void Cell::addRightNeighbour(Cell * right){
-	leftNeighbour = right;
+	rightNeighbour = right;
 }
 
 void Cell::alertNeighbours(){
 	if (Filled){
-		leftNeighbour->rightNeighbourFilled();
-		rightNeighbour->leftNeighbourFilled();
+		if ((leftNeighbour != nullptr) && (rightNeighbour != nullptr)){
+			leftNeighbour->rightNeighbourFilled();
+			std::cout << "the signal" << signal;
+			rightNeighbour->leftNeighbourFilled();
+			std::cout << "the signal" << signal;
+		}
 	}
 }
 
@@ -58,7 +62,8 @@ void Cell::leftNeighbourFilled(){
 }
 
 void Cell::rightSideFilled(){
-	if (1  == 5){
+	if (getX() == 5){
+		std::cout << "dsfdsffdfsdfsdfsdfsdfsdfdsfsdfdsfsdf";
 		++signal;
 	}else{
 		leftNeighbour->rightSideFilled();
@@ -66,7 +71,7 @@ void Cell::rightSideFilled(){
 }
 
 void Cell::leftSideFilled(){
-	if (1  == 5){
+	if (getX() == 5){
 		++signal;
 	}else{
 		rightNeighbour->leftSideFilled();
@@ -75,9 +80,9 @@ void Cell::leftSideFilled(){
 
 bool Cell::canClearRow(){
 	if (signal == 2){
-		signal = 0;
 		return true;
 	}
+	signal = 0;
 	return false;
 }
 

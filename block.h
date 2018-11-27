@@ -19,6 +19,8 @@ public:
 	std::vector<Coord> getComp();
 	void addCoord(Coord);
 	void setLevel(int l);
+	void removeComp(int position);
+	void lowerY(int position);
 	bool isComponent(Coord component); //checks whether the component is in components
 	virtual std::vector<Coord> rotateClock()=0;
 	virtual std::vector<Coord> rotateCounterClock()=0;
