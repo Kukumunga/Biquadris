@@ -78,12 +78,12 @@ std::ostream& operator<<(std::ostream &out, Board &b){
 
 	out << std::endl;
 	out << "Next:" << std::setw(19) << "Next:" <<std::endl;
-	//b.p1.printNextBlock(1);
+	b.p1.printNextBlock(1);
 	out << std::setw(19);
-	//b.p2.printNextBlock(1);
+	b.p2.printNextBlock(1);
 	out <<std::endl;
-	//b.p1.printNextBlock(2);
+	b.p1.printNextBlock(2);
 	out << std::setw(19);
-	//b.p2.printNextBlock(2);
+	b.p2.printNextBlock(2);
 	return out;
 }

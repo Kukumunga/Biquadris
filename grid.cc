@@ -79,6 +79,7 @@ bool Grid::isFilled(int x,int y){
 void Grid::next(){
 	currentBlock = nextBlock;
 	nextBlock = nullptr;
+	blocksInGrid.emplace_back(shared_ptr<Block>(currentBlock));
 }
 
 
@@ -86,12 +87,17 @@ Block* Grid::getCurrentBlock(){
 	return currentBlock;
 }
 
+
 void Grid::UpdateGrid(){
-	std::vector<Coord> vec = currentBlock->getComp();
-	for (int i = 0;i < 4;++i){
-		Coord c = vec[i];
-		theGrid[c.getX()][c.getY()].setBlockChar(currentBlock->agetType());
-	}
+	int size = blocksInGrid.size();
+	for (int i = 0; i < size;++i){
+		std::vector<Coord> vec = blocksInGrid[i]->getComp();
+		int s = vec.size();
+		for (int j = 0;j < s;++j){
+                	Coord c = vec[j];
+                	theGrid[c.getX()][c.getY()].setBlockChar(blocksInGrid[i]->agetType());
+		}
+  	}
 }
 
 void Grid::createBlock(std::string blockType,int level){
@@ -102,9 +108,7 @@ void Grid::createBlock(std::string blockType,int level){
 		i->addCoord(Coord{1,3});
 		i->addCoord(Coord{2,3});
 		i->addCoord(Coord{3,3});
-		blocksInGrid.emplace_back(shared_ptr<Block>(i));
 		nextBlock = i;
-		currentBlock = nextBlock;
 	} else if (blockType == "j"){
 		Block *j = new BlockJ();
 		j->setLevel(level);
@@ -112,9 +116,7 @@ void Grid::createBlock(std::string blockType,int level){
 		j->addCoord(Coord{0,3});
 		j->addCoord(Coord{1,3});
 		j->addCoord(Coord{2,3});
-		blocksInGrid.emplace_back(shared_ptr<Block>(j));
 		nextBlock = j;
-		currentBlock = nextBlock;
 	}else if (blockType == "l"){
 		BlockL *l = new BlockL();
 		l->setLevel(level);
@@ -122,9 +124,7 @@ void Grid::createBlock(std::string blockType,int level){
 		l->addCoord(Coord{2,3});
 		l->addCoord(Coord{1,3});
 		l->addCoord(Coord{0,3});
-		blocksInGrid.emplace_back(shared_ptr<Block>(l));
 		nextBlock = l;
-		currentBlock = nextBlock;
 	}else if (blockType == "o"){
 		BlockO *o = new BlockO();
 		o->setLevel(level);
@@ -132,9 +132,7 @@ void Grid::createBlock(std::string blockType,int level){
 		o->addCoord(Coord{1,2});
 		o->addCoord(Coord{0,3});
 		o->addCoord(Coord{1,3});
-		blocksInGrid.emplace_back(shared_ptr<Block>(o));
 		nextBlock = o;
-		currentBlock = nextBlock;
 	}else if (blockType == "s"){
 		BlockS *s = new BlockS();
 		s->setLevel(level);
@@ -142,9 +140,7 @@ void Grid::createBlock(std::string blockType,int level){
 		s->addCoord(Coord{2,2});
 		s->addCoord(Coord{0,3});
 		s->addCoord(Coord{1,3});
-		blocksInGrid.emplace_back(shared_ptr<Block>(s));
 		nextBlock = s;
-		currentBlock = nextBlock;
 	}else if (blockType == "z"){
 		BlockZ *z = new BlockZ();
 		z->setLevel(level);
@@ -152,9 +148,7 @@ void Grid::createBlock(std::string blockType,int level){
 		z->addCoord(Coord{1,2});
 		z->addCoord(Coord{1,3});
 		z->addCoord(Coord{2,3});
-		blocksInGrid.emplace_back(shared_ptr<Block>(z));
 		nextBlock = z;
-		currentBlock = nextBlock;
 	}else{
 		BlockT *t = new BlockT();
 		t->setLevel(level);
@@ -162,11 +156,9 @@ void Grid::createBlock(std::string blockType,int level){
 		t->addCoord(Coord{1,2});
 		t->addCoord(Coord{2,2});
 		t->addCoord(Coord{1,3});
-		blocksInGrid.emplace_back(shared_ptr<Block>(t));
 		nextBlock = t;
-		currentBlock = nextBlock;
 	}
-	UpdateGrid();
+//	UpdateGrid();
 } 
 
 void Grid::turnOff(int x,int y){
@@ -189,7 +181,7 @@ void Grid::printNextBlock(int line){
 		}else if (type == "J"){
 			std::cout << "J    ";
 		}else if (type == "L"){
-			std::cout <<"   L  ";
+			std::cout <<"  L  ";
 		}else if (type == "O"){
 			std::cout <<"OO   ";
 		}else if (type == "S"){

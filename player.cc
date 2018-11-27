@@ -12,6 +12,9 @@ int Player::getLevel(){
 
 Player::Player(): g{Grid()},l{Level0("sequence1.txt")}{
 	l.createBlock(&g);
+	g.next();
+	g.UpdateGrid();
+	l.createBlock(&g);
 }
 
 void Player::printRow(int r){
@@ -35,9 +38,9 @@ void Player::moveBlockDown(){
 
 void Player::dropBlock(){
 	l.dropBlock(&g);
+	g.next();
 	g.UpdateGrid();
-	l.createBlock(&g);
-	//g.UpdateGrid();  
+	l.createBlock(&g);  
 }
 
 void Player::printNextBlock(int line){
