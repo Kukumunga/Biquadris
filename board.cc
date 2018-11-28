@@ -58,6 +58,12 @@ void Board::Move(int playerNum,std::string command){
 		}else{
 			p2->rotateBlockCounterClockwise();
 		}
+	}else if (command == "levelup"){
+		if (playerNum == 1){
+                        p1->levelUp();
+                }else{
+                        p2->levelUp();
+                }
 	}
 
 }

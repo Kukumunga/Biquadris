@@ -26,6 +26,7 @@ public:
 	void printNextBlock(int) const;
 	void myTurn();
 	void notMyTurn();
+	void levelUp();
 };
 
 #endif
