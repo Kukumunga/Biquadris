@@ -11,11 +11,11 @@ int Player::getLevel() const{
 	return 1;
 }
 
-Player::Player(): g{std::unique_ptr<Grid>(new Grid())},l{Level0("sequence1.txt")}{
-	l.createBlock(g.get());
+Player::Player(): g{std::unique_ptr<Grid>(new Grid())},l{new Level0("sequence1.txt")}{
+	l->createBlock(g.get());
 	g->next();
 	g->UpdateGrid();
-	l.createBlock(g.get());
+	l->createBlock(g.get());
 }
 
 void Player::printRow(int r) const{
@@ -23,27 +23,27 @@ void Player::printRow(int r) const{
 }
 
 void Player::moveBlockLeft(){
-	l.moveLeft(g.get());
+	l->moveLeft(g.get());
 	g->UpdateGrid();
 }
 
 void Player::moveBlockRight(){
-	l.moveRight(g.get());
+	l->moveRight(g.get());
 	g->UpdateGrid();
 }
 
 void Player::moveBlockDown(){
-	l.moveDown(g.get());
+	l->moveDown(g.get());
 	g->UpdateGrid();
 }
 
 void Player::dropBlock(){
-	l.dropBlock(g.get());
+	l->dropBlock(g.get());
 	g->UpdateGrid();
 	g->clearFullRows();
 	g->next();
 	g->UpdateGrid();
-	l.createBlock(g.get());
+	l->createBlock(g.get());
 	  
 }
 
@@ -64,11 +64,11 @@ void Player::notMyTurn(){
 }
 
 void Player::rotateBlockClockwise(){
-	l.rotateBlockClock(g.get());
+	l->rotateBlockClock(g.get());
 	g->UpdateGrid();
 }
 
 void Player::rotateBlockCounterClockwise(){
-	l.rotateBlockCounterClock(g.get());
+	l->rotateBlockCounterClock(g.get());
 	g->UpdateGrid();
 }

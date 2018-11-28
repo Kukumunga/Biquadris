@@ -3,12 +3,13 @@
 #include "level.h"
 #include <string>
 #include <vector>
-
+#include <iostream>
 class Grid;
 class Level0 : public Level {
 	std::vector<std::string> blocks;
 	std::vector<std::string>::iterator it;
 public:
+	//~Level0();
 	Level0(const std::string &filename);
 	void createBlock(Grid *);
 	int getLevel();

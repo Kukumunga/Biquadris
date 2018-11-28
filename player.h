@@ -9,7 +9,7 @@
 
 class Player{
 	std::unique_ptr<Grid> g; 
-	Level0 l = Level0{"sequence1"};
+	std::unique_ptr<Level> l;// {new Level0("sequence1")};
 	int score = 0;
 	bool turn = false;
 public:

@@ -15,7 +15,7 @@ Level0::Level0(const string &filename){
 		blocks.emplace_back(s);
 	}
 	it = blocks.begin();
-	
+	f.close();
 }
 
 int Level0::getLevel(){return 0;}
