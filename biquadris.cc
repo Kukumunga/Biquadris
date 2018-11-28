@@ -3,25 +3,28 @@
 #include "basecommand.h"
 #include "board.h"
 #include <string>
+#include <memory>
 
-Biquadris::Biquadris():player{1}{}
+Biquadris::Biquadris():gameBoard{std::unique_ptr<Board>(new Board())},player{1}{}
 Biquadris::~Biquadris(){delete inter;}
 void Biquadris::start(){
-	std::cout << gameBoard << std::endl;
+	std::cout << *gameBoard << std::endl;
 	std::string action;
 	while(true){
-		inter = new BaseCommand();//heap allocated
+		std::unique_ptr<BaseCommand>inter{new BaseCommand()};//heap allocated
 		//std::istringstream ss(action);
 		std::vector<std::string> v;
 		while(std::cin >> action){
-		
+			if (action == "exit"){
+				goto endgame;
+			}	
 			v = inter->getCommands(action);
 			
 			for(auto p:v){				
-				gameBoard.Move(player,p);
+				gameBoard->Move(player,p);
 				action = p;
 			}
-			std::cout << gameBoard << std::endl;
+			std::cout << *gameBoard << std::endl;
 			if(action == "drop"){
 				break;
 			}
@@ -31,5 +34,5 @@ void Biquadris::start(){
 		}*/			
 		player = (player + 1)%2;	
 	}
-//endgame:;//"goto endgame;" to end the game...
+endgame:;//"goto endgame;" to end the game...
 }

@@ -10,6 +10,8 @@
 #include <memory>
 using namespace std;
 
+
+
 Grid::Grid(){
 
 	for (int x = 0; x < 11;++x){ // columns
@@ -42,7 +44,7 @@ void Grid::printRow(int r){
 }
 
 void Grid::addToCurrent(){
-	blocksInGrid.emplace_back(shared_ptr<Block>(currentBlock));
+	containsNext = false;
 }
 
 // check if rows and be clear if so clear the row
@@ -82,9 +84,8 @@ bool Grid::isFilled(int x,int y){
 }
 
 void Grid::next(){
-	currentBlock = nextBlock;
-	nextBlock = nullptr;
-	blocksInGrid.emplace_back(shared_ptr<Block>(currentBlock));
+	currentBlock = blocksInGrid.back().get();
+	containsNext = false;
 }
 
 
@@ -94,7 +95,12 @@ Block* Grid::getCurrentBlock(){
 
 
 void Grid::UpdateGrid(){
-	int size = blocksInGrid.size();
+	int size;
+	if (!containsNext){
+	size = blocksInGrid.size();
+	}else{
+	size = blocksInGrid.size() - 1;
+	}
 	for (int i = 0; i < size;++i){
 		std::vector<Coord> vec = blocksInGrid[i]->getComp();
 		int s = vec.size();
@@ -107,61 +113,62 @@ void Grid::UpdateGrid(){
 
 void Grid::createBlock(std::string blockType,int level){
 	if (blockType == "i"){
-		Block *i = new BlockI();
-		i->setLevel(level);
-		i->addCoord(Coord{0,3});
-		i->addCoord(Coord{1,3});
-		i->addCoord(Coord{2,3});
-		i->addCoord(Coord{3,3});
-		nextBlock = i;
+		blocksInGrid.emplace_back(new BlockI());
+		blocksInGrid.back()->setLevel(level);
+		blocksInGrid.back()->addCoord(Coord{0,3});
+		blocksInGrid.back()->addCoord(Coord{1,3});
+		blocksInGrid.back()->addCoord(Coord{2,3});
+		blocksInGrid.back()->addCoord(Coord{3,3});
+		nextBlock = blocksInGrid.back().get();
 	} else if (blockType == "j"){
-		Block *j = new BlockJ();
-		j->setLevel(level);
-		j->addCoord(Coord{0,2});
-		j->addCoord(Coord{0,3});
-		j->addCoord(Coord{1,3});
-		j->addCoord(Coord{2,3});
-		nextBlock = j;
+		blocksInGrid.emplace_back(new BlockJ());
+		blocksInGrid.back()->setLevel(level);
+		blocksInGrid.back()->addCoord(Coord{0,2});
+		blocksInGrid.back()->addCoord(Coord{0,3});
+		blocksInGrid.back()->addCoord(Coord{1,3});
+		blocksInGrid.back()->addCoord(Coord{2,3});
+		nextBlock = blocksInGrid.back().get();
 	}else if (blockType == "l"){
-		BlockL *l = new BlockL();
-		l->setLevel(level);
-		l->addCoord(Coord{2,2});
-		l->addCoord(Coord{2,3});
-		l->addCoord(Coord{1,3});
-		l->addCoord(Coord{0,3});
-		nextBlock = l;
+		blocksInGrid.emplace_back(new BlockL());
+		blocksInGrid.back()->setLevel(level);
+		blocksInGrid.back()->addCoord(Coord{2,2});
+		blocksInGrid.back()->addCoord(Coord{2,3});
+		blocksInGrid.back()->addCoord(Coord{1,3});
+		blocksInGrid.back()->addCoord(Coord{0,3});
+		nextBlock = blocksInGrid.back().get();
 	}else if (blockType == "o"){
-		BlockO *o = new BlockO();
-		o->setLevel(level);
-		o->addCoord(Coord{0,2});
-		o->addCoord(Coord{1,2});
-		o->addCoord(Coord{0,3});
-		o->addCoord(Coord{1,3});
-		nextBlock = o;
+		blocksInGrid.emplace_back(new BlockO());
+		blocksInGrid.back()->setLevel(level);
+		blocksInGrid.back()->addCoord(Coord{0,2});
+		blocksInGrid.back()->addCoord(Coord{1,2});
+		blocksInGrid.back()->addCoord(Coord{0,3});
+		blocksInGrid.back()->addCoord(Coord{1,3});
+		nextBlock = blocksInGrid.back().get();
 	}else if (blockType == "s"){
-		BlockS *s = new BlockS();
-		s->setLevel(level);
-		s->addCoord(Coord{1,2});
-		s->addCoord(Coord{2,2});
-		s->addCoord(Coord{0,3});
-		s->addCoord(Coord{1,3});
-		nextBlock = s;
+		blocksInGrid.emplace_back(new BlockS());
+		blocksInGrid.back()->setLevel(level);
+		blocksInGrid.back()->addCoord(Coord{1,2});
+		blocksInGrid.back()->addCoord(Coord{2,2});
+		blocksInGrid.back()->addCoord(Coord{0,3});
+		blocksInGrid.back()->addCoord(Coord{1,3});
+		nextBlock = blocksInGrid.back().get();
 	}else if (blockType == "z"){
-		BlockZ *z = new BlockZ();
-		z->setLevel(level);
-		z->addCoord(Coord{0,2});
-		z->addCoord(Coord{1,2});
-		z->addCoord(Coord{1,3});
-		z->addCoord(Coord{2,3});
-		nextBlock = z;
+		blocksInGrid.emplace_back(new BlockZ());
+		blocksInGrid.back()->setLevel(level);
+		blocksInGrid.back()->addCoord(Coord{0,2});
+		blocksInGrid.back()->addCoord(Coord{1,2});
+		blocksInGrid.back()->addCoord(Coord{1,3});
+		blocksInGrid.back()->addCoord(Coord{2,3});
+		nextBlock = blocksInGrid.back().get();
 	}else{
-		BlockT *t = new BlockT();
-		t->setLevel(level);
-		t->addCoord(Coord{0,2});
-		t->addCoord(Coord{1,2});
-		t->addCoord(Coord{2,2});
-		t->addCoord(Coord{1,3});
-		nextBlock = t;
+		blocksInGrid.emplace_back(new BlockT());
+		blocksInGrid.back()->setLevel(level);
+		blocksInGrid.back()->addCoord(Coord{0,2});
+		blocksInGrid.back()->addCoord(Coord{1,2});
+		blocksInGrid.back()->addCoord(Coord{2,2});
+		blocksInGrid.back()->addCoord(Coord{1,3});
+		nextBlock = blocksInGrid.back().get();
+	containsNext = true;
 	}
 } 
 

@@ -2,11 +2,12 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <memory>
 using namespace std;
 
 #include "biquadris.h"
 
 int main () {
-  Biquadris q = Biquadris();
-  q.start();
+  unique_ptr<Biquadris>q{new Biquadris()};
+  q->start();
 }

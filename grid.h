@@ -8,17 +8,18 @@
 const int MID = 5;
 
 class Grid{
+	bool containsNext = false;
 	std::vector<std::vector<Cell>> theGrid;
 	Block *currentBlock;
 	Block *nextBlock;
-	std::vector <std::shared_ptr<Block>> blocksInGrid;
+	std::vector <std::unique_ptr<Block>> blocksInGrid;
 	bool isHeavy;
 	void clearRow(int);
 	int numClear = 0;
 
 public:
 	Grid();
-	//Grid(Grid &&g):blocksInGrid{std::move(g.blocksInGrid)}{}
+	//Grid(const Grid &g) = delete;
 	/*
 	Grid(const Grid& g):blocksInGrid{std::move(g.blocksInGrid)}{
 		std::cout << "HERE" << std::endl;	
@@ -30,9 +31,7 @@ public:
 		return this;
 	}
 	*/
-	~Grid(){
-		blocksInGrid.clear();	
-	};
+	//~Grid();
 	void printRow(int);
 	bool getHeavy();
 	Block* getCurrentBlock();

@@ -1,54 +1,55 @@
 #include "player.h"
+#include <memory>
 
-int Player::getScore(){
+int Player::getScore() const{
 	//return score;
 	return 1;
 }
 
-int Player::getLevel(){
+int Player::getLevel() const{
 //	return l.getLevel()
 	return 1;
 }
 
-Player::Player(): g{Grid()},l{Level0("sequence1.txt")}{
-	l.createBlock(&g);
-	g.next();
-	g.UpdateGrid();
-	l.createBlock(&g);
+Player::Player(): g{std::unique_ptr<Grid>(new Grid())},l{Level0("sequence1.txt")}{
+	l.createBlock(g.get());
+	g->next();
+	g->UpdateGrid();
+	l.createBlock(g.get());
 }
 
-void Player::printRow(int r){
-	g.printRow(r);
+void Player::printRow(int r) const{
+	g->printRow(r);
 }
 
 void Player::moveBlockLeft(){
-	l.moveLeft(&g);
-	g.UpdateGrid();
+	l.moveLeft(g.get());
+	g->UpdateGrid();
 }
 
 void Player::moveBlockRight(){
-	l.moveRight(&g);
-	g.UpdateGrid();
+	l.moveRight(g.get());
+	g->UpdateGrid();
 }
 
 void Player::moveBlockDown(){
-	l.moveDown(&g);
-	g.UpdateGrid();
+	l.moveDown(g.get());
+	g->UpdateGrid();
 }
 
 void Player::dropBlock(){
-	l.dropBlock(&g);
-	g.UpdateGrid();
-	g.clearFullRows();
-	g.next();
-	g.UpdateGrid();
-	l.createBlock(&g);
+	l.dropBlock(g.get());
+	g->UpdateGrid();
+	g->clearFullRows();
+	g->next();
+	g->UpdateGrid();
+	l.createBlock(g.get());
 	  
 }
 
-void Player::printNextBlock(int line){
+void Player::printNextBlock(int line) const{
 	if (turn){
-		g.printNextBlock(line);
+		g->printNextBlock(line);
 	}else{
 		std::cout << "     ";
 	}
@@ -63,11 +64,11 @@ void Player::notMyTurn(){
 }
 
 void Player::rotateBlockClockwise(){
-	l.rotateBlockClock(&g);
-	g.UpdateGrid();
+	l.rotateBlockClock(g.get());
+	g->UpdateGrid();
 }
 
 void Player::rotateBlockCounterClockwise(){
-	l.rotateBlockCounterClock(&g);
-	g.UpdateGrid();
+	l.rotateBlockCounterClock(g.get());
+	g->UpdateGrid();
 }

@@ -7,12 +7,13 @@
 #include <iomanip>
 #include <sstream>
 #include "board.h"
+#include <memory>
 
 class Interpreter;
 
 class Biquadris {
 	Interpreter *inter;
-	Board gameBoard;
+	std::unique_ptr<Board> gameBoard;
 	int player;
 
 public:

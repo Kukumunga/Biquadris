@@ -1,17 +1,18 @@
 #include "board.h"
 #include <iostream>
+#include <memory>
 
-Board::Board(): p1{Player()},p2{Player()} {
-	p1.myTurn();
+Board::Board(): p1{std::unique_ptr<Player>(new Player())},p2{std::unique_ptr<Player>(new Player())} {
+	p1->myTurn();
 }
 
 
-void Board::printBoards(){	
+void Board::printBoards() const{	
 
 	for (int i = 0; i < 18; ++i){
-		p1.printRow(i);
+		p1->printRow(i);
 		std::cout << std::setw(9) << std::setfill(' ');
-		p2.printRow(i);
+		p2->printRow(i);
 		std::cout << std::endl;
 	}
 }
@@ -19,55 +20,55 @@ void Board::printBoards(){
 void Board::Move(int playerNum,std::string command){
 	if (command == "left"){
 		if (playerNum == 1){
-			p1.moveBlockLeft();
+			p1->moveBlockLeft();
 		}else{
-			p2.moveBlockLeft();
+			p2->moveBlockLeft();
 		}
 	}else if (command == "right"){
 		if (playerNum == 1){
-			p1.moveBlockRight();
+			p1->moveBlockRight();
 		}else{
-			p2.moveBlockRight();
+			p2->moveBlockRight();
 		}		
 	}else if (command == "down"){
 		if (playerNum == 1){
-			p1.moveBlockDown();
+			p1->moveBlockDown();
 		}else{
-			p2.moveBlockDown();
+			p2->moveBlockDown();
 		}		
 	}else if (command == "drop"){
 		if (playerNum == 1){
-			p1.dropBlock();
-			p1.notMyTurn();
-			p2.myTurn();
+			p1->dropBlock();
+			p1->notMyTurn();
+			p2->myTurn();
 		}else{
-			p2.dropBlock();
-			p2.notMyTurn();
-			p1.myTurn();
+			p2->dropBlock();
+			p2->notMyTurn();
+			p1->myTurn();
 		}		
 	}else if (command == "clockwise"){
 		if (playerNum == 1){
-			p1.rotateBlockClockwise();
+			p1->rotateBlockClockwise();
 		}else{
-			p2.rotateBlockClockwise();
+			p2->rotateBlockClockwise();
 		}
 	}else if (command == "counterclockwise"){
 		if (playerNum == 1){
-			p1.rotateBlockCounterClockwise();
+			p1->rotateBlockCounterClockwise();
 		}else{
-			p2.rotateBlockCounterClockwise();
+			p2->rotateBlockCounterClockwise();
 		}
 	}
 
 }
 
 
-std::ostream& operator<<(std::ostream &out, Board &b){
+std::ostream& operator<<(std::ostream &out,const Board &b){
 
-	out << "Level:" << std::setw(5) <<  b.p1.getLevel() <<  std::setfill(' ') << std::setw(14) << std::setfill(' ') 
-								<< "Level:" << std::setw(5) <<  b.p2.getLevel() << std::setfill(' ') << std::endl;
-	out << "Score:" << std::setw(5) <<  b.p1.getScore() <<  std::setfill(' ') << std::setw(14) << std::setfill(' ') 
-								<< "Score:" << std::setw(5) <<  b.p2.getScore() << std::setfill(' ') << std::endl;
+	out << "Level:" << std::setw(5) <<  b.p1->getLevel() <<  std::setfill(' ') << std::setw(14) << std::setfill(' ') 
+								<< "Level:" << std::setw(5) <<  b.p2->getLevel() << std::setfill(' ') << std::endl;
+	out << "Score:" << std::setw(5) <<  b.p1->getScore() <<  std::setfill(' ') << std::setw(14) << std::setfill(' ') 
+								<< "Score:" << std::setw(5) <<  b.p2->getScore() << std::setfill(' ') << std::endl;
 	
 	for (int i =0; i< 11; ++i){
 		out << '-';
@@ -91,12 +92,12 @@ std::ostream& operator<<(std::ostream &out, Board &b){
 
 	out << std::endl;
 	out << "Next:" << std::setw(19) << "Next:" <<std::endl;
-	b.p1.printNextBlock(1);
+	b.p1->printNextBlock(1);
 	out << std::setw(19);
-	b.p2.printNextBlock(1);
+	b.p2->printNextBlock(1);
 	out <<std::endl;
-	b.p1.printNextBlock(2);
+	b.p1->printNextBlock(2);
 	out << std::setw(19);
-	b.p2.printNextBlock(2);
+	b.p2->printNextBlock(2);
 	return out;
 }

@@ -7,19 +7,21 @@
 #include <iostream>
 #include <vector>
 #include <iomanip>
+#include <memory>
 
 class Board{
 private:
-	Player p1;
-	Player p2;
+	std::unique_ptr<Player> p1;
+	std::unique_ptr<Player> p2;
 public:
+	//~Board();
 	Board();
-	friend std::ostream& operator<<(std::ostream &out, Board &b);
-	void printBoards(); // prints all the board stuff for the game
+	friend std::ostream& operator<<(std::ostream &out, const Board &b);
+	void printBoards() const; // prints all the board stuff for the game
 	void Move(int,std::string); // (integer, string) 
 };
 
-std::ostream& operator<<(std::ostream &out, Board &b);
+std::ostream& operator<<(std::ostream &out,const  Board &b);
 
 
 #endif
