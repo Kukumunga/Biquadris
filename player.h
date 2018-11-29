@@ -29,6 +29,8 @@ public:
 	void levelUp();
 	void levelDown();
 	bool canSpecialAction();
+	void Blind();
+	void Heavy();
 };
 
 #endif

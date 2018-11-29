@@ -17,12 +17,22 @@ Player::Player(): g{std::unique_ptr<Grid>(new Grid())},l{new Level0("sequence1.t
 	l->createBlock(g.get());
 }
 
+
+void Player::Blind(){
+	g->Blind();
+}
+
+void Player::Heavy(){
+	g->Heavy();
+}
+
 bool Player::canSpecialAction(){
 	if (g->numCleared() >= 2){
 		return true;
 	}else{
 		return false;
 	}
+	
 }
 
 
@@ -80,7 +90,7 @@ void Player::dropBlock(){
 	g->next();
 	g->UpdateGrid();
 	l->createBlock(g.get());
-	  
+	g->unBlind();	  
 }
 
 void Player::printNextBlock(int line) const{

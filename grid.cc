@@ -102,19 +102,21 @@ Block* Grid::getCurrentBlock(){
 
 void Grid::UpdateGrid(){
 	int size;
-	if (!containsNext){
-	size = blocksInGrid.size();
-	}else{
-	size = blocksInGrid.size() - 1;
-	}
-	for (int i = 0; i < size;++i){
-		std::vector<Coord> vec = blocksInGrid[i]->getComp();
-		int s = vec.size();
-		for (int j = 0;j < s;++j){
-                	Coord c = vec[j];
-                	theGrid[c.getX()][c.getY()].setBlockChar(blocksInGrid[i]->agetType());
+	if (blind != true){
+		if (!containsNext){
+			size = blocksInGrid.size();
+		}else{
+			size = blocksInGrid.size() - 1;
 		}
-  	}
+		for (int i = 0; i < size;++i){
+			std::vector<Coord> vec = blocksInGrid[i]->getComp();
+			int s = vec.size();
+			for (int j = 0;j < s;++j){
+                		Coord c = vec[j];
+                		theGrid[c.getX()][c.getY()].setBlockChar(blocksInGrid[i]->agetType());
+			}	
+  		}
+	}
 }
 
 void Grid::createBlock(std::string blockType,int level){
@@ -227,6 +229,14 @@ void Grid::printNextBlock(int line){
 	}
 }
 
+void Grid::unBlind(){
+	if (blind == true){
+		turnAllOff();
+		blind = false;
+		UpdateGrid();
+	}
+}
+
 void Grid::turnAllOff(){
 	for (int y = 3; y < 18; ++ y){
 		for (int x = 0; x < 11; ++x){
@@ -236,12 +246,21 @@ void Grid::turnAllOff(){
 }
 
 void Grid::Blind(){
+	blind = true;
 	for (int y = 3; y< 14;++y){
 		for (int x = 2 ; x < 9; ++x){
 			turnOn(x,y);
 			theGrid[x][y].setBlockChar("?");
 		}
 	}
+}
+
+void Grid::Heavy(){
+	heavy = true;
+}
+
+bool Grid::getHeavy(){
+	return heavy;
 }
 
 void Grid::turnOn(int x,int y){

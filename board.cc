@@ -9,9 +9,9 @@ Board::Board(): p1{std::unique_ptr<Player>(new Player())},p2{std::unique_ptr<Pla
 void Board::applySpecialAction(std::string action, int player){
 	if (action == "blind"){
 		if (player == 1){
-			// apply to player 1
+			p1->Blind();
 		}else{
-			// apply to player 2
+			p2->Blind();
 		}
 	}else if(action == "force"){
 	 	if (player == 1){
@@ -21,9 +21,9 @@ void Board::applySpecialAction(std::string action, int player){
                 }
 	}else if (action == "heavy"){
 		if (player == 1){
-                        // apply to player 1
+                        p1->Heavy();
                 }else{
-                        // apply to player 2
+                        p2->Heavy();
                 }
 	}
 }

@@ -13,9 +13,10 @@ class Grid{
 	Block *currentBlock;
 	Block *nextBlock;
 	std::vector <std::unique_ptr<Block>> blocksInGrid;
-	bool isHeavy;
+	bool heavy = false;
 	void clearRow(int);
 	int numClear = 0;
+	bool blind = false;
 
 public:
 	Grid();
@@ -51,6 +52,8 @@ public:
 	void turnAllOff();
 	void Blind();
 	int numCleared();
+	void unBlind();
+	void Heavy();
 };
 
 
