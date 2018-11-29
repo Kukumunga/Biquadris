@@ -3,7 +3,7 @@
 #include "coord.h"
 #include <cstdlib>
 #include <ctime>
-
+#include <cmath>
 int Level1::getLevel(){return 1;}
 
 void Level1::createBlock(Grid *g){
@@ -14,3 +14,6 @@ void Level1::createBlock(Grid *g){
 
 }
 
+int Level1::calculateScore(Grid *g){
+	return pow((1 + g->numCleared()),2);
+}

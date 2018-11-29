@@ -4,6 +4,7 @@
 #include "blocki.h"
 #include <fstream>
 #include <iostream>
+#include <cmath>
 
 //include all the other block files
 using namespace std;
@@ -37,7 +38,9 @@ void Level0::createBlock(Grid *g){
 	
 }
 
-
+int Level0::calculateScore(Grid *g){
+	return pow(1 + g->numCleared(),2);
+}
 /*void Level0::moveRight(Grid *g){
 	//call Block's calcRight function which returns coordinates
 	vector<Coord> potentialLocation = g->getCurrentBlock()->calcRight();

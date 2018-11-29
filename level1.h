@@ -12,6 +12,7 @@ public:
 	//Level1();
 	void createBlock(Grid *);
 	int getLevel();
+	int calculateScore(Grid*) override;
 };
 
 #endif

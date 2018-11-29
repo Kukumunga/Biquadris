@@ -13,7 +13,7 @@ public:
 	Level0(const std::string &filename);
 	void createBlock(Grid *);
 	int getLevel();
-
+	int calculateScore(Grid *) override;
 //	void moveRight(Grid *) override;
 //	void moveLeft(Grid *) override;
 //	bool moveDown(Grid *) override;
