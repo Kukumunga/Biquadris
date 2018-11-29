@@ -1,0 +1,18 @@
+#include "level2.h"
+#include "grid.h"
+#include "coord.h"
+#include <cstdlib>
+#include <ctime>
+#include <cmath>
+int Level2::getLevel(){return 2;}
+
+void Level2::createBlock(Grid *g){
+        std::string blocks[7] = {"s","z","j","i","l","o","t"};
+        srand(time(0));
+        int r = rand() % 7;
+        g->createBlock(blocks[r],2);
+
+}
+int Level2::calculateScore(Grid *g){
+        return pow((2 + g->numCleared()),2);
+}
