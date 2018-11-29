@@ -38,7 +38,7 @@ bool Player::canSpecialAction(){
 
 void Player::levelUp(){
 	if (l->getLevel() == 0){
-		l.reset(new Level0("sequence1.txt"));
+		l.reset(new Level1());
 	}else if (l->getLevel() == 1){
 		//l->std::reset(new Level2());
 	}/*else if (l->getLevel() == 2){

@@ -38,7 +38,7 @@ void Level0::createBlock(Grid *g){
 }
 
 
-void Level0::moveRight(Grid *g){
+/*void Level0::moveRight(Grid *g){
 	//call Block's calcRight function which returns coordinates
 	vector<Coord> potentialLocation = g->getCurrentBlock()->calcRight();
 	for (int comp = 0; comp < 4; comp++){
@@ -52,8 +52,8 @@ void Level0::moveRight(Grid *g){
 			g->getCurrentBlock()->executeRight();
 		}
 	}
-}
-
+}*/
+/*
 void Level0::moveLeft(Grid *g){
 	//call Block's calcLeft function which returns coordinates
 	vector<Coord> potentialLocation = g->getCurrentBlock()->calcLeft();
@@ -69,9 +69,9 @@ void Level0::moveLeft(Grid *g){
 			g->getCurrentBlock()->executeLeft();
 		}
 	}
-}
+}*/
 
-bool Level0::moveDown(Grid *g){
+/* bool Level0::moveDown(Grid *g){
 	//call Block's calcDown function which returns coordinates
 	vector<Coord> potentialLocation = g->getCurrentBlock()->calcDown();
 	for (int comp = 0; comp < 4; comp++){
@@ -87,13 +87,13 @@ bool Level0::moveDown(Grid *g){
 		}
 	}
 	return true;
-}
-
+}*/
+/*
 void Level0::dropBlock(Grid *g){
 	while(moveDown(g)){}
 }
-
-void Level0::rotateBlockClock(Grid *g){
+*/
+/*void Level0::rotateBlockClock(Grid *g){
 	//call Block's rotateBlockClock which returns coordinates
 	vector<Coord> potentialLocation = g->getCurrentBlock()->rotateClock();
 	for (int comp = 0; comp < 4; comp++){
@@ -108,8 +108,8 @@ void Level0::rotateBlockClock(Grid *g){
 			g->getCurrentBlock()->executeClock();
 		}
 	}
-}
-void Level0::rotateBlockCounterClock(Grid *g){
+}*/
+/*void Level0::rotateBlockCounterClock(Grid *g){
 	//call Block's rotateBlockCounterClock which returns coordinates
 	vector<Coord> potentialLocation = g->getCurrentBlock()->rotateCounterClock();
 	for (int comp = 0; comp < 4; comp++){
@@ -125,3 +125,4 @@ void Level0::rotateBlockCounterClock(Grid *g){
 		}
 	}
 }
+*/

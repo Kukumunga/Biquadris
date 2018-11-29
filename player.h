@@ -6,6 +6,7 @@
 #include "level.h"
 #include "level0.h"
 #include <memory>
+#include "level1.h"
 
 class Player{
 	std::unique_ptr<Grid> g; 
