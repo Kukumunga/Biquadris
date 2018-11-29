@@ -40,7 +40,7 @@ void Player::levelUp(){
 	if (l->getLevel() == 0){
 		l.reset(new Level1());
 	}else if (l->getLevel() == 1){
-		//l->std::reset(new Level2());
+		l.reset(new Level2());
 	}/*else if (l->getLevel() == 2){
 		l->std::reset(new Level3());
 	}else if (l->getLevel() == 3){
@@ -55,7 +55,7 @@ void Player::levelDown(){
 	if (l->getLevel() == 1){
                 l.reset(new Level0("sequence1.txt"));
         }else if (l->getLevel() == 2){
-                //l->std::reset(new Level1());
+               // l.reset(new Level1());
         }/*else if (l->getLevel() == 3){
                 l->std::reset(new Level2());
         }else if (l->getLevel() == 4){

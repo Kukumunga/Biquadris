@@ -14,12 +14,12 @@ public:
 	void createBlock(Grid *);
 	int getLevel();
 
-	void moveRight(Grid *) override;
-	void moveLeft(Grid *) override;
-	bool moveDown(Grid *) override;
-	void dropBlock(Grid *) override;			     
-	void rotateBlockClock(Grid *) override;
-	void rotateBlockCounterClock(Grid *) override;
+//	void moveRight(Grid *) override;
+//	void moveLeft(Grid *) override;
+//	bool moveDown(Grid *) override;
+//	void dropBlock(Grid *) override;			     
+//	void rotateBlockClock(Grid *) override;
+//	void rotateBlockCounterClock(Grid *) override;
 
 };
 
