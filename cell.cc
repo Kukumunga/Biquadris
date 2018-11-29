@@ -61,7 +61,6 @@ void Cell::leftNeighbourFilled(){
 
 void Cell::rightSideFilled(){
 	if (getX() == 5){
-		std::cout << "dsfdsffdfsdfsdfsdfsdfsdfdsfsdfdsfsdf";
 		++signal;
 	}else{
 		leftNeighbour->rightSideFilled();
