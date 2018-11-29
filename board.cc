@@ -30,7 +30,6 @@ void Board::applySpecialAction(std::string action, int player){
 
 
 void Board::printBoards() const{	
-
 	for (int i = 0; i < 18; ++i){
 		p1->printRow(i);
 		std::cout << std::setw(9) << std::setfill(' ');
@@ -106,7 +105,6 @@ void Board::Move(int playerNum,std::string command){
 }
 
 std::ostream& operator<<(std::ostream &out,const Board &b){
-
 	out << "Level:" << std::setw(5) <<  b.p1->getLevel() <<  std::setfill(' ') << std::setw(14) << std::setfill(' ') 
 								<< "Level:" << std::setw(5) <<  b.p2->getLevel() << std::setfill(' ') << std::endl;
 	out << "Score:" << std::setw(5) <<  b.p1->getScore() <<  std::setfill(' ') << std::setw(14) << std::setfill(' ') 

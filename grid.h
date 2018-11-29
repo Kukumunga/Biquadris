@@ -10,8 +10,10 @@ const int MID = 5;
 class Grid{
 	bool containsNext = false;
 	std::vector<std::vector<Cell>> theGrid;
+	//std::unique_ptr<Block> currentBlock;
+	std::unique_ptr<Block> nextBlock;
 	Block *currentBlock;
-	Block *nextBlock;
+	//Block *nextBlock;
 	std::vector <std::unique_ptr<Block>> blocksInGrid;
 	bool heavy = false;
 	void clearRow(int);
