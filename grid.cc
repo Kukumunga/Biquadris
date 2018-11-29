@@ -37,6 +37,12 @@ Grid::Grid(){
 	}
 }
 
+
+int Grid::numCleared(){
+	return numClear;
+}
+
+
 void Grid::printRow(int r){
 	for (int x = 0; x < 11; ++ x){
 		std::cout << theGrid[x][r];

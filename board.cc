@@ -6,6 +6,28 @@ Board::Board(): p1{std::unique_ptr<Player>(new Player())},p2{std::unique_ptr<Pla
 	p1->myTurn();
 }
 
+void Board::applySpecialAction(std::string action, int player){
+	if (action == "blind"){
+		if (player == 1){
+			// apply to player 1
+		}else{
+			// apply to player 2
+		}
+	}else if(action == "force"){
+	 	if (player == 1){
+                        // apply to player 1
+                }else{
+                        // apply to player 2
+                }
+	}else if (action == "heavy"){
+		if (player == 1){
+                        // apply to player 1
+                }else{
+                        // apply to player 2
+                }
+	}
+}
+
 
 void Board::printBoards() const{	
 
@@ -18,6 +40,8 @@ void Board::printBoards() const{
 }
 
 void Board::Move(int playerNum,std::string command){
+	std::string specialAction = "";
+
 	if (command == "left"){
 		if (playerNum == 1){
 			p1->moveBlockLeft();
@@ -39,10 +63,18 @@ void Board::Move(int playerNum,std::string command){
 	}else if (command == "drop"){
 		if (playerNum == 1){
 			p1->dropBlock();
+			if (p1->canSpecialAction()){
+				std::cin >> specialAction;
+				applySpecialAction(specialAction,2);
+			} 
 			p1->notMyTurn();
 			p2->myTurn();
 		}else{
 			p2->dropBlock();
+			if (p2->canSpecialAction()){
+                                std::cin >> specialAction;
+                                applySpecialAction(specialAction,1);
+                        }
 			p2->notMyTurn();
 			p1->myTurn();
 		}		
@@ -64,10 +96,14 @@ void Board::Move(int playerNum,std::string command){
                 }else{
                         p2->levelUp();
                 }
+	}else if (command == "leveldown"){
+		if (playerNum == 1){
+                        //p1->levelDown();
+                }else{  
+                        //p2->levelDown();
+                }  
 	}
-
 }
-
 
 std::ostream& operator<<(std::ostream &out,const Board &b){
 

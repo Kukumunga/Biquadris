@@ -50,6 +50,7 @@ public:
 	void turnOn(int,int);
 	void turnAllOff();
 	void Blind();
+	int numCleared();
 };
 
 

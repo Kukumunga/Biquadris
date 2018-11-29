@@ -27,6 +27,8 @@ public:
 	void myTurn();
 	void notMyTurn();
 	void levelUp();
+	void levelDown();
+	bool canSpecialAction();
 };
 
 #endif

@@ -17,6 +17,15 @@ Player::Player(): g{std::unique_ptr<Grid>(new Grid())},l{new Level0("sequence1.t
 	l->createBlock(g.get());
 }
 
+bool Player::canSpecialAction(){
+	if (g->numCleared() >= 2){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+
 void Player::levelUp(){
 	if (l->getLevel() == 0){
 		l.reset(new Level0("sequence1.txt"));
@@ -31,6 +40,20 @@ void Player::levelUp(){
 	}*/	
 }
 
+
+void Player::levelDown(){
+	if (l->getLevel() == 1){
+                l.reset(new Level0("sequence1.txt"));
+        }else if (l->getLevel() == 2){
+                //l->std::reset(new Level1());
+        }/*else if (l->getLevel() == 3){
+                l->std::reset(new Level2());
+        }else if (l->getLevel() == 4){
+                l->std::reset(new Level3());
+        }else if (l->getLevel() == 5){
+                l->std::reset(new Level4());
+        }*/
+}
 void Player::printRow(int r) const{
 	g->printRow(r);
 }
