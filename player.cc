@@ -2,8 +2,7 @@
 #include <memory>
 
 int Player::getScore() const{
-	//return score;
-	return 1;
+	return score;
 }
 
 int Player::getLevel() const{
@@ -90,7 +89,8 @@ void Player::dropBlock(){
 	g->next();
 	g->UpdateGrid();
 	l->createBlock(g.get());
-	g->unBlind();	  
+	g->unBlind();
+	score = score + l->calculateScore(g.get());	  
 }
 
 void Player::printNextBlock(int line) const{

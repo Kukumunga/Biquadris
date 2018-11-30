@@ -13,7 +13,7 @@ public:
 	virtual void dropBlock(Grid *);
 	virtual void rotateBlockClock(Grid *);
 	virtual void rotateBlockCounterClock(Grid *);
-	virtual int calculateScore(Grid *)=0 ;
+	virtual int  calculateScore(Grid *)=0 ;
 };
 
 #endif

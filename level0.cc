@@ -39,7 +39,11 @@ void Level0::createBlock(Grid *g){
 }
 
 int Level0::calculateScore(Grid *g){
-	return pow(1 + g->numCleared(),2);
+	if (g->numCleared() > 0){
+		return pow(0 + g->numCleared(),2);
+	}else{
+		return 0;
+	}
 }
 /*void Level0::moveRight(Grid *g){
 	//call Block's calcRight function which returns coordinates

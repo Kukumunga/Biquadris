@@ -15,5 +15,11 @@ void Level1::createBlock(Grid *g){
 }
 
 int Level1::calculateScore(Grid *g){
-	return pow((1 + g->numCleared()),2);
+	int c = g->numCleared();
+
+	if (c > 0){
+		return pow(1 + c,2);
+	}else{
+		return 0;
+	}
 }
