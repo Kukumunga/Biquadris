@@ -90,7 +90,8 @@ void Player::dropBlock(){
 	g->UpdateGrid();
 	l->createBlock(g.get());
 	g->unBlind();
-	score = score + l->calculateScore(g.get());	  
+	score = score + l->calculateScore(g.get());
+	score = score + g->blockScore();	  
 }
 
 void Player::printNextBlock(int line) const{

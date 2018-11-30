@@ -14,5 +14,10 @@ void Level2::createBlock(Grid *g){
 
 }
 int Level2::calculateScore(Grid *g){
-        return pow((2 + g->numCleared()),2);
+        int c = g->numCleared();
+	if (c > 0){
+		return pow(2 + c,2);
+	}else{
+		return 0;
+	}
 }

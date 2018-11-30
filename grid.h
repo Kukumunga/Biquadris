@@ -56,6 +56,7 @@ public:
 	int numCleared();
 	void unBlind();
 	void Heavy();
+	int blockScore();
 };
 
 

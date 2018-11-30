@@ -8,7 +8,7 @@ Block::~Block(){}
 Block::Block(string type, string colour):type{type}, colour{colour},orientation{"up"}{}
 
 void Block::setLevel(int l){level = l;}
-
+int Block::getLevel(){return level;}
 void Block::addCoord(Coord coord){components.emplace_back(coord);}
 
 string Block::agetType(){return type;}

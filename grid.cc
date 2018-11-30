@@ -8,6 +8,7 @@
 #include "blockz.h"
 #include <vector>
 #include <memory>
+#include <cmath>
 using namespace std;
 
 
@@ -36,6 +37,21 @@ Grid::Grid(){
 		}
 	}
 }
+
+int Grid::blockScore(){
+	int score = 0;
+	int s = blocksInGrid.size();
+	for (int i = s-1;i >= 0;--i){
+		std::vector<Coord> vec = blocksInGrid[i]->getComp();
+		if (vec.size() == 0){
+			score = score + pow((blocksInGrid[i]->getLevel() + 1),2);
+			blocksInGrid.erase(blocksInGrid.begin()+i);
+		}
+	}
+			
+	return score;
+}
+		
 
 
 int Grid::numCleared(){

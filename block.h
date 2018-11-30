@@ -32,6 +32,7 @@ public:
 	void executeDown();
 	virtual void executeClock()=0;
 	virtual void executeCounterClock()=0;
+	int getLevel();
 };
 
 #endif
