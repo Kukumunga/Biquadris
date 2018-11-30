@@ -16,6 +16,10 @@ Player::Player(): g{std::unique_ptr<Grid>(new Grid())},l{new Level0("sequence1.t
 	l->createBlock(g.get());
 }
 
+/*void Player::Force(std::string b){
+//	g->Force(b,l->getLevel());
+}*/
+
 
 void Player::Blind(){
 	g->Blind();

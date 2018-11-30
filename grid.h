@@ -57,6 +57,7 @@ public:
 	void unBlind();
 	void Heavy();
 	int blockScore();
+//	void Force(std::string,int);
 };
 
 

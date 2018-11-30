@@ -14,10 +14,13 @@ void Board::applySpecialAction(std::string action, int player){
 			p2->Blind();
 		}
 	}else if(action == "force"){
+		std::string b = "";
+		std::cout << "What block?";
+		std::cin >> b;
 	 	if (player == 1){
-                        // apply to player 1
+//                        p1->Force(b);
                 }else{
-                        // apply to player 2
+//                       p2->Force(b);
                 }
 	}else if (action == "heavy"){
 		if (player == 1){

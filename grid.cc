@@ -135,37 +135,31 @@ void Grid::UpdateGrid(){
 	}
 }
 
+
 void Grid::createBlock(std::string blockType,int level){
 	if (blockType == "i"){
 		nextBlock = std::unique_ptr<Block>(new BlockI());
-		//blocksInGrid.emplace_back(new BlockI());
 		nextBlock->setLevel(level);
 		nextBlock->addCoord(Coord{0,3});
 		nextBlock->addCoord(Coord{1,3});
 		nextBlock->addCoord(Coord{2,3});
 		nextBlock->addCoord(Coord{3,3});
-		//nextBlock = blocksInGrid.back().get();
 	} else if (blockType == "j"){
 		nextBlock = std::unique_ptr<Block>(new BlockJ());
-		//blocksInGrid.emplace_back(new BlockJ());
 		nextBlock->setLevel(level);
 		nextBlock->addCoord(Coord{0,2});
 		nextBlock->addCoord(Coord{0,3});
 		nextBlock->addCoord(Coord{1,3});
 		nextBlock->addCoord(Coord{2,3});
-		//nextBlock = blocksInGrid.back().get();
 	}else if (blockType == "l"){
 		nextBlock = std::unique_ptr<Block>(new BlockL());
-		//blocksInGrid.emplace_back(new BlockL());
 		nextBlock->setLevel(level);
 		nextBlock->addCoord(Coord{2,2});
 		nextBlock->addCoord(Coord{2,3});
 		nextBlock->addCoord(Coord{1,3});
 		nextBlock->addCoord(Coord{0,3});
-		//nextBlock = blocksInGrid.back().get();
 	}else if (blockType == "o"){
 		nextBlock = std::unique_ptr<Block>(new BlockO());
-		//blocksInGrid.emplace_back(new BlockO());
 		nextBlock->setLevel(level);
 		nextBlock->addCoord(Coord{0,2});
 		nextBlock->addCoord(Coord{1,2});
