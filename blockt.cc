@@ -29,7 +29,7 @@ vector<Coord> BlockT::rotateClock(){
 		newCoords.emplace_back(Coord(lowerLeftX, lowerLeftY));
 		newCoords.emplace_back(Coord(lowerLeftX + 1, lowerLeftY));
 		newCoords.emplace_back(Coord(lowerLeftX + 1, lowerLeftY - 1));
-		newCoords.emplace_back(Coord(lowerLeftX + 2, lowerLeftY - 1));
+		newCoords.emplace_back(Coord(lowerLeftX + 2, lowerLeftY));
 	}else if (orientation == "down"){
 		newCoords.emplace_back(Coord(lowerLeftX, lowerLeftY));
 		newCoords.emplace_back(Coord(lowerLeftX, lowerLeftY - 2));
@@ -146,7 +146,7 @@ void BlockT::executeClock(){
 		components[0].setCoord(lowerLeftX, lowerLeftY);
 		components[1].setCoord(lowerLeftX + 1, lowerLeftY);
 		components[2].setCoord(lowerLeftX + 1, lowerLeftY - 1);
-		components[3].setCoord(lowerLeftX + 2, lowerLeftY - 1);
+		components[3].setCoord(lowerLeftX + 2, lowerLeftY);
 		orientation = "down";
 	}else if (orientation == "down"){
 		components[0].setCoord(lowerLeftX, lowerLeftY);
