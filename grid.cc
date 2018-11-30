@@ -273,8 +273,7 @@ void Grid::Blind(){
 	blind = true;
 	for (int y = 3; y< 14;++y){
 		for (int x = 2 ; x < 9; ++x){
-			turnOn(x,y);
-			theGrid[x][y].setBlockChar("?");
+			theGrid[x][y].setBlind();
 		}
 	}
 }

@@ -34,6 +34,7 @@ public:
 	int getY();
 	Coord * getCoord();
 	void setFilledStatus(bool);
+	void setBlind();
 };
 
 

@@ -7,6 +7,8 @@ Cell::Cell(int x,int y): c{Coord{x,y}} {}
 std::ostream& operator<<(std::ostream &out, Cell &c){
 	if (c.getStatus()){
 		out << c.getBlockChar();
+	}else if (c.getBlockChar() == "?"){
+		out << "?";
 	}else{
 		out << " ";
 	}
@@ -20,6 +22,9 @@ std::string Cell::getBlockChar(){
 void Cell::setBlockChar(std::string c){
 	block = c;
 	turnOn();
+}
+void Cell::setBlind(){
+	block = "?";
 }
 
 void Cell::addLeftNeighbour(Cell * left){
@@ -85,6 +90,7 @@ bool Cell::canClearRow(){
 
 void Cell::turnOff(){
 	Filled = false;
+	block = "";
 }
 
 void Cell::turnOn(){

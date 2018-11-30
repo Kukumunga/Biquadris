@@ -63,6 +63,7 @@ void Board::Move(int playerNum,std::string command){
 		if (playerNum == 1){
 			p1->dropBlock();
 			if (p1->canSpecialAction()){
+				std::cout << "Enter special action" << std::endl;
 				std::cin >> specialAction;
 				applySpecialAction(specialAction,2);
 			} 
