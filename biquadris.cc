@@ -8,6 +8,7 @@
 Biquadris::Biquadris():gameBoard{std::unique_ptr<Board>(new Board())},player{1}{}
 Biquadris::~Biquadris(){delete inter;}
 void Biquadris::start(){
+try{
 	std::cout << *gameBoard << std::endl;
 	std::string action;
 	while(true){
@@ -34,5 +35,9 @@ void Biquadris::start(){
 		}*/			
 		player = (player + 1)%2;	
 	}
+}catch(int player){
+std::cout <<"Player " << player << " loses!";
+goto endgame;
+}
 endgame:;//"goto endgame;" to end the game...
 }

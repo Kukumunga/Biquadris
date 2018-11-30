@@ -104,10 +104,17 @@ bool Grid::isFilled(int x,int y){
 	return (theGrid.at(x).at(y)).getStatus();
 }
 
-void Grid::next(){//moves nextBlock into currentBlock
-	blocksInGrid.emplace_back(std::move(nextBlock));//moves the next block into current
+bool Grid::next(){//moves nextBlock into currentBlock
+	std::vector<Coord> vec = nextBlock->getComp();
+	for (int i = 0; i < 4;++i){
+		if (isFilled(vec[i].getX(),vec[i].getY())){
+			return false;
+		}
+	}
+	blocksInGrid.emplace_back(std::move(nextBlock));//moves the next block into current	
 	currentBlock = blocksInGrid.back().get();
 	//containsNext = false;
+	return true;
 }
 
 

@@ -9,11 +9,13 @@ int Player::getLevel() const{
 	return l->getLevel();
 }
 
-Player::Player(): g{std::unique_ptr<Grid>(new Grid())},l{new Level0("sequence1.txt")}{
+Player::Player(int id): g{std::unique_ptr<Grid>(new Grid())},l{new Level0("sequence1.txt")}{
+	playerId = id;
 	l->createBlock(g.get());
-	g->next();
-	g->UpdateGrid();
-	l->createBlock(g.get());
+	if (g->next() == true){
+		g->UpdateGrid();
+		l->createBlock(g.get());
+	}
 }
 
 /*void Player::Force(std::string b){
@@ -90,7 +92,9 @@ void Player::dropBlock(){
 	l->dropBlock(g.get());
 	g->UpdateGrid();
 	g->clearFullRows();
-	g->next();
+	if (g->next() == false){
+		throw playerId;
+	}
 	g->UpdateGrid();
 	l->createBlock(g.get());
 	g->unBlind();

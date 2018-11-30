@@ -13,10 +13,11 @@ class Player{
 	std::unique_ptr<Level> l;// {new Level0("sequence1")};
 	int score = 0;
 	bool turn = false;
+	int playerId = 0;
 public:
 	int getScore() const;
 	int getLevel() const;
-	Player();
+	Player(int);
 	void printRow(int) const;
 	void moveBlockLeft();
 	void moveBlockRight();

@@ -48,7 +48,7 @@ public:
 	void setCurrentBlock(Block *);
 	void turnOff();
 	void printNextBlock(int line);
-	void next();
+	bool next();
 	void setFilledStatus(int,int);
 	void turnOn(int,int);
 	void turnAllOff();

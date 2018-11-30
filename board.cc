@@ -2,7 +2,7 @@
 #include <iostream>
 #include <memory>
 
-Board::Board(): p1{std::unique_ptr<Player>(new Player())},p2{std::unique_ptr<Player>(new Player())} {
+Board::Board(): p1{std::unique_ptr<Player>(new Player(1))},p2{std::unique_ptr<Player>(new Player(2))} {
 	p1->myTurn();
 }
 
