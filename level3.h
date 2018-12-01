@@ -8,6 +8,7 @@ class Grid;
 class Level3 : public Level {
         std::vector<std::string> blocks;
         std::vector<std::string>::iterator it;
+	bool random = true;
 public:
 	Level3();
         void createBlock(Grid *);

@@ -8,7 +8,7 @@
 #include <vector>
 #include <iomanip>
 #include <memory>
-
+#include <string>
 class Board{
 private:
 	std::unique_ptr<Player> p1;
@@ -20,7 +20,9 @@ public:
 	void printBoards() const; // prints all the board stuff for the game
 	bool Move(int,std::string); // (integer, string)
 	void applySpecialAction(std::string,int);
-	//std::shared_ptr<Xwindow> xw; 
+	//std::shared_ptr<Xwindow> xw;
+	void noRandom(int,std::string); 
+	void random(int);
 };
 
 std::ostream& operator<<(std::ostream &out,const  Board &b);

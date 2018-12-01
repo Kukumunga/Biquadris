@@ -1,9 +1,24 @@
 #include "board.h"
 #include <iostream>
 #include <memory>
-
 Board::Board(): p1{std::unique_ptr<Player>(new Player(1))},p2{std::unique_ptr<Player>(new Player(2))} {
 	p1->myTurn();
+}
+
+void Board::noRandom(int playerId,std::string file){
+	if (playerId == 1){
+		p1->noRandom(file);
+	}else{
+		p2->noRandom(file);
+	}
+}
+
+void Board::random(int playerId){
+	if (playerId == 1){
+                p1->Random();
+        }else{
+                p2->Random();
+        }
 }
 
 void Board::applySpecialAction(std::string action, int player){
@@ -117,20 +132,6 @@ bool Board::Move(int playerNum,std::string command){
                 }else{  
                         //p2->levelDown();
                 }  
-	}else if(command == "random"){
-		 int level = p1->getLevel();
-                std::string fname = "";
-		if (playerNum == 1){
-			if ((level == 3) || (level == 4)){
-				 std::cin >> fname;
-				p1->setFile(fname);
-			}
-		}else{
-                        if ((level == 3) || (level == 4)){
-                                 std::cin >> fname;
-                                p2->setFile(fname);
-                        }
-		}
 	}else{
 		if ((command == "I") || (command == "i")){
 			if (playerNum == 1){

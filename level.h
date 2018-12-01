@@ -1,8 +1,9 @@
 #ifndef __LEVEL__
 #define __LEVEL__
-
+#include <string>
 class Grid;
 class Level {
+	int level = 0;
 public:
 	Level();
 	virtual ~Level()=0;
@@ -15,6 +16,8 @@ public:
 	virtual void rotateBlockClock(Grid *);
 	virtual void rotateBlockCounterClock(Grid *);
 	virtual int  calculateScore(Grid *)=0 ;
+//	void noRandom(std::string);
+//	void Random();
 };
 
 #endif

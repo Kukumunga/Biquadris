@@ -131,10 +131,16 @@ void Player::rotateBlockCounterClockwise(){
 	g->UpdateGrid();
 }
 
-int  Player::getLevel(){
+void Player::noRandom(std::string file){
+	if ((l->getLevel() == 3) || (l->getLevel() == 4)){
+		//l->setFile(file);
+	}
+}
+
+int Player::getLevel(){
 	return l->getLevel();
 }
 
-void Player::setFile(std::string file){
-//	l->setFile(file);
+void Player::Random(){
+//	l->Random();
 }
