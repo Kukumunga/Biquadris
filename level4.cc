@@ -38,7 +38,6 @@ void Level4::resetCounter(){
 void Level4::dropBlock(Grid *g){
 	Level::dropBlock(g);
 	blockCounter++;
-	std::cout << blockCounter << std::endl;
 	if (blockCounter == 5){
 		g->dropStar();
 		blockCounter = 0;
