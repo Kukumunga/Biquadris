@@ -11,7 +11,7 @@ class Interpreter {
 private:
 	std::vector<std::string> commands;
     std::map<std::string, std::string> moves;
-	void multiplier(std::string command, int n);
+	void multiplier(std::string c);
 	void autocomplete();
   public:
   	Interpreter();

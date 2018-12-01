@@ -24,6 +24,7 @@ class Grid{
 
 public:
 	Grid();
+	void dropStar();
 	int getCurLevel();
 	void printRow(int);
 	bool getHeavy();

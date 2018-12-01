@@ -1,8 +1,34 @@
 #include "interpreter.h"
 
-Interpreter::Interpreter(){}
-std::vector<std::string> Interpreter::getCommands(std::string c){
-	commands.clear();
+Interpreter::Interpreter(){
+	moves["drop"] = "drop";
+	moves["left"] = "left";
+	moves["right"] = "right";
+	moves["down"] = "down";
+}
+void Interpreter::autocomplete(){
+	int n = 0;
+	int size = commands.size();
+	std::string move = commands[0];
+	std::string action;
+	for (auto &p:moves){
+		if(p.first == move){
+			n = 1;
+			action = p.second;
+			break;
+		}
+		if(p.first.substr(0,move.length()) == move){
+			action = p.second;
+			n++;
+		}
+	}
+	if (n == 1){
+		for (int i = 0; i < size; ++i){
+			commands[i] = action;
+ 		}
+	}
+}
+void Interpreter::multiplier(std::string c){
 	std::string number;
 	int n;
 	//fix invalid commands
@@ -31,6 +57,13 @@ std::vector<std::string> Interpreter::getCommands(std::string c){
 	for(int i = 0; i < n; ++i){
 		commands.emplace_back(command);
 	}
+
+}
+std::vector<std::string> Interpreter::getCommands(std::string c){
+	commands.clear();
+	std::cout << c << std::endl;
+	multiplier(c);
+	autocomplete();
 	return commands;
 }
 

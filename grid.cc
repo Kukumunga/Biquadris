@@ -6,6 +6,7 @@
 #include "blockl.h"
 #include "blockt.h"
 #include "blockz.h"
+#include "blockstar.h"
 #include <vector>
 #include <memory>
 #include <cmath>
@@ -39,6 +40,20 @@ Grid::Grid(){
 
 int Grid::getCurLevel(){
 	return currentBlock->getLevel();
+}
+
+void Grid::dropStar(){
+	int rowLocation;
+	while (!theGrid[5][rowLocation].getStatus()){//while the cells are inactive in the middle
+		rowLocation++;//check the cell below
+		if (rowLocation == 17){
+			rowLocation = 18;
+			break;
+		}
+	}
+	blocksInGrid.emplace_back(new BlockStar());
+	blocksInGrid.back().get()->addCoord(Coord{5, rowLocation - 1});
+	UpdateGrid();
 }
 
 int Grid::blockScore(){
