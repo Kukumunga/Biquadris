@@ -9,6 +9,7 @@ class Level4 : public Level {
 	int blockCounter = 0;
         std::vector<std::string> blocks;
         std::vector<std::string>::iterator it;
+	bool random = true;
 public:
 	Level4();
         void createBlock(Grid *);
@@ -16,6 +17,7 @@ public:
         int calculateScore(Grid*) override;
 	void resetCounter();
 	void dropBlock(Grid *) override;
+	void noRandom(std::string) override;
 };
 
 #endif

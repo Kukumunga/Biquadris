@@ -35,7 +35,7 @@ void Level3::createBlock(Grid *g){
 void Level3::Random(){
 	random = true;
 }
-
+*/
 void Level3::noRandom(std::string filename){
 	random = false;
 	std::ifstream f{filename};
@@ -46,7 +46,7 @@ void Level3::noRandom(std::string filename){
         it = blocks.begin();
         f.close();
 }
-*/
+
 int Level3::calculateScore(Grid *g){
         int c = g->numCleared();
 	if (c > 0){

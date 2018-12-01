@@ -4,6 +4,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <cmath>
+#include <fstream>
+#include <iostream>
 Level4::Level4():Level(){}
 
 int Level4::getLevel(){return 4;}
@@ -15,6 +17,19 @@ void Level4::createBlock(Grid *g){
         g->createBlock(blocks[r],4);
 
 }
+
+
+void Level4::noRandom(std::string filename){
+        random = false;
+        std::ifstream f{filename};
+        std::string s;
+        while (f >> s){
+                blocks.emplace_back(s);
+        }
+        it = blocks.begin();
+        f.close();
+}
+
 
 void Level4::resetCounter(){
 	blockCounter = 0;

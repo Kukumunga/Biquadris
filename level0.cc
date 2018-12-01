@@ -19,6 +19,9 @@ Level0::Level0(const string &filename):Level(){
 	f.close();
 }
 
+void Level0::noRandom(std::string f){
+}
+
 int Level0::getLevel(){return 0;}
 
 void Level0::createBlock(Grid *g){
