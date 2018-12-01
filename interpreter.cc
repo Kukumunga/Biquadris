@@ -2,7 +2,6 @@
 
 Interpreter::Interpreter(){}
 std::vector<std::string> Interpreter::getCommands(std::string c){
-	std::cout << "fuck me" << std::endl;
 	commands.clear();
 	std::string number;
 	int n;
