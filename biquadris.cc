@@ -9,41 +9,34 @@ try{
 	std::cout << *gameBoard << std::endl;
 	std::string action;	    
 	while(true){
-		std::vector<std::string> v;
+		std::vector<std::string> moves;
 		while(std::cin >> action){
 			if (action == "exit"){
 				goto endgame;
 			}
-			v = inter.getCommands(action);
-			for(auto move:v){
-				int size = commands.size();
-				if (move == "random"){
-					gameBoard->random(player);
-					break;
-				}
-				else if (move == "norandom"){
-					std::string file;
-					std::cin >> file;
-					gameBoard->noRandom(player,file);
-					break;
-				}
-				else if (move == "restart"){
-					gameBoard.Restart();
-					player = 1;
-					break;
-				}
-				else if(gameBoard->Move(player,move,size)){
-					action = "drop";
-					break;
-				}
-				else {
-					break;
-				}							
+			moves = inter.getCommands(action);
+			std::string move = moves[0];
+			int size = moves.size();
+			if (move == "random"){
+				gameBoard->random(player);
 			}
-			std::cout << *gameBoard << std::endl;
-			if(action == "drop"){
+			else if (move == "norandom"){
+				std::string file;
+				std::cin >> file;
+				gameBoard->noRandom(player,file);
+			}
+			else if (move == "restart"){
+				gameBoard->Restart();
+				player = 1;
+				std::cout << *gameBoard << std::endl;
 				break;
 			}
+			else if(gameBoard->Move(player,move,size)){
+				action = "drop";
+				std::cout << *gameBoard << std::endl;
+				break;
+			}
+			std::cout << *gameBoard << std::endl;
 		}
 		//next player's turn	
 		player = (player + 1)%2;	
