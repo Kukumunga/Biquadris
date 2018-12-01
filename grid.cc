@@ -14,7 +14,6 @@ using namespace std;
 
 
 Grid::Grid(){
-
 	for (int x = 0; x < 11;++x){ // columns
 		std::vector<Cell> vec;
 		for (int y = 0; y < 18;++y){ // row

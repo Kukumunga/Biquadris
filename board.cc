@@ -117,8 +117,65 @@ bool Board::Move(int playerNum,std::string command){
                 }else{  
                         //p2->levelDown();
                 }  
+	}else if(command == "random"){
+		 int level = p1->getLevel();
+                std::string fname = "";
+		if (playerNum == 1){
+			if ((level == 3) || (level == 4)){
+				 std::cin >> fname;
+				p1->setFile(fname);
+			}
+		}else{
+                        if ((level == 3) || (level == 4)){
+                                 std::cin >> fname;
+                                p2->setFile(fname);
+                        }
+		}
+	}else{
+		if ((command == "I") || (command == "i")){
+			if (playerNum == 1){
+				p1->Force("i");
+			}else{
+				p2->Force("i");
+			}
+		}else if((command == "J") || (command == "j")){
+			if (playerNum == 1){
+                                p1->Force("j");
+                        }else{
+                                p2->Force("j");
+                        }
+		}else if ((command == "L") || (command == "l")){
+			 if (playerNum == 1){
+                                p1->Force("l");
+                        }else{
+                                p2->Force("l");
+                        }
+		}else if ((command == "O") || (command == "o")){
+			if (playerNum == 1){
+                                p1->Force("o");
+                        }else{
+                                p2->Force("o");
+                        } 
+		}else if ((command == "T") || (command == "t")){
+			if (playerNum == 1){
+                                p1->Force("t");
+                        }else{
+                                p2->Force("t");
+                        }
+		}else if ((command == "S") || (command == "s")){
+                        if (playerNum == 1){
+                                p1->Force("t");
+                       } else{
+                                p2->Force("t");
+                        }
+		}else if ((command == "z") || (command == "Z")){
+                        if (playerNum == 1){
+                                p1->Force("t");
+                       } else{
+                                p2->Force("t");
+                        }
+		}
 	}
-
 	return end;
 }
 

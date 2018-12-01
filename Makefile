@@ -5,7 +5,7 @@ OBJECTS = coord.o player.o cell.o grid.o level0.o board.o level.o blockstar.o bl
 DEPENDS = ${OBJECTS:.o=.d}
 
 ${EXEC}: ${OBJECTS}
-	${CXX} ${CXXFLAGS} ${OBJECTS} -o ${EXEC}
+	${CXX} ${CXXFLAGS} ${OBJECTS} -o ${EXEC} -L/usr/X11R6/lib -lX11
 
 -include ${DEPENDS}
 
