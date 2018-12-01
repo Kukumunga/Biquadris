@@ -9,7 +9,7 @@ class Level1 : public Level {
 	std::vector<std::string> blocks;
 	std::vector<std::string>::iterator it;
 public:
-	//Level1();
+	Level1();
 	void createBlock(Grid *);
 	int getLevel();
 	int calculateScore(Grid*) override;

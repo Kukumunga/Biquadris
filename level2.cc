@@ -4,6 +4,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <cmath>
+Level2::Level2():Level(false){}
+
 int Level2::getLevel(){return 2;}
 
 void Level2::createBlock(Grid *g){

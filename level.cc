@@ -4,23 +4,36 @@
 #include <vector>
 Level::~Level(){}
 
-void Level::moveRight(Grid *g){
+Level::Level(bool levHeavy):levHeavy{levHeavy}{}
+
+bool Level::moveRight(Grid *g){
+	int heavyDrops;//counter for amount of drops 
         //call Block's calcRight function which returns coordinates
-       std:: vector<Coord> potentialLocation = g->getCurrentBlock()->calcRight();
+        std:: vector<Coord> potentialLocation = g->getCurrentBlock()->calcRight();
         for (int comp = 0; comp < 4; comp++){
                 if (potentialLocation[comp].getX() > 10 ||
                                 (g->isFilled(potentialLocation[comp].getX(),potentialLocation[comp].getY())
                                 && !g->getCurrentBlock()->isComponent(potentialLocation[comp]))){
-                        break; //do not move right because the block is... blocked
+                        return false; //do not move right because the block is... blocked
                 }
                 if (comp == 3){ //if all the components of the block can move right                     
                         g->turnOff();
                         g->getCurrentBlock()->executeRight();
                 }
         }
+	if (g->getHeavy()){
+		for (int drops = 0; drops < 2; drops++){ //count the amount of times it can drop
+			if(moveDown(g)){++heavyDrops;}
+		}
+		if(heavyDrops < 2){ //if the block cannot drop twice due to Heavy effect
+			return true;
+		}
+	}
+	return false;
 }
 
-void Level::moveLeft(Grid *g){
+bool Level::moveLeft(Grid *g){
+	int heavyDrops;
         //call Block's calcLeft function which returns coordinates
        std:: vector<Coord> potentialLocation = g->getCurrentBlock()->calcLeft();
         for (int comp = 0; comp < 4; comp++){
@@ -28,13 +41,22 @@ void Level::moveLeft(Grid *g){
                                 (g->isFilled(potentialLocation[comp].getX(),potentialLocation[comp].getY()) //not filled already
                                 && !g->getCurrentBlock()->isComponent(potentialLocation[comp]))){ //not filled by block's own component
 
-                        break; //do not move left because the block is... blocked
+                        return false;; //do not move left because the block is... blocked
                 }
                 if (comp == 3){ //if all the components of the block can move right                     
                         g->turnOff();
                         g->getCurrentBlock()->executeLeft();
                 }
         }
+	if (g->getHeavy()){
+		for (int drops = 0; drops < 2; drops++){ //count the amount of times it can drop
+			if(moveDown(g)){++heavyDrops;}
+		}
+		if(heavyDrops < 2){ //if the block cannot drop twice due to Heavy effect
+			return true;
+		}
+	}
+	return false;
 }
 
 
