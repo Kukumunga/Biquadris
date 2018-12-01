@@ -215,6 +215,7 @@ std::ostream& operator<<(std::ostream &out,const Board &b){
 	b.p1->printNextBlock(2);
 	out << std::setw(19);
 	b.p2->printNextBlock(2);
+	out << std::endl;
 	return out;
 }
 

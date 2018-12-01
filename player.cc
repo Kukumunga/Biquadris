@@ -23,7 +23,12 @@ void Player::Force(std::string b){
 }
 
 void Player::setClear(){
-	g->resetClear();
+	if (g->numCleared() >= 1){
+		if (l->getLevel() == 4){
+			l->resetCounter();
+		}	
+		g->resetClear();
+	}
 }
 void Player::Blind(){
 	g->Blind();
@@ -97,7 +102,9 @@ void Player::moveBlockDown(int m){
 void Player::dropBlock(){
 	l->dropBlock(g.get());
 	g->UpdateGrid();
-	//if (g->invalidLocation)
+	if (g->validDrop() == false){
+		throw playerId;
+	}
 	if (g->next() == false){
 		throw playerId;
 	}

@@ -38,6 +38,17 @@ Grid::Grid(){
 	}
 }
 
+bool Grid::validDrop(){
+	std::vector<Coord> vec = currentBlock->getComp();
+	for (int i = 0;i<4;++i){
+		if (vec[i].getY() <= 2){
+			return false;
+		}
+	}
+	return true;
+}	
+
+
 int Grid::getCurLevel(){
 	return currentBlock->getLevel();
 }
@@ -101,7 +112,6 @@ void Grid::clearFullRows(){
 
 
 void Grid::clearRow(int row){
-	std::cout << "clear!!!" <<std::endl;
 	int size = blocksInGrid.size();
 	for (int e = 0; e < size; ++ e){
 		std::vector<Coord> vec = blocksInGrid[e]->getComp();
