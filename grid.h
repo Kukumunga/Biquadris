@@ -23,6 +23,7 @@ class Grid{
 
 public:
 	Grid();
+	int getCurLevel();
 	void printRow(int);
 	bool getHeavy();
 	Block* getCurrentBlock();

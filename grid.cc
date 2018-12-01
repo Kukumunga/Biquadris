@@ -38,6 +38,10 @@ Grid::Grid(){
 	}
 }
 
+int Grid::getCurLevel(){
+	return currentBlock->getLevel();
+}
+
 int Grid::blockScore(){
 	int score = 0;
 	int s = blocksInGrid.size();

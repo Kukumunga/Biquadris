@@ -9,7 +9,7 @@
 //include all the other block files
 using namespace std;
 
-Level0::Level0(const string &filename):Level(false){
+Level0::Level0(const string &filename):Level(){
 	ifstream f{filename};
 	string s;
 	while (f >> s){

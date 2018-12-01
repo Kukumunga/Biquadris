@@ -4,7 +4,7 @@
 #include <vector>
 Level::~Level(){}
 
-Level::Level(bool levHeavy):levHeavy{levHeavy}{}
+Level::Level(){}
 
 bool Level::moveRight(Grid *g){
 	int heavyDrops;//counter for amount of drops 
@@ -21,6 +21,11 @@ bool Level::moveRight(Grid *g){
                         g->getCurrentBlock()->executeRight();
                 }
         }
+	
+	if (g->getCurLevel() >= 3){ //if block was created in level 3 or 4
+		moveDown(g);
+	}
+	
 	if (g->getHeavy()){
 		for (int drops = 0; drops < 2; drops++){ //count the amount of times it can drop
 			if(moveDown(g)){++heavyDrops;}
@@ -48,6 +53,11 @@ bool Level::moveLeft(Grid *g){
                         g->getCurrentBlock()->executeLeft();
                 }
         }
+
+	if (g->getCurLevel() >= 3){ //if block was created in level 3 or 4
+		moveDown(g);
+	}
+
 	if (g->getHeavy()){
 		for (int drops = 0; drops < 2; drops++){ //count the amount of times it can drop
 			if(moveDown(g)){++heavyDrops;}
@@ -75,6 +85,11 @@ bool Level::moveDown(Grid *g){
                         g->getCurrentBlock()->executeDown();
                 }
         }
+
+	if (g->getCurLevel() >= 3){ //if block was created in level 3 or 4
+		moveDown(g);
+	}
+
         return true;
 }
 
@@ -93,6 +108,10 @@ void Level::rotateBlockClock(Grid *g){
                         g->getCurrentBlock()->executeClock();
                 }
         }
+
+	if (g->getCurLevel() >= 3){ //if block was created in level 3 or 4
+		moveDown(g);
+	}
 }
 
 void Level::rotateBlockCounterClock(Grid *g){
@@ -110,6 +129,10 @@ void Level::rotateBlockCounterClock(Grid *g){
                         g->getCurrentBlock()->executeCounterClock();
                 }
         }
+
+	if (g->getCurLevel() >= 3){ //if block was created in level 3 or 4
+		moveDown(g);
+	}	
 }
 
 void Level::dropBlock(Grid *g){

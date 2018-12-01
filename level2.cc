@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <cmath>
-Level2::Level2():Level(false){}
+Level2::Level2():Level(){}
 
 int Level2::getLevel(){return 2;}
 

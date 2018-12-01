@@ -3,10 +3,8 @@
 
 class Grid;
 class Level {
-protected:
-	bool levHeavy;
 public:
-	Level(bool levHeavy);
+	Level();
 	virtual ~Level()=0;
 	virtual int getLevel()=0;
 	virtual void createBlock(Grid *)=0;
