@@ -1,9 +1,7 @@
 #include "biquadris.h"
 #include "board.h"
 
-	
-			
-
+//add sequence 
 Biquadris::Biquadris():gameBoard{std::unique_ptr<Board>(new Board())},player{1}{}
 Biquadris::~Biquadris(){}
 void Biquadris::start(){
@@ -11,37 +9,34 @@ try{
 	std::cout << *gameBoard << std::endl;
 	std::string action;	    
 	while(true){
-		std::vector<std::string> v;
+		std::vector<std::string> moves;
 		while(std::cin >> action){
 			if (action == "exit"){
 				goto endgame;
 			}
-			v = inter.getCommands(action);
-			for(auto p:v){
-				if (p == "random"){
-					gameBoard->random(player);
-					break;
-				}
-				else if (p == "norandom"){
-					std::string file;
-					std::cin >> file;
-					gameBoard->noRandom(player,file);
-					break;
-				}
-				else if (p == "restart"){
-					gameBoard.Restart();
-					player = 1;
-					break;
-				}
-				else if(gameBoard->Move(player,p)){
-					action = "drop";
-					break;
-				}							
+			moves = inter.getCommands(action);
+			std::string move = moves[0];
+			int size = moves.size();
+			if (move == "random"){
+				gameBoard->random(player);
 			}
-			std::cout << *gameBoard << std::endl;
-			if(action == "drop"){
+			else if (move == "norandom"){
+				std::string file;
+				std::cin >> file;
+				gameBoard->noRandom(player,file);
+			}
+			else if (move == "restart"){
+				gameBoard->Restart();
+				player = 1;
+				std::cout << *gameBoard << std::endl;
 				break;
 			}
+			else if(gameBoard->Move(player,move,size)){
+				action = "drop";
+				std::cout << *gameBoard << std::endl;
+				break;
+			}
+			std::cout << *gameBoard << std::endl;
 		}
 		//next player's turn	
 		player = (player + 1)%2;	
