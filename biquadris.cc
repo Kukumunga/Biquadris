@@ -15,13 +15,22 @@ try{
 			if (action == "exit"){
 				goto endgame;
 			}	
-			v = inter.getCommands(action);
-			
-			for(auto p:v){
-				if(gameBoard->Move(player,p)){
-					action = "drop";
-					break;
-				}							
+			if (action == "random"){
+				gameBoard->random(player);
+			}
+			if (action == "norandom"){
+				std::string file;
+				cin >> file;
+				gameBoard->norandom(player,file);
+			}
+			else {
+				v = inter.getCommands(action);
+				for(auto p:v){
+					if(gameBoard->Move(player,p)){
+						action = "drop";
+						break;
+					}							
+				}
 			}
 			std::cout << *gameBoard << std::endl;
 			if(action == "drop"){
