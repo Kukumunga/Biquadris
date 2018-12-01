@@ -20,8 +20,8 @@ try{
 			}
 			if (action == "norandom"){
 				std::string file;
-				cin >> file;
-				gameBoard->norandom(player,file);
+				std::cin >> file;
+				gameBoard->noRandom(player,file);
 			}
 			else {
 				v = inter.getCommands(action);
