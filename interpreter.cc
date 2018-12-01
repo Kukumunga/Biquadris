@@ -5,6 +5,10 @@ Interpreter::Interpreter(){
 	moves["left"] = "left";
 	moves["right"] = "right";
 	moves["down"] = "down";
+	moves["clockwise"] = "clockwise";
+	moves["counterclockwise"] = "counterclockwise";
+	moves["levelup"] = "levelup";
+	moves["leveldown"] = "leveldown";
 }
 void Interpreter::autocomplete(){
 	int n = 0;
