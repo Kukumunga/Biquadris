@@ -43,29 +43,33 @@ bool Player::canSpecialAction(){
 }
 
 
-void Player::levelUp(){
-	if (l->getLevel() == 0){
-		l.reset(new Level1());
-	}else if (l->getLevel() == 1){
-		l.reset(new Level2());
-	}else if (l->getLevel() == 2){
-		l.reset(new Level3());
-	}else if (l->getLevel() == 3){
-		l.reset(new Level4());
-	}	
+void Player::levelUp(int m){
+	for (int i = 0;i < m;++i){
+		if (l->getLevel() == 0){
+			l.reset(new Level1());
+		}else if (l->getLevel() == 1){
+			l.reset(new Level2());
+		}else if (l->getLevel() == 2){
+			l.reset(new Level3());
+		}else if (l->getLevel() == 3){
+			l.reset(new Level4());
+		}	
+	}
 }
 
 
-void Player::levelDown(){
-	if (l->getLevel() == 1){
-                l.reset(new Level0("sequence1.txt"));
-        }else if (l->getLevel() == 2){
-                l.reset(new Level1());
-        }else if (l->getLevel() == 3){
-                l.reset(new Level2());
-        }else if (l->getLevel() == 4){
-                l.reset(new Level3());
-        }
+void Player::levelDown(int m){
+	for (int i = 0;i < m;++i){
+		if (l->getLevel() == 1){
+                	l.reset(new Level0("sequence1.txt"));
+        	}else if (l->getLevel() == 2){
+                	l.reset(new Level1());
+        	}else if (l->getLevel() == 3){
+                	l.reset(new Level2());
+        	}else if (l->getLevel() == 4){
+                	l.reset(new Level3());
+   	     	}
+	}	
 }
 void Player::printRow(int r) const{
 	g->printRow(r);

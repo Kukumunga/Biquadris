@@ -122,15 +122,15 @@ bool Board::Move(int playerNum,std::string command,int size){
 		}
 	}else if (command == "levelup"){
 		if (playerNum == 1){
-                        p1->levelUp();
+                        p1->levelUp(size);
                 }else{
-                        p2->levelUp();
+                        p2->levelUp(size);
                 }
 	}else if (command == "leveldown"){
 		if (playerNum == 1){
-                        //p1->levelDown();
+                        p1->levelDown(size);
                 }else{  
-                        //p2->levelDown();
+                        p2->levelDown(size);
                 }  
 	}else{
 		if ((command == "I") || (command == "i")){

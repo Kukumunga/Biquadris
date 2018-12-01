@@ -31,8 +31,8 @@ public:
 	void printNextBlock(int) const;
 	void myTurn();
 	void notMyTurn();
-	void levelUp();
-	void levelDown();
+	void levelUp(int);
+	void levelDown(int);
 	bool canSpecialAction();
 	void Blind();
 	void Heavy();
