@@ -11,7 +11,8 @@ class Level3 : public Level {
 	bool random = true;
 public:
 	Level3();
-        void createBlock(Grid *);
+        void resetCounter() override{};
+	void createBlock(Grid *);
         int getLevel();
         int calculateScore(Grid*) override;
 	void noRandom(std::string)override;

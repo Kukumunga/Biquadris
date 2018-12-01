@@ -9,6 +9,7 @@ public:
 	Level();
 	virtual ~Level()=0;
 	virtual int getLevel()=0;
+	virtual void resetCounter()=0;
 	virtual void createBlock(Grid *)=0;
 	virtual bool moveRight(Grid *, int mult, bool moved); //returns whether the turn should end (used 4 heavy)
 	virtual bool moveLeft(Grid *, int mult, bool moved); //returns whether the turn should end (used 4 heavy)
