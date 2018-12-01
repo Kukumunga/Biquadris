@@ -90,8 +90,8 @@ void Player::moveBlockDown(int m){
 	g->UpdateGrid();
 }
 
-void Player::dropBlock(int m){
-	l->dropBlock(g.get(),m);
+void Player::dropBlock(){
+	l->dropBlock(g.get());
 	g->UpdateGrid();
 	g->clearFullRows();
 	if (g->next() == false){
@@ -126,7 +126,7 @@ void Player::rotateBlockClockwise(int m){
 	g->UpdateGrid();
 }
 
-void Player::rotateBlockCounterClockwise(){
+void Player::rotateBlockCounterClockwise(int m){
 	l->rotateBlockCounterClock(g.get(),m);
 	g->UpdateGrid();
 }

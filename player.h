@@ -22,11 +22,11 @@ public:
 	int getLevel() const;
 	Player(int);
 	void printRow(int) const;
-	bool moveBlockLeft();
-	bool moveBlockRight();
-	void moveBlockDown();
-	void rotateBlockClockwise();
-	void rotateBlockCounterClockwise();
+	bool moveBlockLeft(int);
+	bool moveBlockRight(int);
+	void moveBlockDown(int);
+	void rotateBlockClockwise(int);
+	void rotateBlockCounterClockwise(int);
 	void dropBlock();
 	void printNextBlock(int) const;
 	void myTurn();
