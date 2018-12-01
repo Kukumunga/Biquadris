@@ -134,3 +134,11 @@ void Player::rotateBlockCounterClockwise(){
 	l->rotateBlockCounterClock(g.get());
 	g->UpdateGrid();
 }
+
+int  Player::getLevel(){
+	return l->getLevel();
+}
+
+void Player::setFile(std::string file){
+//	l->setFile(file);
+}

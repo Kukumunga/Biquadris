@@ -35,6 +35,8 @@ public:
 	void Heavy();
 	void Force(std::string);
 	void setClear();
+	int getLevel();
+	void setFile(std::string);
 };
 
 #endif

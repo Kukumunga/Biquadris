@@ -5,6 +5,7 @@
 #include <memory>
 #include "cell.h"
 #include "block.h"
+
 const int MID = 5;
 
 class Grid{
