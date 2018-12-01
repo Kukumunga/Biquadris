@@ -23,13 +23,16 @@ try{
 			v = inter->getCommands(action);
 			
 			for(auto p:v){				
-				gameBoard->Move(player,p);
+				end = gameBoard->Move(player,p);
 				action = p;
+				if (end){
+					break;
+				}
 			}
 			std::cout << *gameBoard << std::endl;
-			if(action == "drop"){
-				break;
-			}
+			if (end){
+                                 break;
+                        }
 		}
 		/*for(auto p:v){
 			gameBoard.Move(player,p);

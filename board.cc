@@ -54,8 +54,16 @@ bool Board::Move(int playerNum,std::string command){
 	}else if (command == "right"){
 		if (playerNum == 1){
 			end = p1->moveBlockRight();
+			if (end){
+				p1->notMyTurn();
+                        	p2->myTurn();
+			}
 		}else{
 			end = p2->moveBlockRight();
+			if (end){
+				p2->notMyTurn();
+                        	p1->myTurn();
+			}	
 		}		
 	}else if (command == "down"){
 		if (playerNum == 1){
@@ -70,6 +78,7 @@ bool Board::Move(int playerNum,std::string command){
 				std::cout << "Enter special action:" << std::endl;
 				std::cin >> specialAction;
 				applySpecialAction(specialAction,2);
+				p1->setClear();
 			} 
 			p1->notMyTurn();
 			p2->myTurn();
@@ -78,10 +87,12 @@ bool Board::Move(int playerNum,std::string command){
 			if (p2->canSpecialAction()){
                                 std::cin >> specialAction;
                                 applySpecialAction(specialAction,1);
+				p2->setClear();
                         }
 			p2->notMyTurn();
 			p1->myTurn();
-		}		
+		}
+		end = true;		
 	}else if (command == "clockwise"){
 		if (playerNum == 1){
 			p1->rotateBlockClockwise();
@@ -108,7 +119,7 @@ bool Board::Move(int playerNum,std::string command){
                 }  
 	}
 
-	//	return end;
+	return end;
 }
 
 std::ostream& operator<<(std::ostream &out,const Board &b){

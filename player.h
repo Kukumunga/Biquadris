@@ -34,6 +34,7 @@ public:
 	void Blind();
 	void Heavy();
 	void Force(std::string);
+	void setClear();
 };
 
 #endif

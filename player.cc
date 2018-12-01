@@ -22,7 +22,9 @@ void Player::Force(std::string b){
 	g->Force(b,l->getLevel());
 }
 
-
+void Player::setClear(){
+	g->resetClear();
+}
 void Player::Blind(){
 	g->Blind();
 }
@@ -77,9 +79,10 @@ bool Player::moveBlockLeft(){
 	bool end = false;
 	end = l->moveLeft(g.get());
 	g->UpdateGrid();
+	return end;
 }
 
-void Player::moveBlockRight(){
+bool Player::moveBlockRight(){
 	bool end = false;
 	end = l->moveRight(g.get());
 	g->UpdateGrid();
@@ -103,8 +106,7 @@ void Player::dropBlock(){
 	g->unBlind();
 	score = score + l->calculateScore(g.get());
 	score = score + g->blockScore();
-	g->unHeavy();
-	g->resetClear();	  
+	g->unHeavy();  
 }
 
 void Player::printNextBlock(int line) const{
