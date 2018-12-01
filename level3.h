@@ -14,6 +14,7 @@ public:
         void createBlock(Grid *);
         int getLevel();
         int calculateScore(Grid*) override;
+//	void noRandom(std::string);
 };
 
 #endif

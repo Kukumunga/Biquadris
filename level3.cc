@@ -36,7 +36,7 @@ void Level3::Random(){
 	random = true;
 }
 
-void Level3::setFile(std::string filename){
+void Level3::noRandom(std::string filename){
 	random = false;
 	std::ifstream f{filename};
        	std::string s;
@@ -46,7 +46,6 @@ void Level3::setFile(std::string filename){
         it = blocks.begin();
         f.close();
 }
-
 */
 int Level3::calculateScore(Grid *g){
         int c = g->numCleared();
