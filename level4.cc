@@ -23,6 +23,10 @@ void Level4::resetCounter(){
 void Level4::dropBlock(Grid *g){
 	dropBlock(g);
 	blockCounter++;
+	if (blockCounter == 5){
+		//call grid method to drop a block down the center
+		blockCounter = 0;
+	}
 }
 
 int Level4::calculateScore(Grid *g){
