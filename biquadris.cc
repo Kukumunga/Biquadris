@@ -11,6 +11,7 @@ void Biquadris::start(){
 try{
 	std::cout << *gameBoard << std::endl;
 	std::string action;
+	bool end = false;
 	while(true){
 		std::unique_ptr<BaseCommand>inter{new BaseCommand()};//heap allocated
 		//std::istringstream ss(action);

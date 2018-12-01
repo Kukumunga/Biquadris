@@ -18,7 +18,7 @@ public:
 	Board();
 	friend std::ostream& operator<<(std::ostream &out, const Board &b);
 	void printBoards() const; // prints all the board stuff for the game
-	void Move(int,std::string); // (integer, string)
+	bool Move(int,std::string); // (integer, string)
 	void applySpecialAction(std::string,int); 
 };
 

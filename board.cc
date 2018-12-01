@@ -41,20 +41,21 @@ void Board::printBoards() const{
 	}
 }
 
-void Board::Move(int playerNum,std::string command){
+bool Board::Move(int playerNum,std::string command){
 	std::string specialAction = "";
+	bool end = false;
 
 	if (command == "left"){
 		if (playerNum == 1){
-			p1->moveBlockLeft();
+			end = p1->moveBlockLeft();
 		}else{
-			p2->moveBlockLeft();
+			end = p2->moveBlockLeft();
 		}
 	}else if (command == "right"){
 		if (playerNum == 1){
-			p1->moveBlockRight();
+			end = p1->moveBlockRight();
 		}else{
-			p2->moveBlockRight();
+			end = p2->moveBlockRight();
 		}		
 	}else if (command == "down"){
 		if (playerNum == 1){
@@ -106,6 +107,8 @@ void Board::Move(int playerNum,std::string command){
                         //p2->levelDown();
                 }  
 	}
+
+	//	return end;
 }
 
 std::ostream& operator<<(std::ostream &out,const Board &b){

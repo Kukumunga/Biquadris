@@ -19,8 +19,8 @@ public:
 	int getLevel() const;
 	Player(int);
 	void printRow(int) const;
-	void moveBlockLeft();
-	void moveBlockRight();
+	bool moveBlockLeft();
+	bool moveBlockRight();
 	void moveBlockDown();
 	void rotateBlockClockwise();
 	void rotateBlockCounterClockwise();

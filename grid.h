@@ -46,6 +46,8 @@ public:
 	void Heavy();
 	int blockScore();
 	void Force(std::string,int);
+	void unHeavy();
+	void resetClear();
 };
 
 

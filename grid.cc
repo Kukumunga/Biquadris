@@ -83,6 +83,7 @@ void Grid::clearFullRows(){
 
 
 void Grid::clearRow(int row){
+	std::cout << "clear!!!" <<std::endl;
 	int size = blocksInGrid.size();
 	for (int e = 0; e < size; ++ e){
 		std::vector<Coord> vec = blocksInGrid[e]->getComp();
@@ -354,4 +355,12 @@ bool Grid::getHeavy(){
 
 void Grid::turnOn(int x,int y){
 	theGrid[x][y].turnOn();
+}
+
+void Grid::unHeavy(){
+	heavy = false;
+}
+
+void Grid::resetClear(){
+	numClear = 0;
 }

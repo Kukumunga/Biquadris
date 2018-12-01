@@ -73,14 +73,17 @@ void Player::printRow(int r) const{
 	g->printRow(r);
 }
 
-void Player::moveBlockLeft(){
-	l->moveLeft(g.get());
+bool Player::moveBlockLeft(){
+	bool end = false;
+	end = l->moveLeft(g.get());
 	g->UpdateGrid();
 }
 
 void Player::moveBlockRight(){
-	l->moveRight(g.get());
+	bool end = false;
+	end = l->moveRight(g.get());
 	g->UpdateGrid();
+	return end;
 }
 
 void Player::moveBlockDown(){
@@ -99,7 +102,9 @@ void Player::dropBlock(){
 	l->createBlock(g.get());
 	g->unBlind();
 	score = score + l->calculateScore(g.get());
-	score = score + g->blockScore();	  
+	score = score + g->blockScore();
+	g->unHeavy();
+	g->resetClear();	  
 }
 
 void Player::printNextBlock(int line) const{

@@ -82,6 +82,7 @@ void Cell::leftSideFilled(){
 
 bool Cell::canClearRow(){
 	if (signal == 2){
+		signal = 0;
 		return true;
 	}
 	signal = 0;
