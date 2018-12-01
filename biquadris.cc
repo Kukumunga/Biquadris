@@ -32,7 +32,6 @@ try{
 				break;
 			}
 			else if(gameBoard->Move(player,move,size)){
-				action = "drop";
 				std::cout << *gameBoard << std::endl;
 				break;
 			}
