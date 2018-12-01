@@ -40,7 +40,7 @@ bool Level::moveRight(Grid *g){
 bool Level::moveLeft(Grid *g){
 	int heavyDrops;
         //call Block's calcLeft function which returns coordinates
-       std:: vector<Coord> potentialLocation = g->getCurrentBlock()->calcLeft();
+        std:: vector<Coord> potentialLocation = g->getCurrentBlock()->calcLeft();
         for (int comp = 0; comp < 4; comp++){
                 if (potentialLocation[comp].getX() < 0 || //out of bounds
                                 (g->isFilled(potentialLocation[comp].getX(),potentialLocation[comp].getY()) //not filled already
@@ -72,7 +72,7 @@ bool Level::moveLeft(Grid *g){
 
 bool Level::moveDown(Grid *g){
         //call Block's calcDown function which returns coordinates
-       std::vector<Coord> potentialLocation = g->getCurrentBlock()->calcDown();
+        std::vector<Coord> potentialLocation = g->getCurrentBlock()->calcDown();
         for (int comp = 0; comp < 4; comp++){
                 if (potentialLocation[comp].getY() > 17 ||
                                 (g->isFilled(potentialLocation[comp].getX(),potentialLocation[comp].getY()) 
@@ -85,10 +85,6 @@ bool Level::moveDown(Grid *g){
                         g->getCurrentBlock()->executeDown();
                 }
         }
-
-	if (g->getCurLevel() >= 3){ //if block was created in level 3 or 4
-		moveDown(g);
-	}
 
         return true;
 }
