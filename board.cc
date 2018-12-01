@@ -56,25 +56,25 @@ void Board::printBoards() const{
 	}
 }
 
-bool Board::Move(int playerNum,std::string command){
+bool Board::Move(int playerNum,std::string command,int size){
 	std::string specialAction = "";
 	bool end = false;
 
 	if (command == "left"){
 		if (playerNum == 1){
-			end = p1->moveBlockLeft();
+			end = p1->moveBlockLeft(size);
 		}else{
-			end = p2->moveBlockLeft();
+			end = p2->moveBlockLeft(size);
 		}
 	}else if (command == "right"){
 		if (playerNum == 1){
-			end = p1->moveBlockRight();
+			end = p1->moveBlockRight(size);
 			if (end){
 				p1->notMyTurn();
                         	p2->myTurn();
 			}
 		}else{
-			end = p2->moveBlockRight();
+			end = p2->moveBlockRight(size);
 			if (end){
 				p2->notMyTurn();
                         	p1->myTurn();
@@ -82,9 +82,9 @@ bool Board::Move(int playerNum,std::string command){
 		}		
 	}else if (command == "down"){
 		if (playerNum == 1){
-			p1->moveBlockDown();
+			p1->moveBlockDown(size);
 		}else{
-			p2->moveBlockDown();
+			p2->moveBlockDown(size);
 		}		
 	}else if (command == "drop"){
 		if (playerNum == 1){
@@ -110,15 +110,15 @@ bool Board::Move(int playerNum,std::string command){
 		end = true;		
 	}else if (command == "clockwise"){
 		if (playerNum == 1){
-			p1->rotateBlockClockwise();
+			p1->rotateBlockClockwise(size);
 		}else{
-			p2->rotateBlockClockwise();
+			p2->rotateBlockClockwise(size);
 		}
 	}else if (command == "counterclockwise"){
 		if (playerNum == 1){
-			p1->rotateBlockCounterClockwise();
+			p1->rotateBlockCounterClockwise(size);
 		}else{
-			p2->rotateBlockCounterClockwise();
+			p2->rotateBlockCounterClockwise(size);
 		}
 	}else if (command == "levelup"){
 		if (playerNum == 1){

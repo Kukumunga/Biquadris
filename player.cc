@@ -71,27 +71,27 @@ void Player::printRow(int r) const{
 	g->printRow(r);
 }
 
-bool Player::moveBlockLeft(){
+bool Player::moveBlockLeft(int m){
 	bool end = false;
-	end = l->moveLeft(g.get());
+	end = l->moveLeft(g.get(),m);
 	g->UpdateGrid();
 	return end;
 }
 
-bool Player::moveBlockRight(){
+bool Player::moveBlockRight(int m){
 	bool end = false;
-	end = l->moveRight(g.get());
+	end = l->moveRight(g.get(),m);
 	g->UpdateGrid();
 	return end;
 }
 
-void Player::moveBlockDown(){
-	l->moveDown(g.get());
+void Player::moveBlockDown(int m){
+	l->moveDown(g.get(),m);
 	g->UpdateGrid();
 }
 
-void Player::dropBlock(){
-	l->dropBlock(g.get());
+void Player::dropBlock(int m){
+	l->dropBlock(g.get(),m);
 	g->UpdateGrid();
 	g->clearFullRows();
 	if (g->next() == false){
@@ -121,13 +121,13 @@ void Player::notMyTurn(){
 	turn = false;
 }
 
-void Player::rotateBlockClockwise(){
-	l->rotateBlockClock(g.get());
+void Player::rotateBlockClockwise(int m){
+	l->rotateBlockClock(g.get(),m);
 	g->UpdateGrid();
 }
 
 void Player::rotateBlockCounterClockwise(){
-	l->rotateBlockCounterClock(g.get());
+	l->rotateBlockCounterClock(g.get(),m);
 	g->UpdateGrid();
 }
 

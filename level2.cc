@@ -8,6 +8,10 @@ Level2::Level2():Level(){}
 
 int Level2::getLevel(){return 2;}
 
+void Level2::noRandom(std::string){
+}
+
+
 void Level2::createBlock(Grid *g){
         std::string blocks[7] = {"s","z","j","i","l","o","t"};
         srand(time(0));
