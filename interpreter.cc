@@ -65,7 +65,6 @@ void Interpreter::multiplier(std::string c){
 }
 std::vector<std::string> Interpreter::getCommands(std::string c){
 	commands.clear();
-	std::cout << c << std::endl;
 	multiplier(c);
 	autocomplete();
 	return commands;
