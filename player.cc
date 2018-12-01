@@ -48,13 +48,11 @@ void Player::levelUp(){
 		l.reset(new Level1());
 	}else if (l->getLevel() == 1){
 		l.reset(new Level2());
-	}/*else if (l->getLevel() == 2){
-		l->std::reset(new Level3());
+	}else if (l->getLevel() == 2){
+		l.reset(new Level3());
 	}else if (l->getLevel() == 3){
-		l->std::reset(new Level4());
-	}else if (l->getLevel() == 4){
-		l->std::reset(new Level5());
-	}*/	
+		l.reset(new Level4());
+	}	
 }
 
 
@@ -62,14 +60,12 @@ void Player::levelDown(){
 	if (l->getLevel() == 1){
                 l.reset(new Level0("sequence1.txt"));
         }else if (l->getLevel() == 2){
-               // l.reset(new Level1());
-        }/*else if (l->getLevel() == 3){
-                l->std::reset(new Level2());
+                l.reset(new Level1());
+        }else if (l->getLevel() == 3){
+                l.reset(new Level2());
         }else if (l->getLevel() == 4){
-                l->std::reset(new Level3());
-        }else if (l->getLevel() == 5){
-                l->std::reset(new Level4());
-        }*/
+                l.reset(new Level3());
+        }
 }
 void Player::printRow(int r) const{
 	g->printRow(r);
@@ -133,4 +129,12 @@ void Player::rotateBlockClockwise(){
 void Player::rotateBlockCounterClockwise(){
 	l->rotateBlockCounterClock(g.get());
 	g->UpdateGrid();
+}
+
+int  Player::getLevel(){
+	return l->getLevel();
+}
+
+void Player::setFile(std::string file){
+//	l->setFile(file);
 }
