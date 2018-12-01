@@ -21,10 +21,12 @@ void Level4::resetCounter(){
 }
 
 void Level4::dropBlock(Grid *g){
-	dropBlock(g);
+	Level::dropBlock(g);
 	blockCounter++;
+	std::cout << blockCounter << std::endl;
 	if (blockCounter == 5){
-		//call grid method to drop a block down the center
+		g->dropStar();
+		std::cout << "called g->dropstar" << std::endl;
 		blockCounter = 0;
 	}
 }

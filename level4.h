@@ -6,7 +6,7 @@
 #include <iostream>
 class Grid;
 class Level4 : public Level {
-	int blockCounter;
+	int blockCounter = 0;
         std::vector<std::string> blocks;
         std::vector<std::string>::iterator it;
 public:
