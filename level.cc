@@ -2,9 +2,12 @@
 #include "coord.h"
 #include "grid.h"
 #include <vector>
+#include "level3.h"
 Level::~Level(){}
 
 Level::Level(){}
+
+
 
 bool Level::moveRight(Grid *g){
 	int heavyDrops;//counter for amount of drops 

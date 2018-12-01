@@ -133,7 +133,7 @@ void Player::rotateBlockCounterClockwise(){
 
 void Player::noRandom(std::string file){
 	if ((l->getLevel() == 3) || (l->getLevel() == 4)){
-		//l->setFile(file);
+	//	l->noRandom(file);
 	}
 }
 

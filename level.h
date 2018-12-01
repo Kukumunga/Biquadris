@@ -3,6 +3,7 @@
 #include <string>
 class Grid;
 class Level {
+protected:
 	int level = 0;
 public:
 	Level();
@@ -16,8 +17,8 @@ public:
 	virtual void rotateBlockClock(Grid *);
 	virtual void rotateBlockCounterClock(Grid *);
 	virtual int  calculateScore(Grid *)=0 ;
-//	void noRandom(std::string);
-//	void Random();
+//	void noRandom(std::string)=0;
+//	void Random() =0 ;
 };
 
 #endif

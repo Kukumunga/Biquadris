@@ -23,6 +23,7 @@ public:
 	//std::shared_ptr<Xwindow> xw;
 	void noRandom(int,std::string); 
 	void random(int);
+	void Restart();
 };
 
 std::ostream& operator<<(std::ostream &out,const  Board &b);
