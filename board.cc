@@ -15,12 +15,12 @@ void Board::applySpecialAction(std::string action, int player){
 		}
 	}else if(action == "force"){
 		std::string b = "";
-		std::cout << "What block?";
+		std::cout << "Enter block letter:"<<std::endl;
 		std::cin >> b;
 	 	if (player == 1){
-//                        p1->Force(b);
+                        p1->Force(b);
                 }else{
-//                       p2->Force(b);
+                       p2->Force(b);
                 }
 	}else if (action == "heavy"){
 		if (player == 1){
@@ -66,7 +66,7 @@ void Board::Move(int playerNum,std::string command){
 		if (playerNum == 1){
 			p1->dropBlock();
 			if (p1->canSpecialAction()){
-				std::cout << "Enter special action" << std::endl;
+				std::cout << "Enter special action:" << std::endl;
 				std::cin >> specialAction;
 				applySpecialAction(specialAction,2);
 			} 

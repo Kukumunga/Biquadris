@@ -142,7 +142,72 @@ void Grid::UpdateGrid(){
 	}
 }
 
-
+void Grid::Force(std::string blockType,int level){
+	if (blockType == "i"){
+		tempBlock = std::unique_ptr<Block>(new BlockI());
+		tempBlock->setLevel(level);
+		tempBlock->addCoord(Coord{0,3});
+		tempBlock->addCoord(Coord{1,3});
+		tempBlock->addCoord(Coord{2,3});
+		tempBlock->addCoord(Coord{3,3});
+	} else if (blockType == "j"){
+		tempBlock = std::unique_ptr<Block>(new BlockJ());
+		tempBlock->setLevel(level);
+		tempBlock->addCoord(Coord{0,2});
+		tempBlock->addCoord(Coord{0,3});
+		tempBlock->addCoord(Coord{1,3});
+		tempBlock->addCoord(Coord{2,3});
+	}else if (blockType == "l"){
+		tempBlock = std::unique_ptr<Block>(new BlockL());
+		tempBlock->setLevel(level);
+		tempBlock->addCoord(Coord{2,2});
+		tempBlock->addCoord(Coord{2,3});
+		tempBlock->addCoord(Coord{1,3});
+		tempBlock->addCoord(Coord{0,3});
+	}else if (blockType == "o"){
+		tempBlock = std::unique_ptr<Block>(new BlockO());
+		tempBlock->setLevel(level);
+		tempBlock->addCoord(Coord{0,2});
+		tempBlock->addCoord(Coord{1,2});
+		tempBlock->addCoord(Coord{0,3});
+		tempBlock->addCoord(Coord{1,3});
+	}else if (blockType == "s"){
+		tempBlock = std::unique_ptr<Block>(new BlockS());
+		tempBlock->setLevel(level);
+		tempBlock->addCoord(Coord{1,2});
+		tempBlock->addCoord(Coord{2,2});
+		tempBlock->addCoord(Coord{0,3});
+		tempBlock->addCoord(Coord{1,3});
+	}else if (blockType == "z"){
+		tempBlock = std::unique_ptr<Block>(new BlockZ());
+		tempBlock->setLevel(level);
+		tempBlock->addCoord(Coord{0,2});
+		tempBlock->addCoord(Coord{1,2});
+		tempBlock->addCoord(Coord{1,3});
+		tempBlock->addCoord(Coord{2,3});
+	}else{
+		tempBlock = std::unique_ptr<Block>(new BlockT());
+		tempBlock->setLevel(level);
+		tempBlock->addCoord(Coord{0,2});
+		tempBlock->addCoord(Coord{1,2});
+		tempBlock->addCoord(Coord{2,2});
+		tempBlock->addCoord(Coord{1,3});
+	}
+	std::vector<Coord> vec = currentBlock->getComp();
+	int s = vec.size();
+	for (int i = 0; i< s;++i){
+		turnOff(vec[i].getX(),vec[i].getY());
+	}
+	blocksInGrid.pop_back();
+	blocksInGrid.emplace_back(std::move(tempBlock));//moves the next block into current     
+        currentBlock = blocksInGrid.back().get();
+	vec = currentBlock->getComp();
+        s = vec.size();
+        for (int i = 0; i< s;++i){
+                theGrid[vec[i].getX()][vec[i].getY()].setBlockChar(currentBlock->agetType());
+        }
+	
+} 
 void Grid::createBlock(std::string blockType,int level){
 	if (blockType == "i"){
 		nextBlock = std::unique_ptr<Block>(new BlockI());

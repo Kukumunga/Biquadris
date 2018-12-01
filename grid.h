@@ -12,6 +12,7 @@ class Grid{
 	std::vector<std::vector<Cell>> theGrid;
 	//std::unique_ptr<Block> currentBlock;
 	std::unique_ptr<Block> nextBlock;
+	std::unique_ptr<Block> tempBlock;
 	Block *currentBlock;
 	//Block *nextBlock;
 	std::vector <std::unique_ptr<Block>> blocksInGrid;
@@ -22,19 +23,6 @@ class Grid{
 
 public:
 	Grid();
-	//Grid(const Grid &g) = delete;
-	/*
-	Grid(const Grid& g):blocksInGrid{std::move(g.blocksInGrid)}{
-		std::cout << "HERE" << std::endl;	
-	}
-	Grid* operator=(const Grid&g){
-		blocksInGrid = std::move(g.blocksInGrid);
-		
-		std::cout << "HERE2" << std::endl;
-		return this;
-	}
-	*/
-	//~Grid();
 	void printRow(int);
 	bool getHeavy();
 	Block* getCurrentBlock();
@@ -57,7 +45,7 @@ public:
 	void unBlind();
 	void Heavy();
 	int blockScore();
-//	void Force(std::string,int);
+	void Force(std::string,int);
 };
 
 

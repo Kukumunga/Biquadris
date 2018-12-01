@@ -33,7 +33,7 @@ public:
 	bool canSpecialAction();
 	void Blind();
 	void Heavy();
-//	void Force(std::string);
+	void Force(std::string);
 };
 
 #endif

@@ -18,9 +18,9 @@ Player::Player(int id): g{std::unique_ptr<Grid>(new Grid())},l{new Level0("seque
 	}
 }
 
-/*void Player::Force(std::string b){
-//	g->Force(b,l->getLevel());
-}*/
+void Player::Force(std::string b){
+	g->Force(b,l->getLevel());
+}
 
 
 void Player::Blind(){
