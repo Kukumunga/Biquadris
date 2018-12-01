@@ -22,13 +22,18 @@ try{
 					gameBoard->random(player);
 					break;
 				}
-				if (p == "norandom"){
+				else if (p == "norandom"){
 					std::string file;
 					std::cin >> file;
 					gameBoard->noRandom(player,file);
 					break;
 				}
-				if(gameBoard->Move(player,p)){
+				else if (p == "restart"){
+					gameBoard.Restart();
+					player = 1;
+					break;
+				}
+				else if(gameBoard->Move(player,p)){
 					action = "drop";
 					break;
 				}							
