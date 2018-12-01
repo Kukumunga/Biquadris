@@ -2,14 +2,14 @@
 #include "board.h"
 
 
+
 Biquadris::Biquadris():gameBoard{std::unique_ptr<Board>(new Board())},player{1}{}
 Biquadris::~Biquadris(){}
 void Biquadris::start(){
 try{
 	std::cout << *gameBoard << std::endl;
-	std::string action;
+	std::string action;	    
 	while(true){
-		//std::istringstream ss(action);
 		std::vector<std::string> v;
 		while(std::cin >> action){
 			if (action == "exit"){
