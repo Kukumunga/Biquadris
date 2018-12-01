@@ -17,9 +17,11 @@ try{
 			}	
 			v = inter.getCommands(action);
 			
-			for(auto p:v){				
-				gameBoard->Move(player,p);
-				action = p;
+			for(auto p:v){
+				if(gameBoard->Move(player,p)){
+					action = "drop";
+					break;
+				}							
 			}
 			std::cout << *gameBoard << std::endl;
 			if(action == "drop"){
