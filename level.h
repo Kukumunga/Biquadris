@@ -3,13 +3,16 @@
 
 class Grid;
 class Level {
+protected:
+	bool levHeavy;
 public:
+	Level(bool levHeavy);
 	virtual ~Level()=0;
 	virtual int getLevel()=0;
 	virtual void createBlock(Grid *)=0;
-	virtual void moveRight(Grid *);
-	virtual void moveLeft(Grid *);
-	virtual bool moveDown(Grid *);
+	virtual bool moveRight(Grid *); //returns whether the turn should end (used 4 heavy)
+	virtual bool moveLeft(Grid *); //returns whether the turn should end (used 4 heavy)
+	virtual bool moveDown(Grid *); //returns whether it can move down (used in drop)
 	virtual void dropBlock(Grid *);
 	virtual void rotateBlockClock(Grid *);
 	virtual void rotateBlockCounterClock(Grid *);

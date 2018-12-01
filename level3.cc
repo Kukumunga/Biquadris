@@ -4,6 +4,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <cmath>
+Level3::Level3()Level(true){}
+
 int Level3::getLevel(){return 3;}
 
 void Level3::createBlock(Grid *g){
@@ -21,3 +23,5 @@ int Level3::calculateScore(Grid *g){
 		return 0;
 	}
 }
+
+
