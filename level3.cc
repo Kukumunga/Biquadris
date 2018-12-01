@@ -4,14 +4,14 @@
 #include <cstdlib>
 #include <ctime>
 #include <cmath>
-Level3::Level3()Level(){}
+Level3::Level3():Level(){}
 
 int Level3::getLevel(){return 3;}
 
 void Level3::createBlock(Grid *g){
         std::string blocks[9] = {"s","s","z","z","j","i","l","o","t"};
         srand(time(0));
-        int r = rand() % 8;
+        int r = rand() % 9;
         g->createBlock(blocks[r],3);
 
 }

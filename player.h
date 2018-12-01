@@ -8,6 +8,9 @@
 #include <memory>
 #include "level1.h"
 #include "level2.h"
+#include "level3.h"
+#include "level4.h"
+
 class Player{
 	std::unique_ptr<Grid> g; 
 	std::unique_ptr<Level> l;// {new Level0("sequence1")};

@@ -1,42 +1,32 @@
-#include "interpreter.h"
 #include "biquadris.h"
-#include "basecommand.h"
 #include "board.h"
-#include <string>
-#include <memory>
+
 
 Biquadris::Biquadris():gameBoard{std::unique_ptr<Board>(new Board())},player{1}{}
-Biquadris::~Biquadris(){delete inter;}
+Biquadris::~Biquadris(){}
 void Biquadris::start(){
 try{
 	std::cout << *gameBoard << std::endl;
 	std::string action;
-	bool end = false;
 	while(true){
-		std::unique_ptr<BaseCommand>inter{new BaseCommand()};//heap allocated
 		//std::istringstream ss(action);
 		std::vector<std::string> v;
 		while(std::cin >> action){
 			if (action == "exit"){
 				goto endgame;
 			}	
-			v = inter->getCommands(action);
+			v = inter.getCommands(action);
 			
 			for(auto p:v){				
-				end = gameBoard->Move(player,p);
+				gameBoard->Move(player,p);
 				action = p;
-				if (end){
-					break;
-				}
 			}
 			std::cout << *gameBoard << std::endl;
-			if (end){
-                                 break;
-                        }
+			if(action == "drop"){
+				break;
+			}
 		}
-		/*for(auto p:v){
-			gameBoard.Move(player,p);
-		}*/			
+		//next player's turn	
 		player = (player + 1)%2;	
 	}
 }catch(int player){

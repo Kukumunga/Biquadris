@@ -6,13 +6,13 @@
 #include <iostream>
 #include <iomanip>
 #include <sstream>
-#include "board.h"
+#include "interpreter.h"
 #include <memory>
 
-class Interpreter;
+class Board;
 
 class Biquadris {
-	Interpreter *inter;
+	Interpreter inter;
 	std::unique_ptr<Board> gameBoard;
 	int player;
 
