@@ -1,9 +1,7 @@
 #include "biquadris.h"
 #include "board.h"
 
-	
-			
-
+//add sequence 
 Biquadris::Biquadris():gameBoard{std::unique_ptr<Board>(new Board())},player{1}{}
 Biquadris::~Biquadris(){}
 void Biquadris::start(){
@@ -17,24 +15,28 @@ try{
 				goto endgame;
 			}
 			v = inter.getCommands(action);
-			for(auto p:v){
-				if (p == "random"){
+			for(auto move:v){
+				int size = commands.size();
+				if (move == "random"){
 					gameBoard->random(player);
 					break;
 				}
-				else if (p == "norandom"){
+				else if (move == "norandom"){
 					std::string file;
 					std::cin >> file;
 					gameBoard->noRandom(player,file);
 					break;
 				}
-				else if (p == "restart"){
+				else if (move == "restart"){
 					gameBoard.Restart();
 					player = 1;
 					break;
 				}
-				else if(gameBoard->Move(player,p)){
+				else if(gameBoard->Move(player,move,size)){
 					action = "drop";
+					break;
+				}
+				else {
 					break;
 				}							
 			}
