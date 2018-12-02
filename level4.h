@@ -11,7 +11,7 @@ class Level4 : public Level {
         std::vector<std::string>::iterator it;
 	bool random = true;
 public:
-	Level4();
+	Level4(int);
         void createBlock(Grid *);
         int getLevel();
         int calculateScore(Grid*) override;

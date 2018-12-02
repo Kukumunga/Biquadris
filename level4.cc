@@ -6,7 +6,7 @@
 #include <cmath>
 #include <fstream>
 #include <iostream>
-Level4::Level4():Level(){}
+Level4::Level4(int seed):Level(){srand(seed);}
 
 int Level4::getLevel(){return 4;}
 
@@ -26,7 +26,6 @@ void Level4::createBlock(Grid *g){
                 if (it == blocks.end()){ it = blocks.begin();}
         }else{
 		std::string blocks[9] = {"s","s","z","z","j","i","l","o","t"};
-        	srand(time(0));
         	int r = rand() % 9;
         	g->createBlock(blocks[r],4);
 	}

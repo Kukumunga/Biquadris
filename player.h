@@ -16,7 +16,7 @@ class Player{
 	std::unique_ptr<Level> l;// {new Level0("sequence1")};
 	int score = 0;
 	bool turn = false;
-	int playerId;;
+	int playerId;
 	int seed = 1;
 	std::string f; //file name
 public:

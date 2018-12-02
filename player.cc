@@ -81,7 +81,7 @@ void Player::levelUp(int m){
 		}else if (l->getLevel() == 2){
 			l.reset(new Level3(seed));
 		}else if (l->getLevel() == 3){
-			l.reset(new Level4());
+			l.reset(new Level4(seed));
 		}	
 	}
 }
@@ -94,7 +94,7 @@ void Player::setLevel(int newLevel){
         }else if (newLevel == 3){
                	l.reset(new Level3(seed));
         }else if (newLevel == 4){
-                l.reset(new Level4());
+                l.reset(new Level4(seed));
         }
 }
 
@@ -102,7 +102,7 @@ void Player::setLevel(int newLevel){
 void Player::levelDown(int m){
 	for (int i = 0;i < m;++i){
 		if (l->getLevel() == 1){
-                	l.reset(new Level0("sequence1.txt"));
+                	l.reset(new Level0(f));
         	}else if (l->getLevel() == 2){
                 	l.reset(new Level1(seed));
         	}else if (l->getLevel() == 3){
