@@ -146,15 +146,15 @@ bool Grid::isFilled(int x,int y){
 }
 
 bool Grid::next(){//moves nextBlock into currentBlock
-	std::vector<Coord> vec = nextBlock->getComp();
+	blocksInGrid.emplace_back(std::move(nextBlock));//moves the next block into current     
+        currentBlock = blocksInGrid.back().get();
+	std::vector<Coord> vec = currentBlock->getComp();
 	for (int i = 0; i < 4;++i){
 		if (isFilled(vec[i].getX(),vec[i].getY())){
 			return false;
 		}
 	}
-	blocksInGrid.emplace_back(std::move(nextBlock));//moves the next block into current	
-	currentBlock = blocksInGrid.back().get();
-	//containsNext = false;
+	UpdateGrid();
 	return true;
 }
 
@@ -369,7 +369,7 @@ void Grid::unBlind(){
 }
 
 void Grid::turnAllOff(){
-	for (int y = 3; y < 18; ++ y){
+	for (int y = 2; y < 18; ++ y){
 		for (int x = 0; x < 11; ++x){
 			turnOff(x,y);
 		}

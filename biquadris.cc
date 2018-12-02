@@ -51,18 +51,24 @@ try{
 				break;
 			}
 			else if(gameBoard->Move(player,move,size)){
+				gameBoard->nextBlock(player);
+				gameBoard->createNext(player);
 				std::cout << *gameBoard << std::endl;
 				break;
-			}
-			std::cout << *gameBoard << std::endl;
+                        }
+				std::cout << *gameBoard << std::endl;
 		}
-		//next player's turn	
-		gameBoard->nextBlock(player);
+		//next player's turn
 		player = (player + 1)%2;
 
 	}
 }catch(int player){
-std::cout <<"Player " << player << " loses!";
+	std::cout << *gameBoard << std::endl;
+	if (player == 1){
+		std::cout <<"Player " << 2 << " wins!" << std::endl;
+	}else{
+		std::cout <<"Player " << 1 << " wins!"<< std::endl;
+	}
 goto endgame;
 }
 endgame:;//"goto endgame;" to end the game...

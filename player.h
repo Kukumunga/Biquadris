@@ -41,8 +41,9 @@ public:
 	int getLevel();
 	void noRandom(std::string);
 	void Random();
-	void nextBlock();
+	void  nextBlock();
 	void Reset();
+	void createNext();
 };
 
 #endif

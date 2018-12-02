@@ -25,6 +25,7 @@ public:
 	void random(int);
 	void Restart();
 	void nextBlock(int);
+	void createNext(int);
 };
 
 std::ostream& operator<<(std::ostream &out,const  Board &b);

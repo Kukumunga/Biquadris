@@ -10,10 +10,12 @@ int Player::getLevel() const{
 }
 
 void Player::Reset(){
+	g->Reset();
 	score = 0;
 	l.reset(new Level0("sequence1.txt"));
 	l->createBlock(g.get());
 	if (g->next() == true){
+		std::cout << "here"<< std::endl;
 		l->createBlock(g.get());
 	}
 	g->UpdateGrid();	
@@ -29,8 +31,14 @@ Player::Player(int id): g{std::unique_ptr<Grid>(new Grid())},l{new Level0("seque
 	}
 }
 
+void Player::createNext(){
+	l->createBlock(g.get());
+}
+
 void Player::nextBlock(){
-	g->next();
+	if (g->next() == false){
+		throw playerId;
+	}
 }
 
 void Player::Force(std::string b){
@@ -123,7 +131,6 @@ void Player::dropBlock(){
 	}
 	g->clearFullRows();
 	g->UpdateGrid();
-	l->createBlock(g.get());
 	g->unBlind();
 	score = score + l->calculateScore(g.get());
 	score = score + g->blockScore();

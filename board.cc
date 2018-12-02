@@ -29,6 +29,16 @@ void Board::random(int playerId){
         }
 }
 
+void Board::createNext(int playerId){
+        if (playerId == 1){
+                p1->createNext();
+        }else{  
+                p2->createNext();
+        }
+}
+
+
+
 void Board::applySpecialAction(std::string action, int player){
 	if (action == "blind"){
 		if (player == 1){
@@ -232,4 +242,6 @@ void Board::Restart(){
         p1->myTurn();		
 	p1->Reset();
 	p2->Reset();
+//	p1->createNext();
+//	p2->createNext();
 }
