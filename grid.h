@@ -51,6 +51,7 @@ public:
 	void Force(std::string,int);
 	void unHeavy();
 	void resetClear();
+	bool  validDrop();
 };
 
 

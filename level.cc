@@ -6,7 +6,7 @@ Level::~Level(){}
 
 Level::Level(){}
 
-bool Level::moveRight(Grid *g, int multiplier){
+bool Level::moveRight(Grid *g, int multiplier, bool moved){
 	int heavyDrops;
 	if (multiplier > 0){
 		//int heavyDrops;//counter for amount of drops 
@@ -16,31 +16,33 @@ bool Level::moveRight(Grid *g, int multiplier){
                 	if (potentialLocation[comp].getX() > 10 ||
                                 	(g->isFilled(potentialLocation[comp].getX(),potentialLocation[comp].getY())
                                 	&& !g->getCurrentBlock()->isComponent(potentialLocation[comp]))){
-                        	return false; //do not move right because the block is... blocked
+                        	break; //do not move right because the block is... blocked
                 	}
                 	if (comp == 3){ //if all the components of the block can move right                     
                         	g->turnOff();
                 	        g->getCurrentBlock()->executeRight();
-				return moveRight(g, multiplier - 1);
+				return moveRight(g, multiplier - 1, true);
                		}
         	}
 	}
-	if (g->getCurLevel() >= 3){ //if block was created in level 3 or 4
-		moveDown(g, 1);
-	}
-	
-	if (g->getHeavy()){
-		for (int drops = 0; drops < 2; drops++){ //count the amount of times it can drop
-			if(moveDown(g, 1)){++heavyDrops;}
+	if (moved){
+		if (g->getCurLevel() >= 3){ //if block was created in level 3 or 4
+			moveDown(g, 1);
 		}
-		if(heavyDrops < 2){ //if the block cannot drop twice due to Heavy effect
-			return true;
+	
+		if (g->getHeavy()){
+			for (int drops = 0; drops < 2; drops++){ //count the amount of times it can drop
+				if(moveDown(g, 1)){++heavyDrops;}
+			}
+			if(heavyDrops < 2){ //if the block cannot drop twice due to Heavy effect
+				return true;
+			}
 		}
 	}
 	return false;
 }
 
-bool Level::moveLeft(Grid *g, int multiplier){
+bool Level::moveLeft(Grid *g, int multiplier, bool moved){
 	int heavyDrops;
 	if (multiplier > 0){
 		//int heavyDrops;
@@ -51,25 +53,27 @@ bool Level::moveLeft(Grid *g, int multiplier){
                                 	(g->isFilled(potentialLocation[comp].getX(),potentialLocation[comp].getY()) //not filled already
                                 	&& !g->getCurrentBlock()->isComponent(potentialLocation[comp]))){ //not filled by block's own component
 
-                        	return false;; //do not move left because the block is... blocked
+                        	break;; //do not move left because the block is... blocked
                 	}
                 	if (comp == 3){ //if all the components of the block can move right                     
                         	g->turnOff();
                         	g->getCurrentBlock()->executeLeft();
-				return moveLeft(g, multiplier - 1);
+				return moveLeft(g, multiplier - 1, true);
                 	}
         	}
 	}
-	if (g->getCurLevel() >= 3){ //if block was created in level 3 or 4
-		moveDown(g, 1);
-	}
-
-	if (g->getHeavy()){
-		for (int drops = 0; drops < 2; drops++){ //count the amount of times it can drop
-			if(moveDown(g, 1)){++heavyDrops;}
+	if (moved){
+		if (g->getCurLevel() >= 3){ //if block was created in level 3 or 4
+			moveDown(g, 1);
 		}
-		if(heavyDrops < 2){ //if the block cannot drop twice due to Heavy effect
-			return true;
+
+		if (g->getHeavy()){
+			for (int drops = 0; drops < 2; drops++){ //count the amount of times it can drop
+				if(moveDown(g, 1)){++heavyDrops;}
+			}
+			if(heavyDrops < 2){ //if the block cannot drop twice due to Heavy effect
+				return true;
+			}
 		}
 	}
 	return false;

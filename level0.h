@@ -11,6 +11,7 @@ class Level0 : public Level {
 public:
 	//~Level0();
 	Level0(const std::string &filename);
+	void resetCounter() override{};
 	void createBlock(Grid *);
 	int getLevel();
 	int calculateScore(Grid *) override;

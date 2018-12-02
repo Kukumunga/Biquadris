@@ -38,6 +38,17 @@ Grid::Grid(){
 	}
 }
 
+bool Grid::validDrop(){
+	std::vector<Coord> vec = currentBlock->getComp();
+	for (int i = 0;i<4;++i){
+		if (vec[i].getY() <= 2){
+			return false;
+		}
+	}
+	return true;
+}	
+
+
 int Grid::getCurLevel(){
 	return currentBlock->getLevel();
 }
@@ -46,11 +57,12 @@ void Grid::dropStar(){
 	int rowLocation;
 	while (!theGrid[5][rowLocation].getStatus()){//while the cells are inactive in the middle
 		rowLocation++;//check the cell below
-		if (rowLocation == 17){
-			rowLocation = 18;
+		if (rowLocation == 18){
 			break;
 		}
 	}
+	std::cout << theGrid[5][16].getStatus() << std::endl;
+	std::cout << theGrid[5][17].getStatus() << std::endl;
 	blocksInGrid.emplace_back(new BlockStar());
 	blocksInGrid.back().get()->addCoord(Coord{5, rowLocation - 1});
 	UpdateGrid();
@@ -101,7 +113,6 @@ void Grid::clearFullRows(){
 
 
 void Grid::clearRow(int row){
-	std::cout << "clear!!!" <<std::endl;
 	int size = blocksInGrid.size();
 	for (int e = 0; e < size; ++ e){
 		std::vector<Coord> vec = blocksInGrid[e]->getComp();

@@ -23,7 +23,12 @@ void Player::Force(std::string b){
 }
 
 void Player::setClear(){
-	g->resetClear();
+	if (g->numCleared() >= 1){
+		if (l->getLevel() == 4){
+			l->resetCounter();
+		}	
+		g->resetClear();
+	}
 }
 void Player::Blind(){
 	g->Blind();
@@ -77,14 +82,14 @@ void Player::printRow(int r) const{
 
 bool Player::moveBlockLeft(int m){
 	bool end = false;
-	end = l->moveLeft(g.get(),m);
+	end = l->moveLeft(g.get(),m,false);
 	g->UpdateGrid();
 	return end;
 }
 
 bool Player::moveBlockRight(int m){
 	bool end = false;
-	end = l->moveRight(g.get(),m);
+	end = l->moveRight(g.get(),m,false);
 	g->UpdateGrid();
 	return end;
 }
@@ -97,10 +102,13 @@ void Player::moveBlockDown(int m){
 void Player::dropBlock(){
 	l->dropBlock(g.get());
 	g->UpdateGrid();
-	g->clearFullRows();
+	if (g->validDrop() == false){
+		throw playerId;
+	}
 	if (g->next() == false){
 		throw playerId;
 	}
+	g->clearFullRows();
 	g->UpdateGrid();
 	l->createBlock(g.get());
 	g->unBlind();
