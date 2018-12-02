@@ -9,6 +9,14 @@ Interpreter::Interpreter(){
 	moves["counterclockwise"] = "counterclockwise";
 	moves["levelup"] = "levelup";
 	moves["leveldown"] = "leveldown";
+	moves["sequence"] = "sequence";
+	moves["I"] = "I";
+	moves["J"] = "J";
+	moves["L"] = "L";
+	moves["O"] = "O";
+	moves["S"] = "S";
+	moves["Z"] = "Z";
+	moves["T"] = "T";
 }
 void Interpreter::autocomplete(){
 	int n = 0;
@@ -61,7 +69,6 @@ void Interpreter::multiplier(std::string c){
 	for(int i = 0; i < n; ++i){
 		commands.emplace_back(command);
 	}
-
 }
 std::vector<std::string> Interpreter::getCommands(std::string c){
 	commands.clear();
