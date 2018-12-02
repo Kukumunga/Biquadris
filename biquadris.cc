@@ -19,7 +19,9 @@ try{
 			moves = inter.getCommands(action);
 			std::string move = moves[0];
 			int size = moves.size();
+			std::cout << move << std::endl;
 			if (source->eof()){
+				f.close();
 				std::cout << "here" << std::endl;
 				if(stream == 1){
 					stream = 0;
@@ -34,7 +36,6 @@ try{
 				*source >> file;
 				f.open(file);
 				source = &f;
-				*source >> file;
 				stream = 1;
 			}
 			else if (move == "random"){
@@ -47,7 +48,7 @@ try{
 			}
 			else if (move == "restart"){
 				gameBoard->Restart();
-				player = 1;
+				player = 0;
 				std::cout << *gameBoard << std::endl;
 				break;
 			}
