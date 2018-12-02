@@ -7,7 +7,19 @@ using namespace std;
 
 #include "biquadris.h"
 
-int main () {
-  unique_ptr<Biquadris>q{new Biquadris()};
-  q->start();
+int main(int argc, char* argv[]) {
+	string input = "";
+	int level = 0;
+	int c = 1;
+	
+	while (c != argc){
+		input = argv[c];
+		if (input == "-startlevel"){
+			level = std::stoi( argv[c+1]);
+			c = c + 2;
+		}
+	}
+	
+ 	unique_ptr<Biquadris>q{new Biquadris(level)};
+  	q->start();
 }

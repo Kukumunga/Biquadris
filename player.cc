@@ -86,6 +86,18 @@ void Player::levelUp(int m){
 	}
 }
 
+void Player::setLevel(int newLevel){
+	if (newLevel  == 1){
+        	l.reset(new Level1());
+        }else if (newLevel == 2){
+                l.reset(new Level2());
+        }else if (newLevel == 3){
+               	l.reset(new Level3());
+        }else if (newLevel == 4){
+                l.reset(new Level4());
+        }
+}
+
 
 void Player::levelDown(int m){
 	for (int i = 0;i < m;++i){

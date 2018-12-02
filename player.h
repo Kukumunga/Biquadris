@@ -44,6 +44,7 @@ public:
 	void  nextBlock();
 	void Reset();
 	void createNext();
+	void setLevel(int);
 };
 
 #endif

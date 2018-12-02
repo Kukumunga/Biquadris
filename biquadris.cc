@@ -2,7 +2,7 @@
 #include "board.h"
 
 //add sequence 
-Biquadris::Biquadris():gameBoard{std::unique_ptr<Board>(new Board())},player{1},source{&std::cin}{}
+Biquadris::Biquadris(int levelStart = 0):gameBoard{std::unique_ptr<Board>(new Board(levelStart))},player{1},source{&std::cin}{}
 Biquadris::~Biquadris(){}
 void Biquadris::start(){
 try{

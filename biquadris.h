@@ -18,10 +18,11 @@ class Biquadris {
 	Interpreter inter;
 	std::unique_ptr<Board> gameBoard;
 	int player;
+	int startLevel=0;
 	std::istream *source;
 
 public:
-	Biquadris();
+	Biquadris(int);
 	~Biquadris();
 	void start();
 	
