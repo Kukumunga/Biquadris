@@ -29,7 +29,7 @@ try{
 					goto endgame;
 				}
 			}
-			if (move == "sequence"){
+			else if (move == "sequence"){
 				std::string file;
 				*source >> file;
 				f.open(file);
@@ -58,7 +58,7 @@ try{
 			std::cout << *gameBoard << std::endl;
 		}
 		//next player's turn	
-		gameBoard->nextBlock(p);
+		gameBoard->nextBlock(player);
 		player = (player + 1)%2;
 
 	}
