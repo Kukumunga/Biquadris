@@ -11,10 +11,12 @@
 #include <memory>
 
 
-
+class Xwindow;
 class Board;
 
 class Biquadris {
+	Xwindow *w; //to pass on to board
+
 	// an interpreter that takes in user input and interprets it to something actionable 
 	Interpreter inter;
 	// has a game board 
@@ -31,7 +33,7 @@ public:
 	// first int is the starting level
 	// strings are the files each player plays from
 	// seecond int the seed
-	Biquadris(int,std::string,std::string,int);
+	Biquadris(int,std::string,std::string,int, Xwindow*);
 	~Biquadris();
 	void start();
 	

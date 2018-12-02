@@ -2,7 +2,7 @@
 #include "coord.h"
 #include <string>
 
-Cell::Cell(int x,int y): c{Coord{x,y}} {}
+Cell::Cell(int x,int y, Xwindow *w):w{w}, c{Coord{x,y}} {}
 
 std::ostream& operator<<(std::ostream &out, Cell &c){
 	if (c.getStatus()){

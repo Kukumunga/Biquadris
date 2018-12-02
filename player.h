@@ -12,6 +12,8 @@
 #include "level4.h"
 #include <string>
 class Player{
+	Xwindow *w;
+
 	std::unique_ptr<Grid> g; 
 	std::unique_ptr<Level> l;// {new Level0("sequence1")};
 	int score = 0;
@@ -22,7 +24,7 @@ class Player{
 public:
 	int getScore() const;
 	int getLevel() const;
-	Player(int,std::string,int);
+	Player(int,std::string,int,Xwindow *);
 	void printRow(int) const;
 	bool moveBlockLeft(int);
 	bool moveBlockRight(int);

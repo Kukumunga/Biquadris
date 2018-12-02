@@ -14,11 +14,11 @@ using namespace std;
 
 
 
-Grid::Grid(){
+Grid::Grid(Xwindow *w):w{w}{
 	for (int x = 0; x < 11;++x){ // columns
 		std::vector<Cell> vec;
 		for (int y = 0; y < 18;++y){ // row
-			Cell c = Cell(x,y);
+			Cell c = Cell(x,y,w);
 			vec.emplace_back(c);
 		}
 		theGrid.emplace_back(vec);

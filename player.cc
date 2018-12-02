@@ -22,7 +22,7 @@ void Player::Reset(){
 }
 
 
-Player::Player(int id,std::string f,int seed): g{std::unique_ptr<Grid>(new Grid())},l{new Level0(f)},seed{seed},f{f}{
+Player::Player(int id,std::string f,int seed, Xwindow *w):w{w},g{std::unique_ptr<Grid>(new Grid(w))},l{new Level0(f)},seed{seed},f{f}{
 	playerId = id;
 	l->createBlock(g.get());
 	if (g->next() == true){

@@ -9,6 +9,8 @@
 const int MID = 5;
 
 class Grid{
+	Xwindow *w; //pointer to the window (to pass to cells)
+
 	bool containsNext = false;
 	std::vector<std::vector<Cell>> theGrid;
 	//std::unique_ptr<Block> currentBlock;
@@ -23,7 +25,7 @@ class Grid{
 	bool blind = false;
 
 public:
-	Grid();
+	Grid(Xwindow *w);
 	void dropStar();
 	int getCurLevel();
 	void printRow(int);

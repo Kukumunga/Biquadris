@@ -4,7 +4,7 @@
 #include <sstream>
 #include <memory>
 using namespace std;
-
+#include "window.h"
 #include "biquadris.h"
 
 int main(int argc, char* argv[]) {
@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) {
 	string f1 = "sequence1.txt";
 	string f2 = "sequence2.txt";
 	int seed = 1;
-	
+	Xwindow w;	
 	while (c != argc){
 		input = argv[c];
 		if (input == "-startlevel"){
@@ -32,6 +32,6 @@ int main(int argc, char* argv[]) {
 		}
 	}
 	
- 	unique_ptr<Biquadris>q{new Biquadris(level,f1,f2,seed)};
+ 	unique_ptr<Biquadris>q{new Biquadris(level,f1,f2,seed,&w)};
   	q->start();
 }

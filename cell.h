@@ -1,13 +1,17 @@
 #ifndef __CELL__H
 #define __CELL__H
 
+#include "window.h"
 #include <iostream>
 #include "coord.h"
 #include <string>
 class Cell {
 
 private:
-	std::string colour; //the colour of the block
+	Xwindow *w; //pointer to the window that this cell belongs to
+	const int width = 18; //also the height, for the block
+	std::string colour = "white"; //the colour of the block
+	
 	int signal = 0;
 	std::string block = "";
 	Coord c;
@@ -20,9 +24,11 @@ private:
 	void rightSideFilled();
 	void leftSideFilled();
 public:
+	void draw(); //updates the colour of the cell
+
 	std::string getBlockChar();
 	void setBlockChar(std::string);
-	Cell(int,int);
+	Cell(int,int,Xwindow*);
 	void addLeftNeighbour(Cell *);
 	void addRightNeighbour(Cell *);
 	void alertNeighbours();
