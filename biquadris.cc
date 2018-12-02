@@ -29,7 +29,7 @@ try{
 			if(stream == 1){
 				stream = 0;
 				source = &std::cin;
-				if(lastaction != "drop"){
+				if(lastaction == "drop"){
 					// need to fix in case the play an even number of drops
 					player = (player + 1)%2;
 				}
