@@ -60,8 +60,9 @@ try{
 				std::cout << *gameBoard << std::endl;
 		}
 		//next player's turn
+		gameBoard->newHighscore();
 		player = (player + 1)%2;
-
+		
 	}
 }catch(int player){
 	std::cout << *gameBoard << std::endl;
