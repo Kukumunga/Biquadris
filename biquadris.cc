@@ -6,6 +6,14 @@
 Biquadris::Biquadris(int levelStart,std::string f1,std::string f2,int seed, Xwindow *w):w{w},gameBoard{std::unique_ptr<Board>(new Board(levelStart,f1,f2,seed,w))},player{1},source{&std::cin}{}
 Biquadris::~Biquadris(){}
 
+void Biquadris::gameOver(){
+	std::cout << " ______    ______     ___ ___      _____     _____             ______     ______" << std::endl;
+    	std::cout << "|         |      |   |   |   |    |         |     |    |  |   |          |      |"<<  std::endl;
+    	std::cout << "|   __    |  __  |   |   |   |    |_____    |     |    |  |   |______    |   ___|"<< std::endl;
+    	std::cout << "|     |   |  ||  |   |   |   |    |         |     |    |  |   |          |   \\"<< std::endl;
+    	std::cout << "|_____|   |__||__|   |   |   |    |_____    |_____|    |__|   |______    |    \\" << std::endl;
+}
+
 void Biquadris::start(){
 try{
 	std::cout << *gameBoard << std::endl;
@@ -103,6 +111,7 @@ try{
 	// board catches the thrown losing player 
 }catch(int player){
 	std::cout << *gameBoard << std::endl;
+	gameOver();
 	if (player == 1){
 		std::cout <<"Player " << 2 << " wins!" << std::endl;
 	}else{

@@ -27,7 +27,7 @@ class Biquadris {
 	int startLevel=0;
 	// a stream source to take in commands
 	std::istream *source;
-
+	void gameOver();
 public:
 	// Biquadris(int,string,string,int) initalizes a game where
 	// first int is the starting level
