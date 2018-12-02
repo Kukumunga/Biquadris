@@ -18,6 +18,10 @@ Player::Player(int id): g{std::unique_ptr<Grid>(new Grid())},l{new Level0("seque
 	}
 }
 
+void Player::nextBlock(){
+	g->next();
+}
+
 void Player::Force(std::string b){
 	g->Force(b,l->getLevel());
 }
@@ -30,6 +34,7 @@ void Player::setClear(){
 		g->resetClear();
 	}
 }
+
 void Player::Blind(){
 	g->Blind();
 }
@@ -103,9 +108,6 @@ void Player::dropBlock(){
 	l->dropBlock(g.get());
 	g->UpdateGrid();
 	if (g->validDrop() == false){
-		throw playerId;
-	}
-	if (g->next() == false){
 		throw playerId;
 	}
 	g->clearFullRows();

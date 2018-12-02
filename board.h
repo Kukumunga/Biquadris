@@ -24,6 +24,7 @@ public:
 	void noRandom(int,std::string); 
 	void random(int);
 	void Restart();
+	void nextBlock(int);
 };
 
 std::ostream& operator<<(std::ostream &out,const  Board &b);
