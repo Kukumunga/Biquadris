@@ -29,6 +29,13 @@ void Interpreter::autocomplete(){
 			action = p.second;
 			break;
 		}
+		if (p.second != p.first) {
+			if(p.second == move) {
+				action = "";
+				n = 1;
+				break;
+			}
+		}
 		if(p.first.substr(0,move.length()) == move){
 			action = p.second;
 			n++;
@@ -76,5 +83,24 @@ std::vector<std::string> Interpreter::getCommands(std::string c){
 	autocomplete();
 	return commands;
 }
-
+void Interpreter::rename(std::string oldc,std::string newc){
+	for(auto move:special){
+		if (move == newc){
+			std::cout << "Cannot change this command" << std::endl;
+			return;
+		}
+	}
+	std::map<std::string,std::string>::iterator it;
+	it = moves.find(newc);
+	if(it != moves.end()){
+		std::cout << newc << " is already a command" << std::endl;
+		return;
+	}
+	it = moves.find(oldc);
+	if(it != moves.end()){
+		std::cout << oldc << " is now " << newc << std::endl;
+		moves[newc] = moves[oldc];
+		moves.erase(it);
+	}
+}
 Interpreter::~Interpreter(){}
