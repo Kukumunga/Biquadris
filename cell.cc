@@ -25,6 +25,7 @@ void Cell::setBlockChar(std::string c){
 }
 void Cell::setBlind(){
 	block = "?";
+	Filled = false;
 }
 
 void Cell::addLeftNeighbour(Cell * left){
