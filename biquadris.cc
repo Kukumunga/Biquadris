@@ -9,10 +9,20 @@ void Biquadris::start(){
 try{
 	std::cout << *gameBoard << std::endl;
 	std::string action;	
-	std::ifstream f;    
+	std::ifstream f;  
+	bool stream = 0;  
 	while(true){
-		bool stream = 0;
-		std::vector<std::string> moves;
+		std::vector<std::string> moves;			
+		if (source->eof()){
+			if(stream == 1){
+				player = (player + 1)%2;
+				stream = 0;
+				source = &std::cin;
+			}
+			else {
+				goto endgame;
+			}
+		}
 		while(*source >> action){
 			if (action == "exit"){
 				goto endgame;
@@ -20,22 +30,17 @@ try{
 			moves = inter.getCommands(action);
 			std::string move = moves[0];
 			int size = moves.size();
-			if (source->eof()){
-				f.close();
-				if(stream == 1){
-					stream = 0;
-					source = &std::cin;
-				}
-				else {
-					goto endgame;
-				}
-			}
-			else if (move == "sequence"){
+			if (move == "sequence"){
 				std::string file;
 				*source >> file;
 				f.open(file);
-				source = &f;
-				stream = 1;
+				if (f) {
+					source = &f;
+					stream = 1;
+				}
+				else {
+					std::cout << "Not a valid file" << std::endl;
+				}
 			}
 			else if (move == "random"){
 				gameBoard->random(player);
