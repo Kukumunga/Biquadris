@@ -2,7 +2,7 @@
 #include <iostream>
 #include <memory>
 #include <string>
-Board::Board(int levelStart,std::string f1,std::string f2): p1{std::unique_ptr<Player>(new Player(1,f1))},p2{std::unique_ptr<Player>(new Player(2,f2))} {
+Board::Board(int levelStart,std::string f1,std::string f2,int seed): p1{std::unique_ptr<Player>(new Player(1,f1,seed))},p2{std::unique_ptr<Player>(new Player(2,f2,seed))} {
 	p1->setLevel(levelStart);
 	p2->setLevel(levelStart);
 	p1->myTurn();

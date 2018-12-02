@@ -6,7 +6,7 @@
 #include <cmath>
 #include <fstream>
 #include <iostream>
-Level3::Level3():Level(){}
+Level3::Level3(int seed):Level(){srand(seed);}
 
 int Level3::getLevel(){return 3;}
 

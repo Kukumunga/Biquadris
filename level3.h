@@ -10,7 +10,7 @@ class Level3 : public Level {
         std::vector<std::string>::iterator it;
 	bool random = true;
 public:
-	Level3();
+	Level3(int);
         void resetCounter() override{};
 	void createBlock(Grid *);
         int getLevel();

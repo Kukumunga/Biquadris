@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <cmath>
-Level1::Level1():Level(){}
+Level1::Level1(int seed):Level(),seed{seed}{srand(seed);}
 
 int Level1::getLevel(){return 1;}
 
@@ -15,7 +15,6 @@ void Level1::noRandom(std::string){
 
 void Level1::createBlock(Grid *g){
 	std::string blocks[12] = {"s","z","j","j","i","i","l","l","o","o","t","t"};
-	srand(time(0));
 	int r = rand() % 12;
 	g->createBlock(blocks[r],1);	
 

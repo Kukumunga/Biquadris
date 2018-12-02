@@ -12,7 +12,7 @@ int Player::getLevel() const{
 void Player::Reset(){
 	g->Reset();
 	score = 0;
-	l.reset(new Level0("sequence1.txt"));
+	l.reset(new Level0(f));
 	l->createBlock(g.get());
 	if (g->next() == true){
 		std::cout << "here"<< std::endl;
@@ -22,7 +22,7 @@ void Player::Reset(){
 }
 
 
-Player::Player(int id,std::string f): g{std::unique_ptr<Grid>(new Grid())},l{new Level0(f)}{
+Player::Player(int id,std::string f,int seed): g{std::unique_ptr<Grid>(new Grid())},l{new Level0(f)},seed{seed},f{f}{
 	playerId = id;
 	l->createBlock(g.get());
 	if (g->next() == true){
@@ -75,11 +75,11 @@ bool Player::canSpecialAction(){
 void Player::levelUp(int m){
 	for (int i = 0;i < m;++i){
 		if (l->getLevel() == 0){
-			l.reset(new Level1());
+			l.reset(new Level1(seed));
 		}else if (l->getLevel() == 1){
-			l.reset(new Level2());
+			l.reset(new Level2(seed));
 		}else if (l->getLevel() == 2){
-			l.reset(new Level3());
+			l.reset(new Level3(seed));
 		}else if (l->getLevel() == 3){
 			l.reset(new Level4());
 		}	
@@ -88,11 +88,11 @@ void Player::levelUp(int m){
 
 void Player::setLevel(int newLevel){
 	if (newLevel  == 1){
-        	l.reset(new Level1());
+        	l.reset(new Level1(seed));
         }else if (newLevel == 2){
-                l.reset(new Level2());
+                l.reset(new Level2(seed));
         }else if (newLevel == 3){
-               	l.reset(new Level3());
+               	l.reset(new Level3(seed));
         }else if (newLevel == 4){
                 l.reset(new Level4());
         }
@@ -104,11 +104,11 @@ void Player::levelDown(int m){
 		if (l->getLevel() == 1){
                 	l.reset(new Level0("sequence1.txt"));
         	}else if (l->getLevel() == 2){
-                	l.reset(new Level1());
+                	l.reset(new Level1(seed));
         	}else if (l->getLevel() == 3){
-                	l.reset(new Level2());
+                	l.reset(new Level2(seed));
         	}else if (l->getLevel() == 4){
-                	l.reset(new Level3());
+                	l.reset(new Level3(seed));
    	     	}
 	}	
 }

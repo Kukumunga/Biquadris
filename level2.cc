@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <cmath>
-Level2::Level2():Level(){}
+Level2::Level2(int seed):Level(){srand(seed);};
 
 int Level2::getLevel(){return 2;}
 

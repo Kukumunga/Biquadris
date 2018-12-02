@@ -16,7 +16,7 @@ private:
 	int highscore;
 public:
 	//~Board();
-	Board(int,std::string,std::string);
+	Board(int,std::string,std::string,int);
 	friend std::ostream& operator<<(std::ostream &out, const Board &b);
 	void printBoards() const; // prints all the board stuff for the game
 	bool Move(int,std::string,int); // (integer, string)
