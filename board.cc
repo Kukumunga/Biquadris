@@ -13,6 +13,14 @@ void Board::noRandom(int playerId,std::string file){
 	}
 }
 
+void Board::nextBlock(int playerId){
+	if (playerId == 1){
+		p1->nextBlock();
+	}else{
+		p2->nextBlock();
+	}
+} 
+
 void Board::random(int playerId){
 	if (playerId == 1){
                 p1->Random();
