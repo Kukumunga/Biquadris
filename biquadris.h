@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <fstream>
 #include <iomanip>
 #include <sstream>
 #include "interpreter.h"
@@ -17,6 +18,7 @@ class Biquadris {
 	Interpreter inter;
 	std::unique_ptr<Board> gameBoard;
 	int player;
+	std::istream *source;
 
 public:
 	Biquadris();
