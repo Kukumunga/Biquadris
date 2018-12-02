@@ -16,6 +16,7 @@ public:
 	int getLevel();
 	int calculateScore(Grid *) override;
 	void noRandom(std::string)override;
+	void Random() override{};
 //	void moveRight(Grid *) override;
 //	void moveLeft(Grid *) override;
 //	bool moveDown(Grid *) override;

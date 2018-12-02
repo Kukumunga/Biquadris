@@ -167,7 +167,7 @@ void Player::rotateBlockCounterClockwise(int m){
 
 void Player::noRandom(std::string file){
 	if ((l->getLevel() == 3) || (l->getLevel() == 4)){
-	//	l->noRandom(file);
+		l->noRandom(file);
 	}
 }
 
@@ -176,5 +176,5 @@ int Player::getLevel(){
 }
 
 void Player::Random(){
-//	l->Random();
+	l->Random();
 }

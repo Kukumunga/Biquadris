@@ -11,13 +11,30 @@ Level4::Level4():Level(){}
 int Level4::getLevel(){return 4;}
 
 void Level4::createBlock(Grid *g){
-        std::string blocks[9] = {"s","s","z","z","j","i","l","o","t"};
-        srand(time(0));
-        int r = rand() % 9;
-        g->createBlock(blocks[r],4);
+        if (!random){
+                std::string block = *it;
+
+                if (block == "I"){g->createBlock("i", 4);}
+                else if (block == "L"){g->createBlock("l", 4);}
+                else if (block == "J"){g->createBlock("j", 4);}
+                else if (block == "S"){g->createBlock("s", 4);}
+                else if (block == "Z"){g->createBlock("z", 4);}
+                else if (block == "O"){g->createBlock("o", 4);}
+                else if (block == "T"){g->createBlock("t", 4);}
+
+                ++it;
+                if (it == blocks.end()){ it = blocks.begin();}
+        }else{
+		std::string blocks[9] = {"s","s","z","z","j","i","l","o","t"};
+        	srand(time(0));
+        	int r = rand() % 9;
+        	g->createBlock(blocks[r],4);
+	}
 
 }
-
+void Level4::Random(){
+	random = true;
+}
 
 void Level4::noRandom(std::string filename){
         random = false;

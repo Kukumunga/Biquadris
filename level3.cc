@@ -14,13 +14,13 @@ void Level3::createBlock(Grid *g){
        	if (!random){
 		std::string block = *it;
 
-        	if (block == "I"){g->createBlock("i", 0);}
-        	else if (block == "L"){g->createBlock("l", 0);}
-        	else if (block == "J"){g->createBlock("j", 0);}
-        	else if (block == "S"){g->createBlock("s", 0);}
-        	else if (block == "Z"){g->createBlock("z", 0);}
-        	else if (block == "O"){g->createBlock("o", 0);}
-        	else if (block == "T"){g->createBlock("t", 0);}
+        	if (block == "I"){g->createBlock("i", 3);}
+        	else if (block == "L"){g->createBlock("l", 3);}
+        	else if (block == "J"){g->createBlock("j", 3);}
+        	else if (block == "S"){g->createBlock("s", 3);}
+        	else if (block == "Z"){g->createBlock("z", 3);}
+        	else if (block == "O"){g->createBlock("o", 3);}
+        	else if (block == "T"){g->createBlock("t", 3);}
 	
         	++it;
         	if (it == blocks.end()){ it = blocks.begin();}
@@ -31,11 +31,11 @@ void Level3::createBlock(Grid *g){
         	g->createBlock(blocks[r],3);
 	}
 }
-/*
+
 void Level3::Random(){
 	random = true;
 }
-*/
+
 void Level3::noRandom(std::string filename){
 	random = false;
 	std::ifstream f{filename};

@@ -18,6 +18,7 @@ public:
 	void resetCounter();
 	void dropBlock(Grid *) override;
 	void noRandom(std::string) override;
+	void Random() override;
 };
 
 #endif

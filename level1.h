@@ -15,6 +15,7 @@ public:
 	int getLevel();
 	int calculateScore(Grid*) override;
 	void noRandom(std::string) override;
+	void Random()override {};
 };
 
 #endif

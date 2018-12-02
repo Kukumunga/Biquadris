@@ -19,7 +19,7 @@ public:
 	virtual void rotateBlockCounterClock(Grid *, int mult);
 	virtual int  calculateScore(Grid *)=0 ;
 	virtual void noRandom(std::string)=0;
-//	void Random() =0 ;
+	virtual void Random() =0 ;
 };
 
 #endif
