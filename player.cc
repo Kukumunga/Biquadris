@@ -22,7 +22,7 @@ void Player::Reset(){
 }
 
 
-Player::Player(int id): g{std::unique_ptr<Grid>(new Grid())},l{new Level0("sequence1.txt")}{
+Player::Player(int id,std::string f): g{std::unique_ptr<Grid>(new Grid())},l{new Level0(f)}{
 	playerId = id;
 	l->createBlock(g.get());
 	if (g->next() == true){

@@ -22,7 +22,7 @@ class Biquadris {
 	std::istream *source;
 
 public:
-	Biquadris(int);
+	Biquadris(int,std::string,std::string);
 	~Biquadris();
 	void start();
 	

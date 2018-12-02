@@ -20,7 +20,7 @@ class Player{
 public:
 	int getScore() const;
 	int getLevel() const;
-	Player(int);
+	Player(int,std::string);
 	void printRow(int) const;
 	bool moveBlockLeft(int);
 	bool moveBlockRight(int);
