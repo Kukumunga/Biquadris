@@ -39,7 +39,6 @@ try{
 				stream = 0;
 				source = &std::cin;
 				if(lastaction == "drop"){
-					// need to fix in case the play an even number of drops
 					player = (player + 1)%2;
 				}
 			}
@@ -74,6 +73,11 @@ try{
 				else {
 					std::cout << "Not a valid file" << std::endl;
 				}
+			}
+			else if (move == "rename"){
+				std::string oldc,newc;
+				*source >> oldc >> newc;
+				inter.rename(oldc,newc);
 			}
 			// reverts the board back to random
 			else if (move == "random"){
