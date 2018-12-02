@@ -13,6 +13,7 @@ class Board{
 private:
 	std::unique_ptr<Player> p1;
 	std::unique_ptr<Player> p2;
+	int highscore;
 public:
 	//~Board();
 	Board();
@@ -26,6 +27,8 @@ public:
 	void Restart();
 	void nextBlock(int);
 	void createNext(int);
+	int getHighscore()const;
+	void newHighscore();
 };
 
 std::ostream& operator<<(std::ostream &out,const  Board &b);

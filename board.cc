@@ -5,6 +5,18 @@ Board::Board(): p1{std::unique_ptr<Player>(new Player(1))},p2{std::unique_ptr<Pl
 	p1->myTurn();
 }
 
+int Board::getHighscore()const{
+	return highscore;
+}
+
+void Board::newHighscore(){
+	if (p1->getScore() > highscore){
+		highscore = p1->getScore();
+	}
+	if (p2->getScore() > highscore){
+		highscore = p2->getScore();
+	}
+}
 void Board::noRandom(int playerId,std::string file){
 	if (playerId == 1){
 		p1->noRandom(file);
@@ -111,8 +123,8 @@ bool Board::Move(int playerNum,std::string command,int size){
 				std::cout << "Enter special action:" << std::endl;
 				std::cin >> specialAction;
 				applySpecialAction(specialAction,2);
-				p1->setClear();
 			} 
+			p1->setClear();
 			p1->notMyTurn();
 			p2->myTurn();
 		}else{
@@ -120,8 +132,8 @@ bool Board::Move(int playerNum,std::string command,int size){
 			if (p2->canSpecialAction()){
                                 std::cin >> specialAction;
                                 applySpecialAction(specialAction,1);
-				p2->setClear();
                         }
+			p2->setClear();
 			p2->notMyTurn();
 			p1->myTurn();
 		}
@@ -199,6 +211,8 @@ bool Board::Move(int playerNum,std::string command,int size){
 }
 
 std::ostream& operator<<(std::ostream &out,const Board &b){
+	
+	out << std::setw(22) << "Highscore: " << b.getHighscore() <<std::endl << std::endl;
 	out << "Level:" << std::setw(5) <<  b.p1->getLevel() <<  std::setfill(' ') << std::setw(14) << std::setfill(' ') 
 								<< "Level:" << std::setw(5) <<  b.p2->getLevel() << std::setfill(' ') << std::endl;
 	out << "Score:" << std::setw(5) <<  b.p1->getScore() <<  std::setfill(' ') << std::setw(14) << std::setfill(' ') 

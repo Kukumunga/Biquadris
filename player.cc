@@ -132,8 +132,10 @@ void Player::dropBlock(){
 	g->clearFullRows();
 	g->UpdateGrid();
 	g->unBlind();
-	score = score + l->calculateScore(g.get());
-	score = score + g->blockScore();
+	if (g->numCleared() >= 1){
+		score = score + l->calculateScore(g.get());
+		score = score + g->blockScore();
+	}
 	g->unHeavy();  
 }
 

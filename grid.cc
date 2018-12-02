@@ -81,6 +81,7 @@ void Grid::dropStar(){
 
 int Grid::blockScore(){
 	int score = 0;
+	
 	int s = blocksInGrid.size();
 	for (int i = s-1;i >= 0;--i){
 		std::vector<Coord> vec = blocksInGrid[i]->getComp();
@@ -89,7 +90,6 @@ int Grid::blockScore(){
 			blocksInGrid.erase(blocksInGrid.begin()+i);
 		}
 	}
-			
 	return score;
 }
 		

@@ -69,6 +69,16 @@ try{
 	}else{
 		std::cout <<"Player " << 1 << " wins!"<< std::endl;
 	}
+	std::string again = "";
+	std::cout << "Restart?" << std::endl;
+	std::cin >> again;
+	if (again == "yes"){
+		gameBoard->newHighscore();
+		gameBoard->Restart();
+		start();
+		
+	}
+
 goto endgame;
 }
 endgame:;//"goto endgame;" to end the game...
