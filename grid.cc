@@ -145,6 +145,7 @@ bool Grid::isFilled(int x,int y){
 	return (theGrid.at(x).at(y)).getStatus();
 }
 
+
 bool Grid::next(){//moves nextBlock into currentBlock
 	blocksInGrid.emplace_back(std::move(nextBlock));//moves the next block into current     
         currentBlock = blocksInGrid.back().get();
@@ -166,21 +167,21 @@ Block* Grid::getCurrentBlock(){
 
 void Grid::UpdateGrid(){
 	int size;
-	if (blind != true){
-		if (!containsNext){
-			size = blocksInGrid.size();
-		}else{
-			size = blocksInGrid.size() - 1;
-		}
-		for (int i = 0; i < size;++i){
-			std::vector<Coord> vec = blocksInGrid[i]->getComp();
-			int s = vec.size();
-			for (int j = 0;j < s;++j){
-                		Coord c = vec[j];
-                		theGrid[c.getX()][c.getY()].setBlockChar(blocksInGrid[i]->agetType());
-			}	
-  		}
+	if (!containsNext){
+		size = blocksInGrid.size();
+	}else{
+		size = blocksInGrid.size() - 1;
 	}
+	for (int i = 0; i < size;++i){
+		std::vector<Coord> vec = blocksInGrid[i]->getComp();
+		int s = vec.size();
+		for (int j = 0;j < s;++j){
+                	Coord c = vec[j];
+			if (theGrid[c.getX()][c.getY()].getBlockChar() != "?"){
+                		theGrid[c.getX()][c.getY()].setBlockChar(blocksInGrid[i]->agetType());
+			}
+		}	
+  	}				 	
 }
 
 void Grid::Force(std::string blockType,int level){
