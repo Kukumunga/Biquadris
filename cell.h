@@ -7,7 +7,7 @@
 class Cell {
 
 private:
-	// std::string colour;
+	std::string colour; //the colour of the block
 	int signal = 0;
 	std::string block = "";
 	Coord c;
