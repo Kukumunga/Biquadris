@@ -11,13 +11,21 @@ int main(int argc, char* argv[]) {
 	string input = "";
 	int level = 0;
 	int c = 1;
+	string file1 = "sequence1.txt";
+	string file2 = "sequence2.txt";
 	
 	while (c != argc){
 		input = argv[c];
 		if (input == "-startlevel"){
 			level = std::stoi( argv[c+1]);
 			c = c + 2;
-		}
+		}else if(input == "-scriptfile1"){
+			file1 = argv[c+1];
+			c = c + 2;
+		}else if(input == "-scriptfile2"){
+                        file2 = argv[c+1];
+                        c = c + 2;
+                }
 	}
 	
  	unique_ptr<Biquadris>q{new Biquadris(level)};
