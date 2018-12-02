@@ -19,10 +19,8 @@ try{
 			moves = inter.getCommands(action);
 			std::string move = moves[0];
 			int size = moves.size();
-			std::cout << move << std::endl;
 			if (source->eof()){
 				f.close();
-				std::cout << "here" << std::endl;
 				if(stream == 1){
 					stream = 0;
 					source = &std::cin;
