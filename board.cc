@@ -228,5 +228,8 @@ std::ostream& operator<<(std::ostream &out,const Board &b){
 }
 
 void Board::Restart(){
-	//
+	p2->notMyTurn();
+        p1->myTurn();		
+	p1->Reset();
+	p2->Reset();
 }

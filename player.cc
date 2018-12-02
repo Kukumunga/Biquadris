@@ -9,6 +9,17 @@ int Player::getLevel() const{
 	return l->getLevel();
 }
 
+void Player::Reset(){
+	score = 0;
+	l.reset(new Level0("sequence1.txt"));
+	l->createBlock(g.get());
+	if (g->next() == true){
+		l->createBlock(g.get());
+	}
+	g->UpdateGrid();	
+}
+
+
 Player::Player(int id): g{std::unique_ptr<Grid>(new Grid())},l{new Level0("sequence1.txt")}{
 	playerId = id;
 	l->createBlock(g.get());

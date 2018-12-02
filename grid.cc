@@ -38,6 +38,17 @@ Grid::Grid(){
 	}
 }
 
+void Grid::Reset(){
+	blocksInGrid.clear();
+	turnAllOff();
+	heavy = false;
+	numClear = 0;
+	containsNext = false;
+	blind = false;
+}
+
+
+
 bool Grid::validDrop(){
 	std::vector<Coord> vec = currentBlock->getComp();
 	for (int i = 0;i<4;++i){

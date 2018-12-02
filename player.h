@@ -42,6 +42,7 @@ public:
 	void noRandom(std::string);
 	void Random();
 	void nextBlock();
+	void Reset();
 };
 
 #endif
