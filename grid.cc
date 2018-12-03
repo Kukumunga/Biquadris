@@ -74,6 +74,13 @@ void Grid::draw(Block *block){
 	for (int size = 0;size < block->compSize(); size++){
 		theGrid[block->getComp()[size].getX()][block->getComp()[size].getY()].draw();
 	}
+	if (blind && w){
+		blindRect();	
+	}
+}
+
+void Grid::blindRect(){
+	w->fillRectangle(50+displayConstant, 105, 140, 200, Xwindow::Black);	
 }
 
 void Grid::undraw(Block *block){
@@ -84,7 +91,7 @@ void Grid::undraw(Block *block){
 
 void Grid::undrawAll(){
 	if (w){
-		w->fillRectangle(10, 68, 220, 360, Xwindow::White);
+		w->fillRectangle(10+displayConstant, 68, 220, 360, Xwindow::White);
 	}
 	/*
 	int numBlocks = blocksInGrid.size();
@@ -443,6 +450,10 @@ void Grid::printNextBlock(int line){
 
 void Grid::unBlind(){
 	blind = false;
+	if (w){
+		undrawAll();
+		drawAll();
+	}
 }
 
 void Grid::turnAllOff(){
@@ -455,6 +466,9 @@ void Grid::turnAllOff(){
 
 void Grid::Blind(){
 	blind = true;
+	if (w){
+		w->fillRectangle(50+displayConstant, 105, 140, 200, Xwindow::Black);	
+	}
 }
 
 void Grid::Heavy(){

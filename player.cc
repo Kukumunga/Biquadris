@@ -237,7 +237,9 @@ void Player::Random(){
 }
 
 void Player::unBlind(){
-	g->unBlind();
+	if(g->getBlind()){
+		g->unBlind();
+	}
 }
 
 void Player::UpdateGrid(){

@@ -31,11 +31,13 @@ public:
 	void undrawNext();
 	void undrawAll();
 	void drawAll();
+	void blindRect();
 
 	void dropStar();
 	int getCurLevel();
 	void printRow(int);
 	bool getHeavy();
+	bool getBlind(){return blind;}
 	Block* getCurrentBlock();
 	void setNextBlock(Block *);
 	void addToCurrent();
