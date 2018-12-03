@@ -12,6 +12,69 @@ Board::Board(int levelStart,std::string f1,std::string f2,int seed, Xwindow *w):
 	}
 }
 
+void Board::clearRows(int player){
+	if (player == 1){
+		p1->clearRows();
+	}else{
+		p2->clearRows();
+	}
+}
+void Board::unHeavy(int player){
+	if (player == 1){
+                p1->unHeavy();
+        }else{
+                p2->unHeavy();
+        }
+
+}
+void Board::UpdateGrid(int player){
+	if (player == 1){
+                p1->UpdateGrid();
+        }else{
+                p2->UpdateGrid();
+        }
+}
+
+
+void Board::calcScore(int player){
+	if (player == 1){
+                p1->calcScore();
+        }else{
+                p2->calcScore();
+        }
+}
+
+
+void Board::unBlind(int player){
+	if (player == 1){
+		p1->unBlind();
+	}else{
+		p2->unBlind();
+	}
+}
+
+void Board::applySpecial(int player){
+	std::string specialAction = "";
+	 if (player == 1){
+                if (p1->canSpecialAction()){
+                	std::cout << "Enter special action:" << std::endl;
+                       	std::cin >> specialAction;
+                       	applySpecialAction(specialAction,2);
+                }
+                p1->setClear();
+                p1->notMyTurn();
+               p2->myTurn();
+        }else{
+   		if (p2->canSpecialAction()){
+                 	std::cin >> specialAction;
+                        applySpecialAction(specialAction,1);
+               	}
+                p2->setClear();
+                p2->notMyTurn();
+                p1->myTurn();
+        }
+}
+
 void Board::initWindow(){
 	w->drawString(210, 10, "Highscore: " + std::to_string(highscore)); //display HS
 	w->drawString(10, 35, "Level:" + std::to_string(p1->getLevel()));//display levels
@@ -112,7 +175,6 @@ void Board::printBoards() const{
 }
 
 bool Board::Move(int playerNum,std::string command,int size){
-	std::string specialAction = "";
 	bool end = false;
 
 	if (command == "left"){
@@ -152,23 +214,8 @@ bool Board::Move(int playerNum,std::string command,int size){
 	}else if (command == "drop"){
 		if (playerNum == 1){
 			p1->dropBlock();
-			if (p1->canSpecialAction()){
-				std::cout << "Enter special action:" << std::endl;
-				std::cin >> specialAction;
-				applySpecialAction(specialAction,2);
-			} 
-			p1->setClear();
-			p1->notMyTurn();
-			p2->myTurn();
 		}else{
 			p2->dropBlock();
-			if (p2->canSpecialAction()){
-                                std::cin >> specialAction;
-                                applySpecialAction(specialAction,1);
-                        }
-			p2->setClear();
-			p2->notMyTurn();
-			p1->myTurn();
 		}
 		end = true;		
 	}else if (command == "clockwise"){

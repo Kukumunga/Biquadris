@@ -52,6 +52,11 @@ public:
 	void Reset();
 	void createNext();
 	void setLevel(int);
+	void clearRows();
+	void calcScore();
+	void unBlind();
+	void UpdateGrid();
+	void unHeavy();
 };
 
 #endif

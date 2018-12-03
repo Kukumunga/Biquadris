@@ -37,6 +37,11 @@ Player::Player(int id,std::string f,int seed, Xwindow *w, int displayConst):w{w}
 	}
 }
 
+void Player::clearRows(){
+	g->clearFullRows();	
+}
+
+
 void Player::createNext(){
 	l->createBlock(g.get());
 }
@@ -158,6 +163,23 @@ void Player::moveBlockDown(int m){
 	g->draw(g->getCurrentBlock());
 }
 
+void Player::calcScore(){
+	if (g->numCleared() >= 1){
+                g->undrawAll();
+                score = score + l->calculateScore(g.get());
+                score = score + g->blockScore();
+                if (w){
+                        w->fillRectangle(45+displayConst, 40, 10, 15, Xwindow::White); //clear old level
+                        w->drawString(46+displayConst, 55, std::to_string(getScore()));
+                }
+                g->drawAll();
+        }
+}
+
+void Player::unHeavy(){
+	g->unHeavy();
+}
+
 void Player::dropBlock(){
 	g->undraw(g->getCurrentBlock());
 	l->dropBlock(g.get());
@@ -166,20 +188,6 @@ void Player::dropBlock(){
 	if (g->validDrop() == false){
 		throw playerId;
 	}
-	g->clearFullRows();
-	g->UpdateGrid();
-	g->unBlind();
-	if (g->numCleared() >= 1){
-		g->undrawAll();
-		score = score + l->calculateScore(g.get());
-		score = score + g->blockScore();
-		if (w){
-			w->fillRectangle(45+displayConst, 40, 10, 15, Xwindow::White); //clear old level
-			w->drawString(46+displayConst, 55, std::to_string(getScore()));
-		}
-		g->drawAll();
-	}
-	g->unHeavy(); 
         //g->drawNext();
 }
 
@@ -226,4 +234,12 @@ int Player::getLevel(){
 
 void Player::Random(){
 	l->Random();
+}
+
+void Player::unBlind(){
+	g->unBlind();
+}
+
+void Player::UpdateGrid(){
+	g->UpdateGrid();
 }

@@ -99,6 +99,13 @@ try{
 			// where most board actions are done, such as moving 
 			// left, right, or leveling up
 			else if(gameBoard->Move(player,move,size)){
+				gameBoard->clearRows(player);
+				gameBoard->UpdateGrid(player);
+				gameBoard->unBlind(player);
+				gameBoard->calcScore(player);
+				gameBoard->newHighscore();
+				gameBoard->applySpecial(player);
+				gameBoard->unHeavy(player);
 				gameBoard->nextBlock(player);
 				gameBoard->createNext(player);
 				std::cout << *gameBoard << std::endl;

@@ -29,6 +29,12 @@ public:
 	void createNext(int);
 	int getHighscore()const;
 	void newHighscore();
+	void clearRows(int);
+	void UpdateGrid(int);
+	void applySpecial(int);
+	void calcScore(int);
+	void unBlind(int);
+	void unHeavy(int);
 };
 
 std::ostream& operator<<(std::ostream &out,const  Board &b);
