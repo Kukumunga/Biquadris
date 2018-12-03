@@ -38,8 +38,9 @@ int main(int argc, char* argv[]) {
 	if (graphics){
 		Xwindow w;
  		q=unique_ptr<Biquadris>(new Biquadris(level,f1,f2,seed,&w));
+		 q->start();
 	} else {
 		q=unique_ptr<Biquadris>(new Biquadris(level,f1,f2,seed,nullptr));
+		 q->start();
 	}
-  	q->start();
 }
