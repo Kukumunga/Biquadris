@@ -28,13 +28,14 @@ class Biquadris {
 	int startLevel=0;
 	// a stream source to take in commands
 	std::istream *source;
+	int bonus;
 	void gameOver();
 public:
 	//Biquadris(int,std::string,std::string,int,bool);// initalizes a game where
 	// first int is the starting level
 	// strings are the files each player plays from
 	// seecond int the seed
-	Biquadris(int,std::string,std::string,int, Xwindow*);
+	Biquadris(int,std::string,std::string,int, Xwindow*, int);
 	~Biquadris();
 	void start();
 	

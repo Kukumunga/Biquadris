@@ -15,6 +15,7 @@ int main(int argc, char* argv[]) {
 	string f2 = "sequence2.txt";
 	int seed = 1;
 	bool graphics = true;
+	bool bonus = false;
 	while (c != argc){
 		input = argv[c];
 		if (input == "-startlevel"){
@@ -33,14 +34,18 @@ int main(int argc, char* argv[]) {
 			graphics = false;
 			c++;
 		}
+		else if (input == "-bonus"){
+			bonus = true;
+			c++;
+		}
 	}
 	unique_ptr<Biquadris> q;
 	if (graphics){
 		Xwindow w;
- 		q=unique_ptr<Biquadris>(new Biquadris(level,f1,f2,seed,&w));
+ 		q=unique_ptr<Biquadris>(new Biquadris(level,f1,f2,seed,&w,bonus));
 		 q->start();
 	} else {
-		q=unique_ptr<Biquadris>(new Biquadris(level,f1,f2,seed,nullptr));
+		q=unique_ptr<Biquadris>(new Biquadris(level,f1,f2,seed,nullptr,bonus));
 		 q->start();
 	}
 }
