@@ -3,7 +3,7 @@
 #include <vector>
 using namespace std;
 
-BlockJ::BlockJ():Block("J", "red"){}
+BlockJ::BlockJ():Block("J", "darkgreen"){}
 
 string BlockJ::getType(){return Block::agetType();}
 

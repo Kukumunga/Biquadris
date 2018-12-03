@@ -1,7 +1,6 @@
 #ifndef __BOARD__H
 #define __BOARD__H
 
-
 #include "player.h"
 #include <iostream>
 #include <vector>
@@ -13,7 +12,7 @@ private:
 	Xwindow *w;
 	std::unique_ptr<Player> p1;
 	std::unique_ptr<Player> p2;
-	int highscore;
+	int highscore=0;
 public:
 	void initWindow(); //initialize the window when game begins
 	//~Board();

@@ -10,19 +10,25 @@ int Player::getLevel() const{
 }
 
 void Player::Reset(){
+	g->undrawAll();
+	g->undrawNext();
 	g->Reset();
 	score = 0;
 	l.reset(new Level0(f));
 	l->createBlock(g.get());
 	if (g->next() == true){
-		std::cout << "here"<< std::endl;
 		l->createBlock(g.get());
 	}
-	g->UpdateGrid();	
+	g->UpdateGrid();
+	g->drawAll();
+	g->drawNext();	
 }
 
+void Player::initDisplay(){
+	g->draw(g->getCurrentBlock());	
+}
 
-Player::Player(int id,std::string f,int seed, Xwindow *w):w{w},g{std::unique_ptr<Grid>(new Grid(w))},l{new Level0(f)},seed{seed},f{f}{
+Player::Player(int id,std::string f,int seed, Xwindow *w, int displayConst):w{w},displayConst{displayConst},g{std::unique_ptr<Grid>(new Grid(w, displayConst))},l{new Level0(f)},seed{seed},f{f}{
 	playerId = id;
 	l->createBlock(g.get());
 	if (g->next() == true){
@@ -84,6 +90,10 @@ void Player::levelUp(int m){
 			l.reset(new Level4(seed));
 		}	
 	}
+	if (w){
+		w->fillRectangle(45+displayConst, 25, 10, 15, Xwindow::White); //clear old level
+		w->drawString(46+displayConst, 35, std::to_string(getLevel()));
+	}
 }
 
 void Player::setLevel(int newLevel){
@@ -96,8 +106,11 @@ void Player::setLevel(int newLevel){
         }else if (newLevel == 4){
                 l.reset(new Level4(seed));
         }
+	if (w){
+		w->fillRectangle(45+displayConst, 25, 10, 15, Xwindow::White); //clear old level
+		w->drawString(46+displayConst, 35, std::to_string(getLevel()));
+	}
 }
-
 
 void Player::levelDown(int m){
 	for (int i = 0;i < m;++i){
@@ -110,7 +123,11 @@ void Player::levelDown(int m){
         	}else if (l->getLevel() == 4){
                 	l.reset(new Level3(seed));
    	     	}
-	}	
+	}
+	if (w){
+		w->fillRectangle(45+displayConst, 25, 10, 15, Xwindow::White); //clear old level
+		w->drawString(46+displayConst, 35, std::to_string(getLevel()));
+	}
 }
 void Player::printRow(int r) const{
 	g->printRow(r);
@@ -118,26 +135,34 @@ void Player::printRow(int r) const{
 
 bool Player::moveBlockLeft(int m){
 	bool end = false;
+	g->undraw(g->getCurrentBlock());
 	end = l->moveLeft(g.get(),m,false);
 	g->UpdateGrid();
+	g->draw(g->getCurrentBlock());
 	return end;
 }
 
 bool Player::moveBlockRight(int m){
 	bool end = false;
+	g->undraw(g->getCurrentBlock());
 	end = l->moveRight(g.get(),m,false);
 	g->UpdateGrid();
+	g->draw(g->getCurrentBlock());
 	return end;
 }
 
 void Player::moveBlockDown(int m){
+	g->undraw(g->getCurrentBlock());
 	l->moveDown(g.get(),m);
 	g->UpdateGrid();
+	g->draw(g->getCurrentBlock());
 }
 
 void Player::dropBlock(){
+	g->undraw(g->getCurrentBlock());
 	l->dropBlock(g.get());
 	g->UpdateGrid();
+	g->draw(g->getCurrentBlock());
 	if (g->validDrop() == false){
 		throw playerId;
 	}
@@ -145,10 +170,17 @@ void Player::dropBlock(){
 	g->UpdateGrid();
 	g->unBlind();
 	if (g->numCleared() >= 1){
+		g->undrawAll();
 		score = score + l->calculateScore(g.get());
 		score = score + g->blockScore();
+		if (w){
+			w->fillRectangle(45+displayConst, 40, 10, 15, Xwindow::White); //clear old level
+			w->drawString(46+displayConst, 55, std::to_string(getScore()));
+		}
+		g->drawAll();
 	}
-	g->unHeavy();  
+	g->unHeavy(); 
+        //g->drawNext();
 }
 
 void Player::printNextBlock(int line) const{
@@ -161,6 +193,7 @@ void Player::printNextBlock(int line) const{
 
 void Player::myTurn(){
 	turn = true;
+	g->drawNext();
 }
 
 void Player::notMyTurn(){
@@ -168,13 +201,17 @@ void Player::notMyTurn(){
 }
 
 void Player::rotateBlockClockwise(int m){
+	g->undraw(g->getCurrentBlock());
 	l->rotateBlockClock(g.get(),m);
 	g->UpdateGrid();
+	g->draw(g->getCurrentBlock());
 }
 
 void Player::rotateBlockCounterClockwise(int m){
+	g->undraw(g->getCurrentBlock());
 	l->rotateBlockCounterClock(g.get(),m);
 	g->UpdateGrid();
+	g->draw(g->getCurrentBlock());
 }
 
 void Player::noRandom(std::string file){

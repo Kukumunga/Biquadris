@@ -13,7 +13,8 @@
 #include <string>
 class Player{
 	Xwindow *w;
-
+	
+	int displayConst;
 	std::unique_ptr<Grid> g; 
 	std::unique_ptr<Level> l;// {new Level0("sequence1")};
 	int score = 0;
@@ -22,9 +23,11 @@ class Player{
 	int seed = 1;
 	std::string f; //file name
 public:
+	void initDisplay();
+
 	int getScore() const;
 	int getLevel() const;
-	Player(int,std::string,int,Xwindow *);
+	Player(int,std::string,int,Xwindow*,int);
 	void printRow(int) const;
 	bool moveBlockLeft(int);
 	bool moveBlockRight(int);

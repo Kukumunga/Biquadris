@@ -11,13 +11,12 @@ const int MID = 5;
 class Grid{
 	Xwindow *w; //pointer to the window (to pass to cells)
 
+	int displayConstant = 0;
 	bool containsNext = false;
 	std::vector<std::vector<Cell>> theGrid;
-	//std::unique_ptr<Block> currentBlock;
 	std::unique_ptr<Block> nextBlock;
 	std::unique_ptr<Block> tempBlock;
 	Block *currentBlock;
-	//Block *nextBlock;
 	std::vector <std::unique_ptr<Block>> blocksInGrid;
 	bool heavy = false;
 	void clearRow(int);
@@ -25,7 +24,14 @@ class Grid{
 	bool blind = false;
 
 public:
-	Grid(Xwindow *w);
+	Grid(Xwindow *w, int);
+	void draw(Block*);
+	void undraw(Block*);
+	void drawNext();
+	void undrawNext();
+	void undrawAll();
+	void drawAll();
+
 	void dropStar();
 	int getCurLevel();
 	void printRow(int);

@@ -2,7 +2,7 @@
 #include "coord.h"
 #include <string>
 
-Cell::Cell(int x,int y, Xwindow *w):w{w}, c{Coord{x,y}} {}
+Cell::Cell(int x,int y, Xwindow *w, int displayConst):w{w}, displayConst{displayConst}, c{Coord{x,y}} {}
 
 std::ostream& operator<<(std::ostream &out, Cell &c){
 	if (c.getStatus()){
@@ -15,8 +15,40 @@ std::ostream& operator<<(std::ostream &out, Cell &c){
 	return out;
 }
 
+void Cell::draw(){
+	int intcolour;
+	if (colour == "red"){
+		intcolour = 2;	
+	}else if (colour == "orange"){
+		intcolour = 8;
+	}else if (colour == "darkgreen"){
+		intcolour = 10;
+	}else if (colour == "blue"){
+		intcolour = 4;
+	}else if (colour == "yellow"){
+		intcolour = 6;
+	}else if (colour == "purple"){
+		intcolour = 11;
+	}else if (colour == "cyan"){
+		intcolour = 5;
+	}
+	if(w){
+		w->fillRectangle((c.getX()*20)+displayConst+10,c.getY()*20+65,width,width,intcolour);//x,y,width,height,colour
+	}
+}
+
+void Cell::undraw(){
+	if (w){
+		w->fillRectangle((c.getX()*20)+displayConst+10,c.getY()*20+65,width,width,Xwindow::White);
+	}
+}
+
 std::string Cell::getBlockChar(){
 	return block;
+}
+
+void Cell::setBlockColour(std::string col){
+	colour = col;
 }
 
 void Cell::setBlockChar(std::string c){

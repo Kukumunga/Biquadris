@@ -3,7 +3,7 @@
 #include "coord.h"
 using namespace std;
 
-BlockO::BlockO():Block("O", "blue"){}
+BlockO::BlockO():Block("O", "cyan"){}
 string BlockO::getType(){return Block::agetType();}
 
 vector<Coord> BlockO::rotateClock(){

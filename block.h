@@ -7,6 +7,7 @@ class Cell;
 class Coord;
 class Block {
 protected:
+	
 	std::vector<Coord> components; 
 	std::string type;
 	std::string colour;
@@ -14,8 +15,11 @@ protected:
 	std::string orientation; //the block's orientation
 public:
 	~Block();
+	void undraw();
+	int compSize(){return components.size();}
 	Block(std::string type, std::string colour);
 	std::string agetType();
+	std::string getColour(){return colour;}
 	std::vector<Coord> getComp();
 	void addCoord(Coord);
 	void setLevel(int l);

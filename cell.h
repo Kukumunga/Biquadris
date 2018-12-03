@@ -9,7 +9,9 @@ class Cell {
 
 private:
 	Xwindow *w; //pointer to the window that this cell belongs to
-	const int width = 18; //also the height, for the block
+	int displayConst;
+
+	const int width = 20; //also the height, for the block
 	std::string colour = "white"; //the colour of the block
 	
 	int signal = 0;
@@ -25,10 +27,12 @@ private:
 	void leftSideFilled();
 public:
 	void draw(); //updates the colour of the cell
+	void undraw(); //makes the cell white
 
 	std::string getBlockChar();
+	void setBlockColour(std::string);
 	void setBlockChar(std::string);
-	Cell(int,int,Xwindow*);
+	Cell(int,int,Xwindow*,int);
 	void addLeftNeighbour(Cell *);
 	void addRightNeighbour(Cell *);
 	void alertNeighbours();

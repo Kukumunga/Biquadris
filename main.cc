@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) {
 	string f1 = "sequence1.txt";
 	string f2 = "sequence2.txt";
 	int seed = 1;
-	Xwindow w;	
+	bool graphics = true;
 	while (c != argc){
 		input = argv[c];
 		if (input == "-startlevel"){
@@ -29,9 +29,17 @@ int main(int argc, char* argv[]) {
                 }else if (input == "-seed"){
 			seed = std::stoi( argv[c+1]);
 			c = c + 2;
+		}else if (input == "-text"){
+			graphics = false;
+			c++;
 		}
 	}
-	
- 	unique_ptr<Biquadris>q{new Biquadris(level,f1,f2,seed,&w)};
+	unique_ptr<Biquadris> q;
+	if (graphics){
+		Xwindow w;
+ 		q=unique_ptr<Biquadris>(new Biquadris(level,f1,f2,seed,&w));
+	} else {
+		q=unique_ptr<Biquadris>(new Biquadris(level,f1,f2,seed,nullptr));
+	}
   	q->start();
 }

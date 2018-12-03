@@ -14,11 +14,11 @@ using namespace std;
 
 
 
-Grid::Grid(Xwindow *w):w{w}{
+Grid::Grid(Xwindow *w, int displayConst):w{w},displayConstant{displayConst}{
 	for (int x = 0; x < 11;++x){ // columns
 		std::vector<Cell> vec;
 		for (int y = 0; y < 18;++y){ // row
-			Cell c = Cell(x,y,w);
+			Cell c = Cell(x,y,w,displayConst);
 			vec.emplace_back(c);
 		}
 		theGrid.emplace_back(vec);
@@ -35,6 +35,68 @@ Grid::Grid(Xwindow *w):w{w}{
                 theGrid[x][y].addRightNeighbour(&theGrid.at(x+1).at(y));
             }catch (std::out_of_range){}
 		}
+	}
+}
+
+void Grid::drawNext(){
+	int colour;
+	if (nextBlock->getColour() == "red"){
+		colour = 2;
+	}else if (nextBlock->getColour() == "orange"){
+		colour = 8;
+	}else if (nextBlock->getColour() == "darkgreen"){
+		colour = 10;
+	}else if (nextBlock->getColour() == "blue"){
+		colour = 4;
+	}else if (nextBlock->getColour() == "yellow"){
+		colour = 6;
+	}else if (nextBlock->getColour() == "purple"){
+		colour = 11;
+	}else if (nextBlock->getColour() == "cyan"){
+		colour = 5;
+	}
+	if (w){
+		w->fillRectangle(nextBlock->getComp()[0].getX()*20+displayConstant+50, nextBlock->getComp()[0].getY()*20+398,20,20,colour);
+		w->fillRectangle(nextBlock->getComp()[1].getX()*20+displayConstant+50, nextBlock->getComp()[1].getY()*20+398,20,20,colour);
+		w->fillRectangle(nextBlock->getComp()[2].getX()*20+displayConstant+50, nextBlock->getComp()[2].getY()*20+398,20,20,colour);
+		w->fillRectangle(nextBlock->getComp()[3].getX()*20+displayConstant+50, nextBlock->getComp()[3].getY()*20+398,20,20,colour);
+	}
+}
+
+void Grid::undrawNext(){
+	if (w){
+		w->fillRectangle(40+displayConstant, 435, 100, 50, Xwindow::White);
+	}
+}
+
+
+void Grid::draw(Block *block){
+	for (int size = 0;size < block->compSize(); size++){
+		theGrid[block->getComp()[size].getX()][block->getComp()[size].getY()].draw();
+	}
+}
+
+void Grid::undraw(Block *block){
+	for (int size = 0;size < block->compSize(); size++){
+		theGrid[block->getComp()[size].getX()][block->getComp()[size].getY()].undraw();
+	}
+}
+
+void Grid::undrawAll(){
+	if (w){
+		w->fillRectangle(10, 68, 220, 360, Xwindow::White);
+	}
+	/*
+	int numBlocks = blocksInGrid.size();
+	for (int block = 0; block < numBlocks; block++){
+		undraw(blocksInGrid[block].get());
+	}*/
+}
+
+void Grid::drawAll(){
+	int numBlocks = blocksInGrid.size();
+	for (int block = 0; block < numBlocks; block++){
+		draw(blocksInGrid[block].get());
 	}
 }
 
@@ -156,6 +218,8 @@ bool Grid::next(){//moves nextBlock into currentBlock
 		}
 	}
 	UpdateGrid();
+	undrawNext();
+	draw(currentBlock);
 	return true;
 }
 
@@ -166,12 +230,8 @@ Block* Grid::getCurrentBlock(){
 
 
 void Grid::UpdateGrid(){
-	int size;
-	if (!containsNext){
-		size = blocksInGrid.size();
-	}else{
-		size = blocksInGrid.size() - 1;
-	}
+	int size = blocksInGrid.size();
+	
 	for (int i = 0; i < size;++i){
 		std::vector<Coord> vec = blocksInGrid[i]->getComp();
 		int s = vec.size();
@@ -179,6 +239,7 @@ void Grid::UpdateGrid(){
                 	Coord c = vec[j];
 			if (theGrid[c.getX()][c.getY()].getBlockChar() != "?"){
                 		theGrid[c.getX()][c.getY()].setBlockChar(blocksInGrid[i]->agetType());
+				theGrid[c.getX()][c.getY()].setBlockColour(blocksInGrid[i]->getColour());
 			}
 		}	
   	}				 	
@@ -240,15 +301,18 @@ void Grid::Force(std::string blockType,int level){
 	for (int i = 0; i< s;++i){
 		turnOff(vec[i].getX(),vec[i].getY());
 	}
+	undraw(currentBlock);
 	blocksInGrid.pop_back();
 	blocksInGrid.emplace_back(std::move(tempBlock));//moves the next block into current     
         currentBlock = blocksInGrid.back().get();
 	vec = currentBlock->getComp();
+	
         s = vec.size();
         for (int i = 0; i< s;++i){
                 theGrid[vec[i].getX()][vec[i].getY()].setBlockChar(currentBlock->agetType());
-        }
-	
+        	theGrid[vec[i].getX()][vec[i].getY()].setBlockColour(currentBlock->getColour());
+	}
+	draw(currentBlock);
 } 
 void Grid::createBlock(std::string blockType,int level){
 	if (blockType == "i"){
@@ -308,10 +372,16 @@ void Grid::createBlock(std::string blockType,int level){
 		nextBlock->addCoord(Coord{1,3});
 		//nextBlock = blocksInGrid.back().get();
 	}
+	//notifies cells of its new colour
+	/*for (int size = 0; size < 4; size++){
+		theGrid[nextBlock->getComp()[size].getX()][nextBlock->getComp()[size].getY()].setBlockColour(nextBlock->getColour());
+	}*/
 } 
 
 void Grid::turnOff(int x,int y){
 	theGrid[x][y].turnOff();
+	//std::cout << "undraw" << std::endl;
+	//theGrid[x][y].undraw();
 }
 
 void Grid::turnOff(){
@@ -319,6 +389,7 @@ void Grid::turnOff(){
 	for (int i = 0;i < 4;++i){
 		Coord c = vec[i];
 		theGrid[c.getX()][c.getY()].turnOff();
+		//theGrid[c.getX()][c.getY()].undraw();
 	}
 }
 

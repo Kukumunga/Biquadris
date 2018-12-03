@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-BlockI::BlockI():Block("I", "green"){}
+BlockI::BlockI():Block("I", "blue"){}
 
 string BlockI::getType(){
 	return Block::agetType();

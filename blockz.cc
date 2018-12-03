@@ -3,7 +3,7 @@
 #include <vector>
 using namespace std;
 
-BlockZ::BlockZ():Block("Z", "black"){}
+BlockZ::BlockZ():Block("Z", "purple"){}
 string BlockZ::getType(){return Block::agetType();}
 vector<Coord> BlockZ::rotateClock(){
 	vector<Coord> newCoords;

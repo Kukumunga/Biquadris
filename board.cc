@@ -1,11 +1,33 @@
 #include "board.h"
 #include <iostream>
+#include <sstream>
 #include <memory>
 #include <string>
-Board::Board(int levelStart,std::string f1,std::string f2,int seed, Xwindow *w):w{w},p1{std::unique_ptr<Player>(new Player(1,f1,seed,w))},p2{std::unique_ptr<Player>(new Player(2,f2,seed,w))} {
+Board::Board(int levelStart,std::string f1,std::string f2,int seed, Xwindow *w):w{w},p1{std::unique_ptr<Player>(new Player(1,f1,seed,w,0))},p2{std::unique_ptr<Player>(new Player(2,f2,seed,w,250))} {
 	p1->setLevel(levelStart);
 	p2->setLevel(levelStart);
 	p1->myTurn();
+	if (w){
+		initWindow();
+	}
+}
+
+void Board::initWindow(){
+	w->drawString(210, 10, "Highscore: " + std::to_string(highscore)); //display HS
+	w->drawString(10, 35, "Level:" + std::to_string(p1->getLevel()));//display levels
+	w->drawString(260, 35, "Level:" + std::to_string(p2->getLevel()));
+	w->drawString(10, 55, "Score:" + std::to_string(p1->getScore()));//display scores
+	w->drawString(260, 55, "Score:" + std::to_string(p2->getScore()));
+	//w->fillRectangle(10, 36, 55, 20, Xwindow::White); //to clear
+	w->fillRectangle(10, 65, 220, 3, Xwindow::Black);//width of block = 20*11 = 220
+	w->fillRectangle(260, 65, 220, 3, Xwindow::Black);
+	w->fillRectangle(10, 428, 220, 3, Xwindow::Black);//length of block = 20*18+68 = 428
+	w->fillRectangle(260, 428, 220, 3, Xwindow::Black);	
+	w->drawString(10, 445, "Next:");//display Next:
+	w->drawString(260, 445, "Next:");	
+
+	p1->initDisplay();
+	p2->initDisplay();
 }
 
 int Board::getHighscore()const{
@@ -96,8 +118,16 @@ bool Board::Move(int playerNum,std::string command,int size){
 	if (command == "left"){
 		if (playerNum == 1){
 			end = p1->moveBlockLeft(size);
+			if (end){
+				p1->notMyTurn();
+				p2->myTurn();
+			}
 		}else{
 			end = p2->moveBlockLeft(size);
+			if (end){
+				p2->notMyTurn();
+				p1->myTurn();
+			}
 		}
 	}else if (command == "right"){
 		if (playerNum == 1){
