@@ -164,7 +164,16 @@ int Grid::numCleared(){
 
 void Grid::printRow(int r){
 	for (int x = 0; x < 11; ++ x){
-		std::cout << theGrid[x][r];
+		if (blind){
+			if (((r >= 2) && (r < 12)) && ((x >= 2) && (x <9))){
+				std::cout << "?";
+			}else{
+			 	std::cout << theGrid[x][r];
+			}
+		}else{
+			std::cout << theGrid[x][r];
+		}
+	
 	}
 }
 
@@ -433,11 +442,7 @@ void Grid::printNextBlock(int line){
 }
 
 void Grid::unBlind(){
-	if (blind == true){
-		turnAllOff();
-		blind = false;
-		UpdateGrid();
-	}
+	blind = false;
 }
 
 void Grid::turnAllOff(){
@@ -450,11 +455,6 @@ void Grid::turnAllOff(){
 
 void Grid::Blind(){
 	blind = true;
-	for (int y = 3; y< 14;++y){
-		for (int x = 2 ; x < 9; ++x){
-			theGrid[x][y].setBlind();
-		}
-	}
 }
 
 void Grid::Heavy(){

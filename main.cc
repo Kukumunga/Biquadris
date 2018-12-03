@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) {
 	string f1 = "sequence1.txt";
 	string f2 = "sequence2.txt";
 	int seed = 1;
-	bool graphics = true;
+	bool graphics = false;
 	while (c != argc){
 		input = argv[c];
 		if (input == "-startlevel"){
