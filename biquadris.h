@@ -15,9 +15,8 @@ class Xwindow;
 class Board;
 
 class Biquadris {
-	Xwindow *w; //to pass on to board
-	bool createwin;
-
+	//to pass on to board
+	Xwindow *w; 
 	// an interpreter that takes in user input and interprets it to something actionable 
 	Interpreter inter;
 	// has a game board 
@@ -28,16 +27,18 @@ class Biquadris {
 	int startLevel=0;
 	// a stream source to take in commands
 	std::istream *source;
+	// whether bonus features are allowed
+	int bonus;
 	void gameOver();
 public:
 	//Biquadris(int,std::string,std::string,int,bool);// initalizes a game where
 	// first int is the starting level
 	// strings are the files each player plays from
 	// seecond int the seed
-	Biquadris(int,std::string,std::string,int, Xwindow*);
+	Biquadris(int,std::string,std::string,int, Xwindow*, int);
 	~Biquadris();
 	void start();
-	
+
 };
 
 #endif

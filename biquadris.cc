@@ -3,7 +3,7 @@
 #include "window.h"
 
 //add sequence 
-Biquadris::Biquadris(int levelStart,std::string f1,std::string f2,int seed, Xwindow *w):w{w},gameBoard{std::unique_ptr<Board>(new Board(levelStart,f1,f2,seed,w))},player{1},source{&std::cin}{}
+Biquadris::Biquadris(int levelStart,std::string f1,std::string f2,int seed, Xwindow *w, int b):w{w},gameBoard{std::unique_ptr<Board>(new Board(levelStart,f1,f2,seed,w))},player{1},source{&std::cin},bonus{b}{}
 Biquadris::~Biquadris(){}
 
 void Biquadris::gameOver(){
@@ -75,9 +75,11 @@ try{
 				}
 			}
 			else if (move == "rename"){
-				std::string oldc,newc;
-				*source >> oldc >> newc;
-				inter.rename(oldc,newc);
+				if(bonus){
+					std::string oldc,newc;
+					*source >> oldc >> newc;
+					inter.rename(oldc,newc);
+				}
 			}
 			// reverts the board back to random
 			else if (move == "random"){
