@@ -8,8 +8,7 @@ Level::Level(){}
 
 bool Level::moveRight(Grid *g, int multiplier, bool moved){
 	int heavyDrops;
-	if (multiplier > 0){
-		//int heavyDrops;//counter for amount of drops 
+	if (multiplier > 0){ 
         	//call Block's calcRight function which returns coordinates
         	std:: vector<Coord> potentialLocation = g->getCurrentBlock()->calcRight();
         	for (int comp = 0; comp < 4; comp++){
@@ -45,7 +44,6 @@ bool Level::moveRight(Grid *g, int multiplier, bool moved){
 bool Level::moveLeft(Grid *g, int multiplier, bool moved){
 	int heavyDrops;
 	if (multiplier > 0){
-		//int heavyDrops;
         	//call Block's calcLeft function which returns coordinates
         	std:: vector<Coord> potentialLocation = g->getCurrentBlock()->calcLeft();
         	for (int comp = 0; comp < 4; comp++){

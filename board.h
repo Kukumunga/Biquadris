@@ -15,13 +15,11 @@ private:
 	int highscore=0;
 public:
 	void initWindow(); //initialize the window when game begins
-	//~Board();
 	Board(int,std::string,std::string,int,Xwindow *);
 	friend std::ostream& operator<<(std::ostream &out, const Board &b);
 	void printBoards() const; // prints all the board stuff for the game
-	bool Move(int,std::string,int); // (integer, string)
+	bool Move(int,std::string,int); 
 	void applySpecialAction(std::string,int);
-	//std::shared_ptr<Xwindow> xw;
 	void noRandom(int,std::string); 
 	void random(int);
 	void Restart();
