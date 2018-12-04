@@ -34,7 +34,9 @@ void Player::initDisplay(){
 	g->draw(g->getCurrentBlock());	
 }
 
-Player::Player(int id,std::string f,int seed, Xwindow *w, int displayConst):w{w},displayConst{displayConst},g{std::unique_ptr<Grid>(new Grid(w, displayConst))},l{new Level0(f)},seed{seed},f{f}{
+Player::Player(int id,int startLevel,std::string f,int seed, Xwindow *w, int displayConst):w{w},displayConst{displayConst},g{std::unique_ptr<Grid>(new Grid(w, displayConst))},seed{seed},f{f}{
+	
+	startingLevel(startLevel);
 	playerId = id;
 	l->createBlock(g.get());
 	if (g->next() == true){
@@ -105,6 +107,24 @@ void Player::levelUp(int m){
 		w->fillRectangle(45+displayConst, 25, 10, 15, Xwindow::White); //clear old level
 		w->drawString(46+displayConst, 35, std::to_string(getLevel()));
 	}
+}
+
+void Player::startingLevel(int startLevel){
+        if (startLevel  == 0){
+                l = std::unique_ptr<Level>{new Level0(f)};
+        }else if (startLevel == 1){
+                l= std::unique_ptr<Level> {new Level1(seed)};
+        }else if (startLevel == 2){
+                 l= std::unique_ptr<Level> {new Level2(seed)};
+        }else if (startLevel == 3){
+                 l= std::unique_ptr<Level> {new Level3(seed)};
+        }else if (startLevel == 4){
+                 l= std::unique_ptr<Level> {new Level4(seed)};
+        }
+        if (w){
+                w->fillRectangle(45+displayConst, 25, 10, 15, Xwindow::White); //clear old level
+                w->drawString(46+displayConst, 35, std::to_string(getLevel()));
+        }
 }
 
 void Player::setLevel(int newLevel){

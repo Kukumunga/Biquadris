@@ -27,7 +27,7 @@ public:
 
 	int getScore() const;
 	int getLevel() const;
-	Player(int,std::string,int,Xwindow*,int);
+	Player(int,int,std::string,int,Xwindow*,int);
 	void printRow(int) const;
 	bool moveBlockLeft(int);
 	bool moveBlockRight(int);
@@ -57,6 +57,7 @@ public:
 	void unBlind();
 	void UpdateGrid();
 	void unHeavy();
+	void startingLevel(int);
 };
 
 #endif
