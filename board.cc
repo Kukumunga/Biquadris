@@ -81,13 +81,14 @@ void Board::initWindow(){
 	w->drawString(260, 35, "Level:" + std::to_string(p2->getLevel()));
 	w->drawString(10, 55, "Score:" + std::to_string(p1->getScore()));//display scores
 	w->drawString(260, 55, "Score:" + std::to_string(p2->getScore()));
-	//w->fillRectangle(10, 36, 55, 20, Xwindow::White); //to clear
 	w->fillRectangle(10, 62, 220, 3, Xwindow::Black);//width of block = 20*11 = 220
 	w->fillRectangle(260, 62, 220, 3, Xwindow::Black);
 	w->fillRectangle(10, 428, 220, 3, Xwindow::Black);//length of block = 20*18+68 = 428
 	w->fillRectangle(260, 428, 220, 3, Xwindow::Black);	
 	w->drawString(10, 445, "Next:");//display Next:
 	w->drawString(260, 445, "Next:");	
+	w->drawString(100, 10, "Player 1");
+	w->drawString(350, 10, "Player 2");
 
 	p1->initDisplay();
 	p2->initDisplay();
