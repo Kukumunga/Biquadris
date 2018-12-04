@@ -93,11 +93,6 @@ void Grid::undrawAll(){
 	if (w){
 		w->fillRectangle(10+displayConstant, 68, 220, 360, Xwindow::White);
 	}
-	/*
-	int numBlocks = blocksInGrid.size();
-	for (int block = 0; block < numBlocks; block++){
-		undraw(blocksInGrid[block].get());
-	}*/
 }
 
 void Grid::drawAll(){
@@ -361,45 +356,32 @@ void Grid::createBlock(std::string blockType,int level){
 		nextBlock->addCoord(Coord{1,2});
 		nextBlock->addCoord(Coord{0,3});
 		nextBlock->addCoord(Coord{1,3});
-		//nextBlock = blocksInGrid.back().get();
 	}else if (blockType == "s"){
 		nextBlock = std::unique_ptr<Block>(new BlockS());
-		//blocksInGrid.emplace_back(new BlockS());
 		nextBlock->setLevel(level);
 		nextBlock->addCoord(Coord{1,2});
 		nextBlock->addCoord(Coord{2,2});
 		nextBlock->addCoord(Coord{0,3});
 		nextBlock->addCoord(Coord{1,3});
-		//nextBlock = blocksInGrid.back().get();
 	}else if (blockType == "z"){
 		nextBlock = std::unique_ptr<Block>(new BlockZ());
-		//blocksInGrid.emplace_back(new BlockZ());
 		nextBlock->setLevel(level);
 		nextBlock->addCoord(Coord{0,2});
 		nextBlock->addCoord(Coord{1,2});
 		nextBlock->addCoord(Coord{1,3});
 		nextBlock->addCoord(Coord{2,3});
-		//nextBlock = blocksInGrid.back().get();
 	}else{
 		nextBlock = std::unique_ptr<Block>(new BlockT());
-		//blocksInGrid.emplace_back(new BlockT());
 		nextBlock->setLevel(level);
 		nextBlock->addCoord(Coord{0,2});
 		nextBlock->addCoord(Coord{1,2});
 		nextBlock->addCoord(Coord{2,2});
 		nextBlock->addCoord(Coord{1,3});
-		//nextBlock = blocksInGrid.back().get();
-	}
-	//notifies cells of its new colour
-	/*for (int size = 0; size < 4; size++){
-		theGrid[nextBlock->getComp()[size].getX()][nextBlock->getComp()[size].getY()].setBlockColour(nextBlock->getColour());
-	}*/
+	}	
 } 
 
 void Grid::turnOff(int x,int y){
 	theGrid[x][y].turnOff();
-	//std::cout << "undraw" << std::endl;
-	//theGrid[x][y].undraw();
 }
 
 void Grid::turnOff(){
@@ -407,7 +389,6 @@ void Grid::turnOff(){
 	for (int i = 0;i < 4;++i){
 		Coord c = vec[i];
 		theGrid[c.getX()][c.getY()].turnOff();
-		//theGrid[c.getX()][c.getY()].undraw();
 	}
 }
 
@@ -446,7 +427,7 @@ void Grid::printNextBlock(int line){
 		}else if (type == "T"){
 			std::cout << " T   ";
 		}
-	}
+	     }
 	}
 }
 

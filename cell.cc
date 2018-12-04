@@ -35,7 +35,7 @@ void Cell::draw(){
 		intcolour = 9;
 	}
 	if(w){
-		w->fillRectangle((c.getX()*20)+displayConst+10,c.getY()*20+65,width,width,intcolour);//x,y,width,height,colour
+		w->fillRectangle((c.getX()*20)+displayConst+10,c.getY()*20+65,width,width,intcolour);
 	}
 }
 

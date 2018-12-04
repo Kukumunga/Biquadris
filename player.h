@@ -16,7 +16,7 @@ class Player{
 	
 	int displayConst;
 	std::unique_ptr<Grid> g; 
-	std::unique_ptr<Level> l;// {new Level0("sequence1")};
+	std::unique_ptr<Level> l;
 	int score = 0;
 	bool turn = false;
 	int playerId;

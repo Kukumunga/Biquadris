@@ -347,6 +347,4 @@ void Board::Restart(){
 	p1->Reset();
 	p2->Reset();
 	p1->myTurn();
-//	p1->createNext();
-//	p2->createNext();
 }

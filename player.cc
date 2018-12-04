@@ -214,7 +214,6 @@ void Player::dropBlock(){
 	if (g->validDrop() == false){
 		throw playerId;
 	}
-        //g->drawNext();
 }
 
 void Player::printNextBlock(int line) const{

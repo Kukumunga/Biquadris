@@ -50,7 +50,6 @@ void Interpreter::autocomplete(){
 void Interpreter::multiplier(std::string c){
 	std::string number;
 	int n;
-	//fix invalid commands
 	int size = c.size();
 	std::string command;
 	for(int i = 0; i < size; ++i) {
