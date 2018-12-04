@@ -5,6 +5,7 @@ int Player::getScore() const{
 	return score;
 }
 
+
 int Player::getLevel() const{
 	return l->getLevel();
 }

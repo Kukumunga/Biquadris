@@ -12,6 +12,7 @@ Board::Board(int levelStart,std::string f1,std::string f2,int seed, Xwindow *w):
 	}
 }
 
+
 void Board::clearRows(int player){
 	if (player == 1){
 		p1->clearRows();
