@@ -301,7 +301,8 @@ bool Board::Move(int playerNum,std::string command,int size){
 
 std::ostream& operator<<(std::ostream &out,const Board &b){
 	
-	out << std::setw(22) << "Highscore: " << b.getHighscore() <<std::endl << std::endl;
+	out << std::setw(20) << "Highscore: " << b.getHighscore() <<std::endl << std::endl;
+	out << "  Player 1           Player 2" << std::endl << std::endl;
 	out << "Level:" << std::setw(5) <<  b.p1->getLevel() <<  std::setfill(' ') << std::setw(14) << std::setfill(' ') 
 								<< "Level:" << std::setw(5) <<  b.p2->getLevel() << std::setfill(' ') << std::endl;
 	out << "Score:" << std::setw(5) <<  b.p1->getScore() <<  std::setfill(' ') << std::setw(14) << std::setfill(' ') 
