@@ -7,7 +7,7 @@ Level::~Level(){}
 Level::Level(){}
 
 bool Level::moveRight(Grid *g, int multiplier, bool moved){
-	int heavyDrops;
+	int heavyDrops = 0;
 	if (multiplier > 0){ 
         	//call Block's calcRight function which returns coordinates
         	std:: vector<Coord> potentialLocation = g->getCurrentBlock()->calcRight();
@@ -31,8 +31,11 @@ bool Level::moveRight(Grid *g, int multiplier, bool moved){
 	
 		if (g->getHeavy()){
 			for (int drops = 0; drops < 2; drops++){ //count the amount of times it can drop
-				if(moveDown(g, 1)){++heavyDrops;}
+				if(moveDown(g, 1)){
+					++heavyDrops;
+				}
 			}
+			std::cout << heavyDrops << std::endl;
 			if(heavyDrops < 2){ //if the block cannot drop twice due to Heavy effect
 				return true;
 			}
@@ -42,7 +45,7 @@ bool Level::moveRight(Grid *g, int multiplier, bool moved){
 }
 
 bool Level::moveLeft(Grid *g, int multiplier, bool moved){
-	int heavyDrops;
+	int heavyDrops = 0;
 	if (multiplier > 0){
         	//call Block's calcLeft function which returns coordinates
         	std:: vector<Coord> potentialLocation = g->getCurrentBlock()->calcLeft();
