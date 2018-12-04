@@ -19,9 +19,15 @@ void Player::Reset(){
 	if (g->next() == true){
 		l->createBlock(g.get());
 	}
+	if (w){
+		w->fillRectangle(45+displayConst, 40, 10, 15, Xwindow::White);
+		w->drawString(46+displayConst, 55, "0");
+		w->fillRectangle(45+displayConst, 25, 10, 15, Xwindow::White); //clear old level
+		w->drawString(46+displayConst, 35, "0");
+
+	}
 	g->UpdateGrid();
-	g->drawAll();
-	g->drawNext();	
+	g->drawAll();	
 }
 
 void Player::initDisplay(){

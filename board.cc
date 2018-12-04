@@ -82,8 +82,8 @@ void Board::initWindow(){
 	w->drawString(10, 55, "Score:" + std::to_string(p1->getScore()));//display scores
 	w->drawString(260, 55, "Score:" + std::to_string(p2->getScore()));
 	//w->fillRectangle(10, 36, 55, 20, Xwindow::White); //to clear
-	w->fillRectangle(10, 65, 220, 3, Xwindow::Black);//width of block = 20*11 = 220
-	w->fillRectangle(260, 65, 220, 3, Xwindow::Black);
+	w->fillRectangle(10, 62, 220, 3, Xwindow::Black);//width of block = 20*11 = 220
+	w->fillRectangle(260, 62, 220, 3, Xwindow::Black);
 	w->fillRectangle(10, 428, 220, 3, Xwindow::Black);//length of block = 20*18+68 = 428
 	w->fillRectangle(260, 428, 220, 3, Xwindow::Black);	
 	w->drawString(10, 445, "Next:");//display Next:
@@ -100,9 +100,17 @@ int Board::getHighscore()const{
 void Board::newHighscore(){
 	if (p1->getScore() > highscore){
 		highscore = p1->getScore();
+		if(w){
+			w->fillRectangle(270, 1, 30, 15, Xwindow::White);
+			w->drawString(270, 10, std::to_string(highscore));
+		}
 	}
 	if (p2->getScore() > highscore){
 		highscore = p2->getScore();
+		if(w){
+			w->fillRectangle(270, 1, 30, 15, Xwindow::White);
+			w->drawString(270, 10, std::to_string(highscore));
+		}
 	}
 }
 void Board::noRandom(int playerId,std::string file){
@@ -332,10 +340,10 @@ std::ostream& operator<<(std::ostream &out,const Board &b){
 }
 
 void Board::Restart(){
-	p2->notMyTurn();
-        p1->myTurn();		
+	p2->notMyTurn();		
 	p1->Reset();
 	p2->Reset();
+	p1->myTurn();
 //	p1->createNext();
 //	p2->createNext();
 }

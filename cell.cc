@@ -31,6 +31,8 @@ void Cell::draw(){
 		intcolour = 11;
 	}else if (colour == "cyan"){
 		intcolour = 5;
+	}else if (colour == "brown"){
+		intcolour = 9;
 	}
 	if(w){
 		w->fillRectangle((c.getX()*20)+displayConst+10,c.getY()*20+65,width,width,intcolour);//x,y,width,height,colour
